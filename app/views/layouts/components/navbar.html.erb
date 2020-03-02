@@ -1,0 +1,14 @@
+<nav class="navbar navbar-light pl-8 flex-grow-0 align-items-center" style="background-color: white;">
+  <%= render 'layouts/components/navbar_partials/logo_and_brand' %>
+  <% if user_signed_in? && current_user.category == false %>
+  <%= render 'layouts/components/navbar_partials/search_bar' %>
+  <% end %>
+  <% unless current_page?(root_path) %>
+  <%= render 'layouts/components/navbar_partials/search_bar' %>
+  <% end %>
+  <% if user_signed_in? %>
+  <%= render 'layouts/components/navbar_partials/user_links' %>
+  <% else %>
+  <%= render 'layouts/components/navbar_partials/visitor_links' %>
+  <% end %>
+</nav>
