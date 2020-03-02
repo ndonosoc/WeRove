@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 require 'faker'
 
 50.times do
@@ -86,3 +87,4 @@ Match.all.sample(5).each do |match|
                 rated_id: match.tourist_id,
                 rater_id: match.local_id)
 end
+
