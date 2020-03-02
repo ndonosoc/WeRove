@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     get 'signup', to: 'devise/registrations#new'
   end
   root to: 'pages#home'
+  resources :profile, :controller => "users", only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
