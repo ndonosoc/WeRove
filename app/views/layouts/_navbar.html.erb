@@ -14,12 +14,8 @@
     <% end %>
   <% else %>
     <span class="d-flex align-items-center justify-content-end">
-      <%= link_to new_user_session_path do %>
-        <button class="log-in" type="button">Log in</button>
-      <% end %>
-      <%= link_to new_user_registration_path do %>
-        <button class="sign-up" type="button">Become a Rover</button>
-      <% end %>
+      <%= link_to "Log in", new_user_session_path, class: "log-in" %>
+      <%= link_to "Become a Rover", new_user_registration_path, class: "sign-up" %>
     </span>
   <% end %>
 </nav>

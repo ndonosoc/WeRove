@@ -16,25 +16,28 @@
 }
 
 .main-btn:active {
- top:0.1em;
+ top: 0.1em;
 }
 
-@media all and (max-width:30em){
- .main-btn{
-  display:block;
-  margin:0.4em auto;
- }
+// @media all and (max-width:30em){
+//  .main-btn {
+//   display: block;
+//   margin: 0.4em auto;
+//  }
 
-}
+
 
 .sign-up {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
+  font-weight: 600;
   color: black;
 }
 
 .log-in {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
+  font-weight: 600;
   color: black;
+  padding-right: 12px;
 }
