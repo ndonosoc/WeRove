@@ -10,7 +10,9 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body style="background-color: white">
+    <% unless current_page?(user_registration_path) %>
     <%= render 'layouts/navbar' %>
+    <% end %>
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
