@@ -1,18 +1,22 @@
 <div class="container">
-  <h1 class="title">Join the biggest traveler community.</h1>
+  <h1 class="title">Join the greatest traveler community.</h1>
   <h2 class="subtitle">Find a local friend everywhere.</h2>
-  <%= link_to "More options +", new_user_registration_path, class: "underlined-link" %>
+    <%= render 'layouts/components/tags' %>
+  <div class="box">
+    <%= link_to "More options +", new_user_registration_path, class: "underlined-link" %>
+  </div>
   <form action="">
-  <div class="">
-    <label for="locationInput"></label>
+  <div class="Where">
+    <label class="label" for="locationInput">Where are you going?</label>
       <input type="text" class="form-control" id="location" placeholder="Buenos Aires, Argentina" name="location">
   </div>
-  <div class="">
-    <label for="locationInput"></label>
-      <input type="text" class="form-control" id="location" placeholder="Buenos Aires, Argentina" name="location">
+  <div class="When">
+    <label class="label" for="DateInput">When are you going?</label>
+      <input type="text" class="form-control" id="location" placeholder="04/10/2021" name="date">
   </div>
   <div class="">
-    <input type="button" value="Find a local!" class="" id="findLocals">
+    <input type="button" value="Find a local" class="btn btn-primary" id="findLocals">
+    <input type="button" value="Recommend me" class="btn btn-outline-primary" id="Recommend">
   </div>
   </form>
 </div>
