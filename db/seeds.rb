@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require "open-uri"
+require 'json'
 
 Match.delete_all
 Recommendation.delete_all
@@ -29,6 +31,11 @@ User.delete_all
     score: rand(1..5),
     password: '123456'
   )
+  file = open("https://randomuser.me/api/")
+  openfile = JSON.parse(file.string)
+  url = openfile["results"][0]["picture"]["medium"]
+  photo = URI.open(url)
+  user.photo.attach(io: photo, filename: "whatever.jpg", content_type: 'image/jpg')
 
   user.save!
 end
