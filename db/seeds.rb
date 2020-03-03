@@ -9,6 +9,7 @@
 require 'faker'
 
 50.times do
+  counter = 1
   User.create(first_name: Faker::GreekPhilosophers.name,
               last_name: Faker::Superhero.suffix,
               city: ["Buenos Aires", "Paris", "London", "New York", "Tokyo", "Zurich"].sample(1),
@@ -19,11 +20,8 @@ require 'faker'
               available: true,
               occupation: Faker::Job.title,
               score: rand(1..5),
-              password: '123456')
-  counter = 1
-
-  User.update(email: "#{User.first_name}#{counter}@gmail.com")
-
+              password: '123456',
+              email: "#{:first_name}#{counter}@gmail.com")
   counter += 1
 end
 
@@ -62,35 +60,35 @@ end
                         location: "#{["Recoleta", "Palermo", "Berazategui", "Belgrano"].sample}")
 end
 
-50.times do
-  Review.create(recommendation_id: rand(1..30),
-                user_id: rand(1..50),
-                content: Faker::Quote.famous_last_words,
-                rating: rand(1..5))
-end
+# 50.times do
+#   Review.create(recommendation_id: rand(1..30),
+#                 user_id: rand(1..50),
+#                 content: Faker::Quote.famous_last_words,
+#                 rating: rand(1..5))
+# end
 
-Match.all.each do |match|
-  5.times do
-    Message.new(messager_id: [match.local_id, match.tourist_id].sample,
-                match_id: match.id,
-                content: Faker::Quote.matz)
-  end
-end
+# Match.all.each do |match|
+#   5.times do
+#     Message.new(messager_id: [match.local_id, match.tourist_id].sample,
+#                 match_id: match.id,
+#                 content: Faker::Quote.matz)
+#   end
+# end
 
-40.times do
-  Bookmark.create(user_id: rand(1..50),
-                  recommendation_id: rand(1..30))
-end
+# 40.times do
+#   Bookmark.create(user_id: rand(1..50),
+#                   recommendation_id: rand(1..30))
+# end
 
-Match.all.sample(5).each do |match|
-  Rating.create(match_id: match.id,
-                rating: rand(1..5),
-                rated_id: match.local_id,
-                rater_id: match.tourist_id)
+# Match.all.sample(5).each do |match|
+#   Rating.create(match_id: match.id,
+#                 rating: rand(1..5),
+#                 rated_id: match.local_id,
+#                 rater_id: match.tourist_id)
 
-  Rating.create(match_id: match.id,
-                rating: rand(1..5),
-                rated_id: match.tourist_id,
-                rater_id: match.local_id)
-end
+#   Rating.create(match_id: match.id,
+#                 rating: rand(1..5),
+#                 rated_id: match.tourist_id,
+#                 rater_id: match.local_id)
+# end
 
