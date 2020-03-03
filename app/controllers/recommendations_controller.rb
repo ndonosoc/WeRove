@@ -13,4 +13,6 @@ class RecommendationsController < ApplicationController
   def show
     @recommendation = Recommendation.find(params[:id])
   end
+    # search recommendations by city and categories (NOT FINISHED, add location with geocoding GEM)
+    # @recommendations = Recommendation.joins(user: :interests).where('interests.title' => params[:category])
 end
