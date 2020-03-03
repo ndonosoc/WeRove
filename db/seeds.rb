@@ -67,7 +67,8 @@ end
     price_range: "From $#{rand(200..300)} to $#{rand(400..600)}",
     duration: "#{["30", "60", "90", "120"].sample} minutes",
     reservation: "#{["Not needed", "Should plan with anticipation"].sample}",
-    location: "#{["Recoleta", "Palermo", "Berazategui", "Belgrano"].sample}"
+    location: "#{["Recoleta", "Palermo", "Berazategui", "Belgrano"].sample}",
+    title: Faker::Games::Pokemon.location
   )
 end
 
