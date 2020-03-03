@@ -3,7 +3,9 @@ ruby '2.6.5'
 
 gem 'bootsnap', require: false
 gem 'devise'
+gem 'faker'
 gem 'jbuilder', '~> 2.0'
+gem 'iso_country_codes', '0.7.8'
 gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'pundit'
@@ -15,6 +17,7 @@ gem 'font-awesome-sass', '~> 5.12.0'
 gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
+gem 'faker'
 gem 'webpacker'
 
 group :development do

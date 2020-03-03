@@ -3,3 +3,11 @@
 @import "avatar";
 @import "navbar";
 @import "buttons";
+
+p {
+  font-family: $body-font;
+}
+
+h1 {
+  font-family: $headers-font;
+}

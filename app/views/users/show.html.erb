@@ -1,1 +1,32 @@
-show.html.erb
+<div class="aboutcontainer mx-3">
+  <div class="header">
+    <div class="container mx-0 px-0">
+      <div class="title">
+      <h1 class="pr-2"><%= @user.first_name %></h1>
+      <img src="https://www.countryflags.io/<%= @country %>/shiny/32.png" class="mt-1" id="flag">
+      </div>
+      <div class="location">
+      <i class="fas fa-map-marker-alt fa-s pr-1"></i><p>Local in <%= @user.city.scan(/(.*)\,/)[0][0] %></p>
+      </div>
+    </div>
+    <img src="https://s4.eestatic.com/2018/11/01/actualidad/Actualidad_349978954_130345896_1024x576.jpg" alt="" id="avatar" class="avatar-bordered">
+  </div>
+<p><%= @user.biography %></p>
+</div>
+
+<ul class="nav nav-tabs mx-3" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">About me</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="recommendations-tab" data-toggle="tab" href="#recommendations" role="tab" aria-controls="recommendations" aria-selected="false">Top Recommendations</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+    <%= render 'aboutme', user: @user %>
+  </div>
+  <div class="tab-pane fade" id="recommendations" role="tabpanel" aria-labelledby="recommendations-tab">
+    <%= render 'toprecommendations', user: @user %>
+  </div>
+</div>
