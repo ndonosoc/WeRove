@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_215803) do
+ActiveRecord::Schema.define(version: 2020_03_03_181853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_215803) do
     t.string "reservation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
     t.index ["user_id"], name: "index_recommendations_on_user_id"
   end
 
@@ -70,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_215803) do
     t.boolean "verified"
     t.string "biography"
     t.boolean "available"
-    t.string "languages"
+    t.text "languages", array: true
     t.string "occupation"
     t.string "first_name"
     t.string "last_name"

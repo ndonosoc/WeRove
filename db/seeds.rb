@@ -103,7 +103,6 @@ end
 #                 rater_id: match.local_id)
 # end
 
-
 #INTERESTS
 
 parent = Interest.create(title: "Going Out")
