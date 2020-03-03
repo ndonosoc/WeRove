@@ -1,2 +1,18 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <h1 class="title">Join the biggest traveler community.</h1>
+  <h2 class="subtitle">Find a local friend everywhere.</h2>
+  <%= link_to "More options +", new_user_registration_path, class: "underlined-link" %>
+  <form action="">
+  <div class="">
+    <label for="locationInput"></label>
+      <input type="text" class="form-control" id="location" placeholder="Buenos Aires, Argentina" name="location">
+  </div>
+  <div class="">
+    <label for="locationInput"></label>
+      <input type="text" class="form-control" id="location" placeholder="Buenos Aires, Argentina" name="location">
+  </div>
+  <div class="">
+    <input type="button" value="Find a local!" class="" id="findLocals">
+  </div>
+  </form>
+</div>
