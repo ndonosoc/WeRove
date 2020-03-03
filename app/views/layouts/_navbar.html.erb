@@ -1,25 +1,21 @@
 <nav class="navbar flex-grow-0 align-items-center" style="background-color: white;">
-  <%= link_to HOME_PATH_HERE do %>
+  <%= link_to "#" do %>
     <p class="logo">
-      <%= image_tag "ADD LOGO FILE", alt: "", size: "25", class: "d-inline-block align-top" %>
+      <%= image_tag "Logo-Fake.png", alt: "", size: "60", class: "d-inline-block pt-3" %>
     </p>
   <% end %>
   <% if user_signed_in? %>
-    <%= link_to PROFILE_PATH_HERE do %>
-      <img class="avatar-bordered" alt="avatar-bordered" src="" />
+    <%= link_to "#" do %>
+      <img class="avatar-bordered" alt="avatar-bordered" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
     <% end %>
   <% elsif user_signed_in? && current_page?(PERFIL_PATH)%>
-    <%= link_to MATCHES_PATH_HERE do %>
+    <%= link_to "#" do %>
       <i class="fas fa-comments-alt"></i>
     <% end %>
   <% else %>
     <span class="d-flex align-items-center justify-content-end">
-      <%= link_to new_user_registration_path do %>
-        <button class="" type="button">Become a Rover</button>
-      <% end %>
-      <%= link_to new_user_session_path do %>
-        <button class = "" id = "link" type="button">Log in</button>
-      <% end %>
+      <%= link_to "Log in", new_user_session_path, class: "log-in" %>
+      <%= link_to "Become a Rover", new_user_registration_path, class: "sign-up" %>
     </span>
   <% end %>
 </nav>
