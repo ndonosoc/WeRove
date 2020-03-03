@@ -18,7 +18,13 @@ require 'faker'
               biography: Faker::Hipster.paragraph,
               available: true,
               occupation: Faker::Job.title,
-              score: rand(1..5))
+              score: rand(1..5),
+              password: '123456')
+  counter = 1
+
+  User.update(email: "#{User.first_name}#{counter}@gmail.com")
+
+  counter += 1
 end
 
 User.all.each do |user|
