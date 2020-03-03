@@ -1,0 +1,53 @@
+<div class="recommendationcontainer justify-content-center mx-auto">
+    <div class="col-xs-12 pt-0 mt-0">
+      <img src="https://lh3.googleusercontent.com/proxy/H2n2iNKSDiifjV41jXbg64HSq3WloEOvQ84KeR4rL1Ag6g4PWPYx4okc1qIApLYAzT4qEx80GGEqX0qQqUF6sfn7AXMPhcj8BAyUv6nLUOxqMxxJ53fOUnA" alt="" class="header">
+    </div>
+    <div class="title">
+      <h1><%= @recommendation.title %></h1>
+      <i class="fas fa-bookmark fa-xs"></i>
+    </div>
+    <div class="rating mb-3">
+      <i class="fas fa-star fa-xs"></i>
+      <i class="fas fa-star fa-xs"></i>
+      <i class="fas fa-star fa-xs"></i>
+      <i class="fas fa-star fa-xs"></i>
+      <i class="fas fa-star fa-xs"></i>
+    </div>
+    <div class="body">
+      <p><%= @recommendation.description %></p>
+    </div>
+    <div class="border border-bottom mx-3"></div>
+    <div class="details">
+      <div class="item">
+        <i class="far fa-clock fa-lg pr-3" style="width:30px;"></i>
+        <div class="content">
+          <h1>Duration</h1>
+          <p><%= @recommendation.duration %></p>
+        </div>
+      </div>
+      <div class="item">
+        <i class="fas fa-street-view fa-lg pr-3" style="width:30px;"></i>
+        <div class="content">
+          <h1>Location</h1>
+          <p><%= @recommendation.location %></p>
+        </div>
+      </div>
+      <div class="item">
+        <i class="fas fa-dollar-sign fa-lg pr-3" style="width:30px;"></i>
+        <div class="content">
+          <h1>Price Range</h1>
+          <p><%= @recommendation.price_range %></p>
+        </div>
+      </div>
+      <div class="item">
+        <i class="fas fa-phone-volume fa-lg pr-3" style="width:30px;"></i>
+        <div class="content">
+          <h1>Reservation</h1>
+          <p><%= @recommendation.reservation %></p>
+        </div>
+      </div>
+    </div>
+    <div class="getintouch">
+      <button class="btn btn-primary">Get in touch</button>
+    </div>
+</div>
