@@ -1,5 +1,8 @@
 <div class="sign-up-container">
   <div class="wrapper">
+    <p class="logo">
+      <%= image_tag "WR.png", alt: "", size: "50", class: "logo d-inline-block pt-3" %>
+    </p>
     <h2 class="subtitle" style="font-size: 24px; color: black;">Sign Up</h2>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
