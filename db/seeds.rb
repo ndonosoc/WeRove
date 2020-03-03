@@ -8,56 +8,67 @@
 
 require 'faker'
 
+Match.delete_all
+Recommendation.delete_all
+UserInterest.delete_all
+Interest.delete_all
+User.delete_all
+
 50.times do
-  counter = 1
-  User.create(first_name: Faker::GreekPhilosophers.name,
-              last_name: Faker::Superhero.suffix,
-              city: ["Buenos Aires", "Paris", "London", "New York", "Tokyo", "Zurich"].sample(1),
-              languages: ["french", "spanish", "english", "japanese"].sample(2),
-              gender: ["male", "female", "non-binary"].sample,
-              birthday: Faker::Date.between(from: 10000.days.ago, to: 8000.days.ago),
-              biography: Faker::Hipster.paragraph,
-              available: true,
-              occupation: Faker::Job.title,
-              score: rand(1..5),
-              password: '123456',
-              email: "#{:first_name}#{counter}@gmail.com")
-  counter += 1
+  user = User.new(
+    first_name: Faker::GreekPhilosophers.name,
+    last_name: Faker::Superhero.suffix,
+    email: Faker::Internet.email,
+    city: ["Buenos Aires", "Paris", "London", "New York", "Tokyo", "Zurich"].sample(1),
+    languages: ["french", "spanish", "english", "japanese"].sample(2),
+    gender: ["male", "female", "non-binary"].sample,
+    birthday: Faker::Date.between(from: 10000.days.ago, to: 8000.days.ago),
+    biography: Faker::Hipster.paragraph,
+    available: true,
+    occupation: Faker::Job.title,
+    score: rand(1..5),
+    password: '123456'
+  )
+
+  user.save!
+end
+
+INTEREST = %w( Sports Vegan Food Party Gaming )
+
+INTEREST.each do |interest|
+  Interest.create!(
+    title: interest
+  )
 end
 
 User.all.each do |user|
- 10.times do
-  UserInterest.create(user_id: user.id,
-                      interest_id: rand(1..10))
-  UserInterest.create(user_id: user.id,
-                      interest_id: rand(11..20))
-  UserInterest.create(user_id: user.id,
-                      interest_id: rand(21..30))
-  UserInterest.create(user_id: user.id,
-                      interest_id: rand(31..40))
-  UserInterest.create(user_id: user.id,
-                      interest_id: rand(41..50))
-  UserInterest.create(user_id: user.id,
-                      interest_id: rand(51..60))
-  UserInterest.create(user_id: user.id,
-                      interest_id: rand(61..70))
- end
+  Interest.all.sample(3).each do |interest|
+    UserInterest.create(
+      user_id: user.id,
+      interest_id: interest.id
+    )
+  end
 end
 
 20.times do
-  Match.create(local_id: rand(1..50),
-               tourist_id: rand(1..50),
-               accepted: true)
+  users = User.all.sample(2)
+  Match.create!(
+    local_id: users[0].id,
+    tourist_id: users[1].id,
+    accepted: true
+  )
 end
 
 30.times do
-  Recommendation.create(user_id: rand(1..50),
-                        category: ["Nightlife", "Restaurant", "Sports event", "Sightseeing"].sample,
-                        description: Faker::ChuckNorris.fact,
-                        price_range: "From $#{rand(200..300)} to $#{rand(400..600)}",
-                        duration: "#{["30", "60", "90", "120"].sample} minutes",
-                        reservation: "#{["Not needed", "Should plan with anticipation"].sample}",
-                        location: "#{["Recoleta", "Palermo", "Berazategui", "Belgrano"].sample}")
+  Recommendation.create!(
+    user_id: User.all.sample.id,
+    category: ["Nightlife", "Restaurant", "Sports event", "Sightseeing"].sample,
+    description: Faker::ChuckNorris.fact,
+    price_range: "From $#{rand(200..300)} to $#{rand(400..600)}",
+    duration: "#{["30", "60", "90", "120"].sample} minutes",
+    reservation: "#{["Not needed", "Should plan with anticipation"].sample}",
+    location: "#{["Recoleta", "Palermo", "Berazategui", "Belgrano"].sample}"
+  )
 end
 
 # 50.times do
@@ -92,3 +103,101 @@ end
 #                 rater_id: match.local_id)
 # end
 
+#INTERESTS
+
+parent = Interest.create(title: "Going Out")
+Interest.create(title: "Bars", parent_id: parent.id)
+Interest.create(title: "Clubs", parent_id: parent.id)
+Interest.create(title: "Pubs", parent_id: parent.id)
+Interest.create(title: "Speakeasies", parent_id: parent.id)
+Interest.create(title: "Outdoor party", parent_id: parent.id)
+Interest.create(title: "BBQ", parent_id: parent.id)
+Interest.create(title: "Cocktails", parent_id: parent.id)
+
+
+parent = Interest.create(title: "Food")
+Interest.create(title: "Meat lover", parent_id: parent.id)
+Interest.create(title: "Gluten free", parent_id: parent.id)
+Interest.create(title: "Vegan", parent_id: parent.id)
+Interest.create(title: "Vegetarian", parent_id: parent.id)
+Interest.create(title: "Fast-food", parent_id: parent.id)
+Interest.create(title: "Street-food", parent_id: parent.id)
+Interest.create(title: "Haut cuisine", parent_id: parent.id)
+Interest.create(title: "Authentic", parent_id: parent.id)
+Interest.create(title: "International", parent_id: parent.id)
+
+
+parent = Interest.create(title: "Sports")
+Interest.create(title: "Badminton", parent_id: parent.id)
+Interest.create(title: "Martial arts", parent_id: parent.id)
+Interest.create(title: "Boxing", parent_id: parent.id)
+Interest.create(title: "Dancing", parent_id: parent.id)
+Interest.create(title: "Volleyball", parent_id: parent.id)
+Interest.create(title: "Tennis", parent_id: parent.id)
+Interest.create(title: "Cycling", parent_id: parent.id)
+Interest.create(title: "Horse riding", parent_id: parent.id)
+Interest.create(title: "Climbing", parent_id: parent.id)
+Interest.create(title: "Football", parent_id: parent.id)
+Interest.create(title: "Skating", parent_id: parent.id)
+Interest.create(title: "Wintersports", parent_id: parent.id)
+Interest.create(title: "Basketball", parent_id: parent.id)
+Interest.create(title: "Fishing", parent_id: parent.id)
+Interest.create(title: "River rafting", parent_id: parent.id)
+Interest.create(title: "Golf", parent_id: parent.id)
+Interest.create(title: "Polo", parent_id: parent.id)
+Interest.create(title: "Surfing", parent_id: parent.id)
+Interest.create(title: "Swimming", parent_id: parent.id)
+Interest.create(title: "Running", parent_id: parent.id)
+Interest.create(title: "Hiking", parent_id: parent.id)
+Interest.create(title: "Yoga", parent_id: parent.id)
+
+parent = Interest.create(title: "Other activities")
+Interest.create(title: "Chess", parent_id: parent.id)
+Interest.create(title: "Bowling", parent_id: parent.id)
+Interest.create(title: "Billards", parent_id: parent.id)
+Interest.create(title: "Laser tag", parent_id: parent.id)
+Interest.create(title: "Birdwatching", parent_id: parent.id)
+Interest.create(title: "Scuba diving", parent_id: parent.id)
+Interest.create(title: "Sailing", parent_id: parent.id)
+Interest.create(title: "Cooking", parent_id: parent.id)
+Interest.create(title: "Meditation", parent_id: parent.id)
+
+parent = Interest.create(title: "Other interests")
+Interest.create(title: "History", parent_id: parent.id)
+Interest.create(title: "Art", parent_id: parent.id)
+Interest.create(title: "Photography", parent_id: parent.id)
+Interest.create(title: "Fashion", parent_id: parent.id)
+Interest.create(title: "Beach", parent_id: parent.id)
+Interest.create(title: "Theater", parent_id: parent.id)
+Interest.create(title: "Opera", parent_id: parent.id)
+Interest.create(title: "Concerts", parent_id: parent.id)
+Interest.create(title: "Food markets", parent_id: parent.id)
+Interest.create(title: "Flea markets", parent_id: parent.id)
+Interest.create(title: "Artisan markets", parent_id: parent.id)
+Interest.create(title: "Religion", parent_id: parent.id)
+Interest.create(title: "Politics", parent_id: parent.id)
+Interest.create(title: "Nature", parent_id: parent.id)
+
+parent = Interest.create(title: "Music")
+Interest.create(title: "Classical", parent_id: parent.id)
+Interest.create(title: "Rock", parent_id: parent.id)
+Interest.create(title: "Electronic", parent_id: parent.id)
+Interest.create(title: "Jazz", parent_id: parent.id)
+Interest.create(title: "Blues", parent_id: parent.id)
+Interest.create(title: "Punk", parent_id: parent.id)
+Interest.create(title: "Metal", parent_id: parent.id)
+Interest.create(title: "Alternative", parent_id: parent.id)
+Interest.create(title: "Country", parent_id: parent.id)
+Interest.create(title: "Indie", parent_id: parent.id)
+Interest.create(title: "Pop", parent_id: parent.id)
+Interest.create(title: "Techno", parent_id: parent.id)
+
+parent = Interest.create(title: "Taste")
+Interest.create(title: "Alternative", parent_id: parent.id)
+Interest.create(title: "Classic", parent_id: parent.id)
+Interest.create(title: "Boho", parent_id: parent.id)
+Interest.create(title: "Chic", parent_id: parent.id)
+Interest.create(title: "Trendy", parent_id: parent.id)
+Interest.create(title: "Classy", parent_id: parent.id)
+Interest.create(title: "Intellectual", parent_id: parent.id)
+Interest.create(title: "Vintage", parent_id: parent.id)
