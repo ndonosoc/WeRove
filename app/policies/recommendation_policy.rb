@@ -13,7 +13,11 @@ class RecommendationPolicy < ApplicationPolicy
     true
   end
 
-  def show?
+  def index
+    true
+  end
+
+  def show
     true
   end
 end
