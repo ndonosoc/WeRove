@@ -1,0 +1,18 @@
+<div class="home-container">
+  <div class="">
+    <h1 class="title">Add a recommendation</h1>
+    <p>Help other rovers have an authentic experience by sharing insider spots/tips of your city.</p>
+
+        <%= simple_form_for @recommendation do |f| %>
+          <%= f.input :category, collection: ["Sports", "Food", "Outdoors", "Nightlife", "Arts & Culture", "Sightseeing"], as: :check_boxes, class: 'check-boxes-cat' %>
+          <%= f.input :title %>
+          <%= f.input :description, as: :text %>
+          <%= f.input :price_range, as: :range, input_html: { class: 'custom-range' } %>
+          <%= f.input :location, id: 'location' %>
+          <%= f.input :duration, as: :range, input_html: { class: 'custom-range' } %>
+          <%= f.input :reservation, as: :boolean %>
+          <%= f.input :photo, as: :file %>
+          <%= f.button :submit, class: 'btn btn-primary' %>
+        <% end %>
+    </div>
+  </div>
