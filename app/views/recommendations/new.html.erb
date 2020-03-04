@@ -1,0 +1,60 @@
+<div class="wrapper-add-recommendation">
+<h1>Sharing is caring!</h1>
+<p>Help other rovers have an authentic experience by sharing insider spots/tips of your city.</p>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1>Add a recommendation</h1>
+
+      <%= simple_form_for @recommendation do |f| %>
+        <%= f.input :category %>
+        <!--  <div class="tag-wrapper">
+          <div class="tag" style="border-color: #F25252">
+            <input type="checkbox" />
+            <i class="fa fa-circle fa-2x" style="color: #F25252"></i>
+            <label for="">Sports</label>
+          </div>
+
+          <div class="tag" style="border-color: #EEB931">
+            <input type="checkbox" />
+            <i class="fa fa-circle fa-2x" style="color: #EEB931"></i>
+            <label for="">Outdoors</label>
+          </div>
+
+          <div class="tag">
+            <input type="checkbox" />
+            <i class="fa fa-circle fa-2x"></i>
+            <label for="">Going Out</label>
+          </div>
+
+          <div class="tag" style="border-color: #85B55F">
+            <input type="checkbox" />
+            <i class="fa fa-circle fa-2x" style="color: #85B55F"></i>
+            <label for="">Food</label>
+          </div>
+
+          <div class="tag" style="border-color: #F25252">
+            <i class="fa fa-circle fa-2x" style="color: #F25252"></i>
+            <input type="checkbox" />
+            <label for="">Sightseeing</label>
+          </div>
+
+          <div class="tag">
+            <i class="fa fa-circle fa-2x"></i>
+            <input type="checkbox" />
+            <label for="">Culture</label>
+          </div> -->
+        <!-- </div> -->
+        <%= f.input :title %>
+        <%= f.input :description, as: :text %>
+        <%= f.input :price_range %>
+        <%= f.input :duration %>
+        <%= f.input :reservation, as: :boolean %>
+        <%= f.input :photo, as: :file %>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>

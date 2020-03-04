@@ -5,7 +5,15 @@ class RecommendationPolicy < ApplicationPolicy
     end
   end
 
-  def show
+  def new?
+    true
+  end
+
+  def create?
+    true
+  end
+
+  def show?
     true
   end
 end
