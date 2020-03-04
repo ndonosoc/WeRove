@@ -17,12 +17,13 @@ class RecommendationsController < ApplicationController
     # @recommendations = Recommendation.joins(user: :interests).where('interests.title' => params[:category])
 
   def new
-    @recommendation = Recommendation.new
+    @recommendation = current_user.recommendations.build
     authorize @recommendation
   end
 
   def create
     @recommendation = Recommendation.new(recommendation_params)
+    @recommendation.user = current_user
     authorize @recommendation
     if @recommendation.save
       redirect_to recommendation_path(@recommendation)
@@ -34,6 +35,6 @@ class RecommendationsController < ApplicationController
   private
 
   def recommendation_params
-    params.require(:recommendation).permit(:title, :category, :description, :location, :price_range, :reservation, :duration)
+    params.require(:recommendation).permit(:title, :category, :description, :location, :price_range, :reservation, :duration, :user_id)
   end
 end
