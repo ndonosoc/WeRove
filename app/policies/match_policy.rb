@@ -1,11 +1,19 @@
-class RecommendationPolicy < ApplicationPolicy
+class MatchPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
   end
 
-  def new?
+  def index?
+    true
+  end
+
+  def matchme?
+    true
+  end
+
+  def home?
     true
   end
 
@@ -13,11 +21,7 @@ class RecommendationPolicy < ApplicationPolicy
     true
   end
 
-  def index
-    true
-  end
-
-  def show
+  def update?
     true
   end
 end

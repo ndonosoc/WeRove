@@ -1,6 +1,10 @@
 <div class="recommendationcontainer justify-content-center mx-auto">
     <div class="col-xs-12 pt-0 mt-0">
-      <img src="https://lh3.googleusercontent.com/proxy/H2n2iNKSDiifjV41jXbg64HSq3WloEOvQ84KeR4rL1Ag6g4PWPYx4okc1qIApLYAzT4qEx80GGEqX0qQqUF6sfn7AXMPhcj8BAyUv6nLUOxqMxxJ53fOUnA" alt="" class="header">
+      <% if @recommendation.photo.attached? %>
+        <%= cl_image_tag @recommendation.photo.key, class: "header" %>
+      <% else %>
+        <img src="https://lh3.googleusercontent.com/proxy/H2n2iNKSDiifjV41jXbg64HSq3WloEOvQ84KeR4rL1Ag6g4PWPYx4okc1qIApLYAzT4qEx80GGEqX0qQqUF6sfn7AXMPhcj8BAyUv6nLUOxqMxxJ53fOUnA" alt="" class="header">
+      <% end %>
     </div>
     <div class="title">
       <h1><%= @recommendation.title %></h1>

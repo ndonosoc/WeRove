@@ -1,0 +1,22 @@
+.bio-match {
+  font-size: 14px;
+  color: grey;
+  justify-content: left;
+}
+
+.wrapper-match {
+  background: white;
+  width: 90%;
+  height: 90%;
+  margin: 0 auto;
+  padding: 24px 24px;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: 5px 5px 30px  rgba(50, 50, 50, 0.2);
+}
+
+.items-match {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 16px;
+}

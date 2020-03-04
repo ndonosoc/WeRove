@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 ruby '2.6.5'
 
 gem 'bootsnap', require: false
+gem 'cloudinary', '~> 1.12.0'
 gem 'devise'
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'faker'
 gem 'jbuilder', '~> 2.0'
 gem 'iso_country_codes', '0.7.8'
@@ -17,7 +19,6 @@ gem 'font-awesome-sass', '~> 5.12.0'
 gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
-gem 'faker'
 gem 'webpacker'
 
 group :development do

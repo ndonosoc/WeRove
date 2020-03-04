@@ -1,0 +1,36 @@
+<% @matches.each do |match| %>
+  <div class="wrapper-match my-3">
+    <div class="match-photo" style="display: flex; justify-content: space-between;">
+      <%= cl_image_tag match.local.photo.key, alt: "avatar", class: "avatar-2" %>
+       <p class="match-info">
+         <strong>Age</strong>
+         <br>
+          <%= match.local.birthday %>
+          <br>
+         <strong>Ocuppation</strong>
+         <br>
+         <%= match.local.occupation %>
+         <br>
+         <strong>Recommends</strong>
+         <br>
+         Nightlife
+       </p>
+    </div>
+    <div class="bio-match"><%= match.local.biography %></div>
+    <div class="">
+      <%= link_to "See More +", "", class: "underlined-link" %>
+      <%= simple_form_for(match, url: matches_path) do |f| %>
+        <%= f.input :accepted, as: :hidden, input_html: { value: true } %>
+        <%= f.input :id, as: :hidden, input_html: { value: match.id } %>
+        <%= f.button :submit, 'Accept', class: "btn btn-primary" %>
+      <% end %>
+      <%= simple_form_for(match, url: matches_path) do |f| %>
+        <%= f.input :accepted, as: :hidden, input_html: { value: false } %>
+        <%= f.input :id, as: :hidden, input_html: { value: match.id } %>
+        <%= f.button :submit, 'Pass', class: "btn btn-outline-primary" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+

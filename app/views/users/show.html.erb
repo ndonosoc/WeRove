@@ -9,7 +9,11 @@
       <i class="fas fa-map-marker-alt fa-xs pr-1"></i><p>Local in <strong><%= @user.city.scan(/(.*)\,/)[0][0] %></strong></p>
       </div>
     </div>
-    <img src="https://s4.eestatic.com/2018/11/01/actualidad/Actualidad_349978954_130345896_1024x576.jpg" alt="" id="avatar" class="avatar-bordered my-2">
+    <% if @user.photo.attached? %>
+    <%= cl_image_tag @user.photo.key, id: "avatar", class: "avatar-bordered my-2" %>
+    <% else %>
+    <img src="" alt="" class="avatar-bordered my-2" id="avatar">
+    <% end %>
   </div>
 <p style="padding-top: 8px;"><%= @user.biography %></p>
 </div>

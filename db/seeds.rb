@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require "open-uri"
+require 'json'
 
 Match.delete_all
 Recommendation.delete_all
@@ -29,8 +31,13 @@ User.delete_all
     score: rand(1..5),
     password: '123456'
   )
-
-  user.save!
+    file = URI.open("http://placeimg.com/640/480/people")
+    user.photo.attach(io: file, filename: "#{user.first_name}-#{user.last_name}.jpg", content_type: "image/jpeg")
+    if user.save!
+    puts "saved"
+    else
+      puts "not saved"
+    end
 end
 
 INTEREST = %w( Sports Vegan Food Party Gaming )
@@ -60,7 +67,7 @@ end
 end
 
 30.times do
-  Recommendation.create!(
+  recommendation = Recommendation.new(
     user_id: User.all.sample.id,
     category: ["Nightlife", "Restaurant", "Sports event", "Sightseeing"].sample,
     description: Faker::ChuckNorris.fact,
@@ -70,6 +77,11 @@ end
     location: "#{["Recoleta", "Palermo", "Berazategui", "Belgrano"].sample}",
     title: Faker::Games::Pokemon.location
   )
+
+    file = URI.open("https://placeimg.com/640/480/arch")
+    recommendation.photo.attach(io: file, filename: "#{recommendation.title}-#{recommendation.user_id}.jpg", content_type: "image/jpeg")
+    recommendation.save
+
 end
 
 # 50.times do

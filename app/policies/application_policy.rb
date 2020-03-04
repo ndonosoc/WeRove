@@ -14,8 +14,12 @@ class ApplicationPolicy
     false
   end
 
+  def matchme?
+    true
+  end
+
   def create?
-    false
+    true
   end
 
   def new?
