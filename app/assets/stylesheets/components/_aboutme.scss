@@ -3,15 +3,17 @@
 .aboutcontainer {
 
   font-family: "Poppins", "Helvetica", "sans-serif";
+  padding-top: 24px;
 
   h1 {
-    font-size: 32px;
+    font-size: 30px;
     font-family: "Poppins", "Helvetica", "sans-serif";
     font-weight: 600;
   }
 
   p {
-    font-family: "Work Sans", "Helvetica", "sans-serif";
+    font-family: "Roboto", "Helvetica", "sans-serif";
+    color: grey;
   }
 
   .header {
@@ -32,14 +34,16 @@
     #avatar {
       width: 80px;
       height: 80px;
+      object-fit: cover;
     }
 
     .location {
       display: flex;
       line-height: 1;
+      color: grey;
 
       p {
-        font-size: 16px;
+        font-size: 14px;
       }
     }
   }
@@ -55,9 +59,11 @@
   width: 90%;
   background-color: white;
   margin: 0px auto 16px auto;
-  padding: 4px 8px 0px 8px;
-  border-radius: 4px;
-  box-shadow: 30px 30px 30px rgba(0,0,0,0.1);
+  padding: 16px;
+  padding-bottom: 12px;
+  border-radius: 5px;
+  box-shadow: 0px 3px 3px 0px rgba(50, 50, 50, 0.4);
+
 
   .title {
     display: flex;
@@ -77,6 +83,7 @@ ul {
   padding: 0;
   color: rgba(0,0,0,0.5);
   font-weight: 400;
+  line-height: 26px;
 }
 
 }

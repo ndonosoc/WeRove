@@ -1,15 +1,15 @@
 import "bootstrap";
 import { initAutocomplete } from "../plugins/init_autocomplete";
 import flatpickr from 'flatpickr';
+import 'flatpickr/dist/themes/airbnb.css';
 
 initAutocomplete();
 
 
 const datepicker = document.getElementById("datepicker");
 
-flatpickr("#datepicker", {
-    inline: true,
+flatpickr(datepicker, {
+    mode: "range",
     altInput: true,
-    enableTime: true,
     minDate: 'today',
     });

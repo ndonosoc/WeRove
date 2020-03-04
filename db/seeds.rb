@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require "open-uri"
+require 'json'
 
 Match.delete_all
 Recommendation.delete_all
@@ -19,7 +21,7 @@ User.delete_all
     first_name: Faker::GreekPhilosophers.name,
     last_name: Faker::Superhero.suffix,
     email: Faker::Internet.email,
-    city: ["Buenos Aires, Argentina", "Paris, France", "London, England", "New York, United States", "Tokyo, Japan", "Zurich, Switzerland"].sample,
+    city: ["Buenos Aires, Argentina", "Paris, France", "London, United Kingdom", "New York, United States", "Tokyo, Japan", "Zurich, Switzerland"].sample,
     languages: ["french", "spanish", "english", "japanese"].sample(2),
     gender: ["male", "female", "non-binary"].sample,
     birthday: Faker::Date.between(from: 10000.days.ago, to: 8000.days.ago),
@@ -29,8 +31,9 @@ User.delete_all
     score: rand(1..5),
     password: '123456'
   )
-
-  user.save!
+    # file = URI.open("https://i.pravatar.cc/300")
+    # user.photo.attach(io: file, filename: "#{user.first_name}-#{user.last_name}.jpg", content_type: "image/jpeg")
+    # user.save
 end
 
 INTEREST = %w( Sports Vegan Food Party Gaming )
@@ -60,15 +63,21 @@ end
 end
 
 30.times do
-  Recommendation.create!(
+  recommendation = Recommendation.new(
     user_id: User.all.sample.id,
     category: ["Nightlife", "Restaurant", "Sports event", "Sightseeing"].sample,
     description: Faker::ChuckNorris.fact,
     price_range: "From $#{rand(200..300)} to $#{rand(400..600)}",
     duration: "#{["30", "60", "90", "120"].sample} minutes",
     reservation: "#{["Not needed", "Should plan with anticipation"].sample}",
-    location: "#{["Recoleta", "Palermo", "Berazategui", "Belgrano"].sample}"
+    location: "#{["Recoleta", "Palermo", "Berazategui", "Belgrano"].sample}",
+    title: Faker::Games::Pokemon.location
   )
+
+    # file = URI.open("https://placeimg.com/640/480/arch")
+    # recommendation.photo.attach(io: file, filename: "#{recommendation.title}-#{recommendation.user_id}.jpg", content_type: "image/jpeg")
+    # recommendation.save
+
 end
 
 # 50.times do
