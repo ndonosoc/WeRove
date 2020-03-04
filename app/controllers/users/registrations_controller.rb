@@ -15,14 +15,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @groups = Interest.all.group_by(&:parent_id)
+    super
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    @groups = Interest.all.group_by(&:parent_id)
+
+    # remove all user interests
+    UserInterest.where(user_id: current_user.id).delete_all
+    # remove all empty options
+    interests_id = params[:user][:interest_ids].reject(&:empty?)
+    # create new user interests
+    unless interests_id.nil?
+      interests_id.each do |interest_id|
+        @user_interest = UserInterest.create(interest_id: interest_id, user_id: current_user.id)
+      end
+    end
+    super
+  end
 
   # DELETE /resource
   # def destroy

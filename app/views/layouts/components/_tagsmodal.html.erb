@@ -1,51 +1,55 @@
 <!-- Button trigger modal -->
-<button class="tag mt-4" data-toggle="modal" data-target="#exampleModal">
+<button class="btn btn-link mt-4" data-toggle="modal" data-target="#exampleModal">
  + Add interests
 </button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title title" id="exampleModalLabel">Choose your interests</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
       <div class="modal-body">
-        <div class="interests">
-      <h4 class="interesttag mt-4">Going out</h4>
-      <%= render 'layouts/components/tagsgoingout' %>
-    </div>
-    <div class="interests">
-      <h4 class="interesttag mt-4">Food</h4>
-      <%= render 'layouts/components/tagsfood' %>
-    </div>
-    <div class="interests">
-      <h4 class="interesttag mt-4">Sports</h4>
-      <%= render 'layouts/components/tagssports' %>
-    </div>
-    <div class="interests">
-      <h4 class="interesttag mt-4">Other activities</h4>
-      <%= render 'layouts/components/tagsotheractivities' %>
-    </div>
-    <div class="interests">
-      <h4 class="interesttag mt-4">Other interests</h4>
-      <%= render 'layouts/components/tagsotherinterests' %>
-    </div>
-    <div class="interests">
-      <h4 class="interesttag mt-4">Music</h4>
-      <%= render 'layouts/components/tagsmusic' %>
-    </div>
-    <div class="interests">
-      <h4 class="interesttag mt-4">Describe your taste</h4>
-      <%= render 'layouts/components/tagstaste' %>
-    </div>
+        <div class="form-group">
+
+          <!-- <input type="hidden" name="user[interest_ids][]" value=""> -->
+
+          <div class="interests-choices">
+
+            <% @groups[nil].each do |parent_category| %>
+            <h1 class="subtitle-small my-4"><%= parent_category.title %></h1>
+              <% @groups[parent_category.id].each do |category| %>
+                <div class="tag interesttag interest-choices <%= current_user.interest_ids.include?(category.id) ? "active" : "" %>"@groups@groups id="">
+                  <i class="fa fa-plus" id="plus"></i>
+                  <label for="post_category_ids_<%= category.id %>">
+                  <label id="interestlabel" for=""><%= category.title %></label>
+                  <input type="checkbox" class="hidden" value="<%= category.id %>" name="user[interest_ids][]" id="post_category_ids_<%= category.id %>" <%= current_user.interest_ids.include?(category.id) ? "checked" : "" %>>
+                  </label>
+                </div>
+              <% end %>
+            <% end %>
+
+
+          </div>
+        </div>
       </div>
+
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="form-actions">
+          <%= f.button :submit, "Update" %>
+        </div>
       </div>
     </div>
   </div>
+
+  <% end %>
 </div>
