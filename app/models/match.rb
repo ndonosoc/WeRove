@@ -5,4 +5,30 @@ class Match < ApplicationRecord
   has_one :message
   validates :local_id, presence: true
   validates :tourist_id, presence: true
+
+  def self.matcher(tourist)
+    # create a storage hash
+    hash = {}
+
+    # see every user interests'
+    User.all.each do |user|
+      score = 0
+      if user != tourist
+        user.interests.each do |interest|
+    # count +1 for every interest in common with the tourist's interests
+          if tourist.interests.include?(interest)
+            score += 1
+          end
+        end
+    # store in a hash user: score
+        hash[user] = score.to_i
+      end
+    end
+    # order users by matching score
+    list = hash.sort_by{ |k,v| -v }
+
+    # select 5 with highest scores
+    list[0...5]
+  end
+
 end
