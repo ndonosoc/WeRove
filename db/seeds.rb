@@ -31,13 +31,9 @@ User.delete_all
     score: rand(1..5),
     password: '123456'
   )
-  file = open("https://randomuser.me/api/")
-  openfile = JSON.parse(file.string)
-  url = openfile["results"][0]["picture"]["medium"]
-  photo = URI.open(url)
-  user.photo.attach(io: photo, filename: "whatever.jpg", content_type: 'image/jpg')
-
-  user.save!
+    # file = URI.open("https://i.pravatar.cc/300")
+    # user.photo.attach(io: file, filename: "#{user.first_name}-#{user.last_name}.jpg", content_type: "image/jpeg")
+    # user.save
 end
 
 INTEREST = %w( Sports Vegan Food Party Gaming )
@@ -67,7 +63,7 @@ end
 end
 
 30.times do
-  Recommendation.create!(
+  recommendation = Recommendation.new(
     user_id: User.all.sample.id,
     category: ["Nightlife", "Restaurant", "Sports event", "Sightseeing"].sample,
     description: Faker::ChuckNorris.fact,
@@ -77,6 +73,11 @@ end
     location: "#{["Recoleta", "Palermo", "Berazategui", "Belgrano"].sample}",
     title: Faker::Games::Pokemon.location
   )
+
+    # file = URI.open("https://placeimg.com/640/480/arch")
+    # recommendation.photo.attach(io: file, filename: "#{recommendation.title}-#{recommendation.user_id}.jpg", content_type: "image/jpeg")
+    # recommendation.save
+
 end
 
 # 50.times do
