@@ -17,6 +17,24 @@
 
 .items-match {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding-bottom: 16px;
+}
+
+.title-matches-index {
+  color: #5D6CF3;
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 16px;
+  padding-bottom: 12px;
+  font-style: $headers-font;
+}
+
+.avatar-profiles {
+  display: flex;
+}
+
+.one-message {
+  display: flex;
+  align-items: center;
 }
