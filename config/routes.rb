@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   end
   devise_for :users, path: 'profile'
   root to: 'pages#home'
+  resources :matches, only: [:index, :create]
+  patch "/matches", to: "matches#update"
+  get "/matchme", to: "matches#matchme"
   resources :recommendations
   resources :profile, :controller => "users", only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
