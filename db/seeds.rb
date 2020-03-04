@@ -31,9 +31,10 @@ User.delete_all
     score: rand(1..5),
     password: '123456'
   )
-    # file = URI.open("https://i.pravatar.cc/300")
-    # user.photo.attach(io: file, filename: "#{user.first_name}-#{user.last_name}.jpg", content_type: "image/jpeg")
-    # user.save
+    file = URI.open("http://placeimg.com/640/480/people")
+    user.photo.attach(io: file, filename: "#{user.first_name}-#{user.last_name}.jpg", content_type: "image/jpeg")
+    user.save
+    puts "."
 end
 
 INTEREST = %w( Sports Vegan Food Party Gaming )
@@ -74,9 +75,9 @@ end
     title: Faker::Games::Pokemon.location
   )
 
-    # file = URI.open("https://placeimg.com/640/480/arch")
-    # recommendation.photo.attach(io: file, filename: "#{recommendation.title}-#{recommendation.user_id}.jpg", content_type: "image/jpeg")
-    # recommendation.save
+    file = URI.open("https://placeimg.com/640/480/arch")
+    recommendation.photo.attach(io: file, filename: "#{recommendation.title}-#{recommendation.user_id}.jpg", content_type: "image/jpeg")
+    recommendation.save
 
 end
 
