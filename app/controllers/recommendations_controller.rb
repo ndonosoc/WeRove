@@ -7,7 +7,7 @@ class RecommendationsController < ApplicationController
       category: ["Sports", "Gaming"]
     }
     # search recommendations by city and categories (NOT FINISHED)
-    @recommendations = Recommendation.where(location: params[:location]).where_in().limit(4)
+    @recommendations = policy_scope(Recommendation).where(location: params[:location]).limit(4)
   end
 
   def show

@@ -18,7 +18,4 @@ class User < ApplicationRecord
   # validates :city, presence: true, uniqueness: true
   # validates :languages, presence: true
   # validates :gender, presence: true
-
-  belongs_to :rater, class_name: "User"
-
 end
