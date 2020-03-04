@@ -1,6 +1,20 @@
 
+.category {
+  font-weight: bold;
+  margin-left: 20px;
+  color: white;
+}
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
 
-.rcard {
+  .recomcard {
+    display: inline-block;
+    margin: 20px;
+  }
+}
+.recomcard-style {
   width: 90%;
   margin: 0 auto 16px auto;
   min-height: 200px;
@@ -11,7 +25,7 @@
   border-radius: 4px;
   box-shadow: 30px 30px 30px rgba(0,0,0,0.1);
 
-  .img {
+  img {
     height: 150px;
     background-color: black;
     border-top-right-radius: 4px;
@@ -52,4 +66,3 @@
     }
   }
 }
-
