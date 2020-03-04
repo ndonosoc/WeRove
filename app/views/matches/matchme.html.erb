@@ -1,0 +1,26 @@
+<div class="container mx-auto">
+<div class="row">
+<% @matches.each do |match| %>
+  <div class="col-6-sm">
+    <h1>Name: <%= match.id %></h1>
+    <p>Biography: <%= match.local.biography %></p>
+    <div class="container mx-auto">
+      <div class="container d-flex">
+      <%= simple_form_for(match, url: matches_path) do |f| %>
+        <%= f.input :accepted, as: :hidden, input_html: { value: true } %>
+        <%= f.input :id, as: :hidden, input_html: { value: match.id } %>
+        <%= f.button :submit, 'Accept!' %>
+      <% end %>
+      <%= simple_form_for(match, url: matches_path) do |f| %>
+        <%= f.input :accepted, as: :hidden, input_html: { value: false } %>
+        <%= f.input :id, as: :hidden, input_html: { value: match.id } %>
+        <%= f.button :submit, 'Reject :(' %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
+<br>
+
+</div>

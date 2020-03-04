@@ -6,22 +6,22 @@ class Match < ApplicationRecord
   validates :local_id, presence: true
   validates :tourist_id, presence: true
 
-  def self.matcher(tourist)
+  def self.matcher(tourist, location)
     # create a storage hash
     hash = {}
 
     # see every user interests'
-    User.all.each do |user|
+    User.all.where(city: location).each do |local|
       score = 0
-      if user != tourist
-        user.interests.each do |interest|
+      if local != tourist && !tourist.local_ids.include?(local.id)
+        local.interests.each do |interest|
     # count +1 for every interest in common with the tourist's interests
           if tourist.interests.include?(interest)
             score += 1
           end
         end
-    # store in a hash user: score
-        hash[user] = score.to_i
+    # store in a hash local: score
+        hash[local] = score.to_i
       end
     end
     # order users by matching score
