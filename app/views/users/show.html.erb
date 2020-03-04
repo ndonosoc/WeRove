@@ -13,6 +13,7 @@
     <%= cl_image_tag @user.photo.key, id: "avatar", class: "avatar-bordered my-2" %>
     <% else %>
     <img src="" alt="" class="avatar-bordered my-2" id="avatar">
+    <% end %>
   </div>
 <p style="padding-top: 8px;"><%= @user.biography %></p>
 </div>
