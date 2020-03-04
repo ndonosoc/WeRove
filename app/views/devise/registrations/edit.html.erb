@@ -16,13 +16,13 @@
   <div class="tab-pane fade show active" id="interests" role="tabpanel" aria-labelledby="interests-tab">
 
 <div>
-
-
-  <% current_user.interests.each do |interest| %>
-  <h1 class="subtitle-small my-4"><%= interest.parent_id %></h1>
-    <div class="tag mt-4">
+  <% current_user.interests.group_by(&:parent_id).values.each do |group| %>
+  <h1 class="subtitle-small my-4"><%= group.first.parent.title %></h1>
+    <% group.each do |interest| %>
+    <div class="tag xmt-4">
       <label id="interestlabel" for=""><%= interest.title %></label>
     </div>
+  <% end %>
   <% end %>
 </div>
 

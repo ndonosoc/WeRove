@@ -20,7 +20,20 @@
   }
   &.active {
     opacity: 1;
+    background-color: white;
   }
+}
+
+.interesttag label{
+  padding: 0px;
+  position: relative;
+  z-index: 300;
+  color: black;
+  display: block;
+  border-radius: 16px;
+  margin-bottom: 0;
+  border-color: #5D6CF3;
+  font-size: 14px;
 }
 
 #plus {
@@ -31,7 +44,7 @@
 
 #interestlabel {
   color: $rover-purple;
-  padding: 10px 10px 10px 10px
+  padding: 10px 10px 10px 10px;
 }
 
 .btn-link {
@@ -43,6 +56,23 @@
   }
 }
 
+
+.modal-title {
+  color: white;
+  font-size: 30px;
+  font-weight: 600;
+}
+.modal-header {
+  background-color: $rover-purple;
+}
+
+.modal-body {
+  background-color: $rover-purple;
+}
+
+.modal-footer {
+  background-color: $rover-purple;
+}
 // .interest-choices {
 //   opacity: .4;
 //   &:hover {
