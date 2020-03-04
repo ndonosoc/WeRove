@@ -19,4 +19,6 @@ class User < ApplicationRecord
   # validates :languages, presence: true
   # validates :gender, presence: true
 
+  belongs_to :rater, class_name: "User"
+
 end
