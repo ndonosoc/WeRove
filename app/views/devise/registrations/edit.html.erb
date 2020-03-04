@@ -18,6 +18,8 @@
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
+  <%= f.association :interests, as: :check_boxes %>
+
   <%= simple_fields_for :other do |o| %>
     <%= o.input :user_interests, collection: Interest.all, as: :radio_buttons%>
   <% end %>
