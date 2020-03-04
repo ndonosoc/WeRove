@@ -19,7 +19,7 @@ User.delete_all
     first_name: Faker::GreekPhilosophers.name,
     last_name: Faker::Superhero.suffix,
     email: Faker::Internet.email,
-    city: ["Buenos Aires", "Paris", "London", "New York", "Tokyo", "Zurich"].sample(1),
+    city: ["Buenos Aires, Argentina", "Paris, France", "London, United Kingdom", "New York, United States", "Tokyo, Japan", "Zurich, Switzerland"].sample,
     languages: ["french", "spanish", "english", "japanese"].sample(2),
     gender: ["male", "female", "non-binary"].sample,
     birthday: Faker::Date.between(from: 10000.days.ago, to: 8000.days.ago),
@@ -67,7 +67,8 @@ end
     price_range: "From $#{rand(200..300)} to $#{rand(400..600)}",
     duration: "#{["30", "60", "90", "120"].sample} minutes",
     reservation: "#{["Not needed", "Should plan with anticipation"].sample}",
-    location: "#{["Recoleta", "Palermo", "Berazategui", "Belgrano"].sample}"
+    location: "#{["Recoleta", "Palermo", "Berazategui", "Belgrano"].sample}",
+    title: Faker::Games::Pokemon.location
   )
 end
 
@@ -102,7 +103,6 @@ end
 #                 rated_id: match.tourist_id,
 #                 rater_id: match.local_id)
 # end
-
 
 #INTERESTS
 

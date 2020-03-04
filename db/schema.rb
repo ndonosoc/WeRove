@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_215803) do
+ActiveRecord::Schema.define(version: 2020_03_03_191804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "recommendation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recommendation_id"], name: "index_bookmarks_on_recommendation_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
 
   create_table "interests", force: :cascade do |t|
     t.string "title"
@@ -43,7 +52,19 @@ ActiveRecord::Schema.define(version: 2020_03_02_215803) do
     t.string "reservation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
     t.index ["user_id"], name: "index_recommendations_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "content"
+    t.integer "rating"
+    t.bigint "user_id"
+    t.bigint "recommendation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recommendation_id"], name: "index_reviews_on_recommendation_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "user_interests", force: :cascade do |t|
@@ -70,7 +91,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_215803) do
     t.boolean "verified"
     t.string "biography"
     t.boolean "available"
-    t.string "languages"
+    t.text "languages", array: true
     t.string "occupation"
     t.string "first_name"
     t.string "last_name"
@@ -78,7 +99,11 @@ ActiveRecord::Schema.define(version: 2020_03_02_215803) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookmarks", "recommendations"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "recommendations", "users"
+  add_foreign_key "reviews", "recommendations"
+  add_foreign_key "reviews", "users"
   add_foreign_key "user_interests", "interests"
   add_foreign_key "user_interests", "users"
 end

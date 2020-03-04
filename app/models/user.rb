@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :local_matches, class_name: "Match", foreign_key: 'local_id'
   has_many :tourist_matches, class_name: "Match", foreign_key: 'tourist_id'
   has_many :recommendations
+  has_many :user_interests
+  has_many :interests, through: :user_interests
+
   # validates :first_name, presence: true, uniqueness: true
   # validates :last_name, presence: true, uniqueness: true
   # validates :email, presence: true, uniqueness: true
@@ -13,4 +16,5 @@ class User < ApplicationRecord
   # validates :city, presence: true, uniqueness: true
   # validates :languages, presence: true
   # validates :gender, presence: true
+
 end

@@ -1,0 +1,34 @@
+<div class="about">
+  <div class="card">
+    <div class="title">
+      <h1>Personal information</h1><i class="fas fa-id-card-alt fa-xs" style="color: #5D6CF3;"></i>
+    </div>
+    <ul>
+      <li>Age: <%= user.birthday %></li>
+      <li>Occupation: <%= user.occupation %></li>
+      <li>Languages:
+        <% user.languages.each do |language| %>
+        <%= language %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="title">
+      <h1>Interests</h1><i class="fas fa-heart fa-xs" style="color: #5D6CF3;"></i>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="title">
+      <h1>Rover Score</h1><i class="fas fa-medal fa-xs" style="color: #5D6CF3;"></i>
+    </div>
+    <ul>
+      <li>Rating: <%= user.score %></li>
+      <li>Cities Visited:</li>
+      <li>People Connected: </li>
+    </ul>
+  </div>
+
+</div>
