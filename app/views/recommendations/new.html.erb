@@ -4,14 +4,10 @@
     <p>Help other rovers have an authentic experience by sharing insider spots/tips of your city.</p>
   </div>
         <%= simple_form_for @recommendation do |f| %>
-        <div class="wrapper-add-recommendations">
           <%= f.input :category, collection: ["Sports", "Food", "Outdoors", "Nightlife", "Arts & Culture", "Sightseeing"], as: :check_boxes, class: 'check-boxes-cat' %>
-        </div>
-        <div class="wrapper-add-recommendations">
           <%= f.input :title %>
           <%= f.input :description, as: :text %>
           <%= f.input :location, id: 'location' %>
-        </div>
           <%= f.input :price_range, as: :range, input_html: { class: 'custom-range' } %>
           <%= f.input :duration, as: :range, input_html: { class: 'custom-range' } %>
           <%= f.input :reservation, as: :boolean %>

@@ -24,17 +24,19 @@ class RecommendationsController < ApplicationController
   def create
     @recommendation = Recommendation.new(recommendation_params)
     @recommendation.user = current_user
+    @recommendation.category = params[:recommendation][:category].join(",")
     authorize @recommendation
     if @recommendation.save
       redirect_to recommendation_path(@recommendation)
     else
       render 'new'
+      raise
     end
   end
 
   private
 
   def recommendation_params
-    params.require(:recommendation).permit(:title, :category, :description, :location, :price_range, :reservation, :duration, :user_id)
+    params.require(:recommendation).permit(:title, :description, :location, :price_range, :reservation, :duration, :user_id)
   end
 end
