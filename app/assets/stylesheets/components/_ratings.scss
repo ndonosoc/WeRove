@@ -1,0 +1,16 @@
+.ratings {
+  margin: auto;
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-top: 16px;
+
+  .ratings-child {
+    margin: auto;
+  }
+  h1 {
+    font-size: 18px;
+  }
+}
