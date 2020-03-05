@@ -2,19 +2,25 @@ class RecommendationsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    params = {
-      location: "Recoleta",
-      category: ["Sports", "Gaming"]
-    }
+    # Index should match 5 recommendations according to Location and InterestsCategory picked. How to play interest?
+    # Save interest picked? How? request.cookies? (como lo capturo?)
+    # interestPicks = []
+
+    @recommendations = Recommendation.joins(user: :interests).where('interests.title' => params[:interests]).limit(4)
+
+    # params = {
+    #   location: "Recoleta",
+    #   category: ["Sports", "Gaming"]
+    # }
+    raise
     # search recommendations by city and categories (NOT FINISHED)
-    @recommendations = policy_scope(Recommendation).where(location: params[:location]).limit(4)
+    # @recommendations = policy_scope(Recommendation).where(location: params[:location]).limit(4)
   end
 
   def show
     @recommendation = Recommendation.find(params[:id])
   end
     # search recommendations by city and categories (NOT FINISHED, add location with geocoding GEM)
-    # @recommendations = Recommendation.joins(user: :interests).where('interests.title' => params[:category])
 
   def new
     @recommendation = current_user.recommendations.build
