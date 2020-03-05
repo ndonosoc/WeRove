@@ -1,18 +1,23 @@
 class RecommendationsController < ApplicationController
   skip_before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
+  skip_after_action :verify_authorized
+  before_action :skip_pundit?
 
   def index
     # Index should match 5 recommendations according to Location and InterestsCategory picked. How to play interest?
     # Save interest picked? How? request.cookies? (como lo capturo?)
     # interestPicks = []
 
-    @recommendations = Recommendation.joins(user: :interests).where('interests.title' => params[:interests]).limit(4)
+    @recommendations = policy_scope(Recommendation).joins(user: :interests).where('interests.title' => params[:interests]).limit(4)
+    @bookmark = Bookmark.new
+    authorize @bookmark
 
     # params = {
     #   location: "Recoleta",
     #   category: ["Sports", "Gaming"]
     # }
-    raise
+    # raise
     # search recommendations by city and categories (NOT FINISHED)
     # @recommendations = policy_scope(Recommendation).where(location: params[:location]).limit(4)
   end
@@ -49,6 +54,8 @@ class RecommendationsController < ApplicationController
 
   def show
     @recommendation = Recommendation.find(params[:id])
+    @bookmark = Bookmark.new
+    authorize @bookmark
   end
 
   private
