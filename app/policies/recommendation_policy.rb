@@ -5,11 +5,11 @@ class RecommendationPolicy < ApplicationPolicy
     end
   end
 
-  def new?
+  def index
     true
   end
 
-  def create?
+  def show?
     true
   end
 
@@ -21,7 +21,11 @@ class RecommendationPolicy < ApplicationPolicy
     true
   end
 
-  def show?
+  def new?
+    true
+  end
+
+  def create?
     true
   end
 end
