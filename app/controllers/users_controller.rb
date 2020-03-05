@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class NoUsersController < ApplicationController
   skip_before_action :authenticate_user!
 
   def show
@@ -7,4 +7,5 @@ class UsersController < ApplicationController
       @country = IsoCountryCodes.search_by_name(@user.city.scan(/\,(\W\w*\W\w*|\W\w*)\b/)[-1][0].strip)[0].alpha2
     end
   end
+
 end
