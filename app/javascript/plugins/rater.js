@@ -1,11 +1,17 @@
 const myRater = () => {
 
+  const raterElement = document.querySelector("#rater")
+
+  if (raterElement) {
+
+
+
   var rater = require("rater-js");
   let myDataService = 0;
-if(rater){
+  if(rater){
 
   rater({
-        element:document.querySelector("#rater"),
+        element: raterElement,
         rateCallback:function rateCallback(rating, done) {
             this.setRating(rating);
             done();
@@ -13,10 +19,15 @@ if(rater){
         starSize:32,
         step:0.5
     });
- }
+    }
+  }
 }
 
  const myRater2 = () => {
+
+  const raterElement = document.querySelector("#rater")
+
+  if (raterElement) {
 
   var rater = require("rater-js");
   let myDataService = 0;
@@ -31,10 +42,14 @@ if(rater) {
         starSize:32,
         step:0.5
     });
-}
+} }
  }
 
  const myRater3 = () => {
+
+  const raterElement = document.querySelector("#rater")
+
+  if (raterElement) {
 
   var rater = require("rater-js");
   let myDataService = 0;
@@ -50,6 +65,7 @@ if(rater) {
         starSize:32,
         step:0.5
     });
+}
 }
  }
 
