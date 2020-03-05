@@ -53,6 +53,15 @@
                   input_html: { autocomplete: "current-password" } %>
     </div>
 
+    <label class="switch">
+      <input type="checkbox" class="d-none" <%= f.input :available, as: :check_boxes %>>
+      <span class="slider round"></span>
+    </label>
+
+    <div class="category-tag">
+        <%= f.input :available, as: :check_boxes %>
+    </div>
+
     <div class="form-actions">
       <%= f.button :submit, "Update" %>
     </div>

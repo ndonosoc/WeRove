@@ -40,13 +40,13 @@ User.delete_all
     end
 end
 
-INTEREST = %w( Sports Vegan Food Party Gaming )
+# INTEREST = %w( Sports Vegan Food Party Gaming )
 
-INTEREST.each do |interest|
-  Interest.create!(
-    title: interest
-  )
-end
+# INTEREST.each do |interest|
+#   Interest.create!(
+#     title: interest
+#   )
+# end
 
 User.all.each do |user|
   Interest.all.sample(3).each do |interest|

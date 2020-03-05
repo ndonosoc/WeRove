@@ -2,8 +2,7 @@ import "bootstrap";
 import { initAutocomplete } from "../plugins/init_autocomplete";
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/themes/airbnb.css';
-
-import $ from 'jquery';
+import '../plugins/toggle_interest';
 
 import 'flatpickr/dist/flatpickr.min.css';
 
@@ -19,11 +18,4 @@ if (datepicker) {
     minDate: 'today',
   });
 }
-
-$(document).ready(function(){
-  $(".interest-choices").click(function(){
-    $(this).toggleClass("active");
-  });
-});
-
 
