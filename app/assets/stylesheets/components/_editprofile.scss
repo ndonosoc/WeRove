@@ -3,32 +3,6 @@
   font-size: 16px;
 }
 
-.interesttag {
-  font-family: $headers-font;
-  font-size: 16px;
-  font-weight: semibold;
-  opacity: 0.4;
-  &:hover {
-    opacity: 1;
-  }
-  &.active {
-    opacity: 1;
-    background-color: white;
-  }
-}
-
-.interesttag label{
-  padding: 0px;
-  position: relative;
-  z-index: 300;
-  color: black;
-  display: block;
-  border-radius: 16px;
-  margin-bottom: 0;
-  border-color: #5D6CF3;
-  font-size: 14px;
-}
-
 #plus {
   line-height: 2.5;
   padding-left: 4px;
@@ -38,11 +12,12 @@
 #interestlabel {
   color: $rover-purple;
   padding: 10px 10px 10px 10px;
+  margin: 0px;
 }
 
 .btn-link {
   color: $rover-purple;
-  opacity: 0.75;
+  opacity: 0.8;
   &:hover {
     color: $rover-purple;
     opacity: 1;
@@ -64,6 +39,22 @@
     padding-right: 5px;
   }
 }
+
+.interest-tag {
+  background-color: white;
+  border: 2px solid $rover-purple;
+  border-radius: 35px;
+  padding: 0px 14px;
+  font-size: 16px;
+  color: white;
+  display: inline-block;
+  margin: 0px;
+  cursor: pointer;
+  i {
+    padding-right: 5px;
+  }
+}
+
 
 .active-tag {
   background-color: white;
@@ -103,7 +94,8 @@
   }
 
   .modal-footer {
-    background-color: $rover-purple;
+    background-color: white;
+    border-color: $rover-purple;
   }
 }
 
@@ -117,6 +109,12 @@
   opacity: 1;
 }
 
+
+#availiable {
+  color:#999999;
+  display: inline-block;
+  padding-right: 15px;
+}
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -158,11 +156,11 @@
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: $rover-purple;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px $rover-purple;
 }
 
 input:checked + .slider:before {
@@ -179,3 +177,39 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.btn-primary-sm {
+  background-color: #5D6CF3;
+  margin-top: 16px;
+  border-color: #5D6CF3;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  width: 50%;
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+#light {
+  color:#999999;
+}
+
+.linkdiscrete {
+  text-decoration: none;
+  color:#999999;
+}
+
+.text {
+  color: white;
+}
+
+
+.btn-primary-xs {
+  background-color: $rover-purple;
+  margin-top: 16px;
+  border-color: #5D6CF3;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  width: 30%;
+  padding: 8px;
+  margin-bottom: 16px;
+  }

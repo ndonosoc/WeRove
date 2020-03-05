@@ -19,7 +19,7 @@
   <% current_user.interests.group_by(&:parent_id).values.each do |group| %>
   <h1 class="subtitle-small my-4"><%= group.first.parent.title %></h1>
     <% group.each do |interest| %>
-    <div class="tag xmt-4">
+    <div class="interest-tag xmt-4">
       <label id="interestlabel" for=""><%= interest.title %></label>
     </div>
   <% end %>
@@ -52,25 +52,25 @@
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
     </div>
-
+    <div>
+    <span id="availiable">Show availiable as local</span>
     <label class="switch">
-      <input type="checkbox" class="d-none" <%= f.input :available, as: :check_boxes %>>
+      <input type="checkbox" name="user[available]" value="<%= current_user.available ? 'true' : 'false' %>">
       <span class="slider round"></span>
     </label>
 
-    <div class="category-tag">
-        <%= f.input :available, as: :check_boxes %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Update" %>
+    <div class="form-actions btn btn-primary-sm">
+      <%= f.button :submit, "Update", class: "text" %>
     </div>
+
   <% end %>
 
 
-  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <p id="light" >Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "linkdiscrete" %></p>
 
-  <%= link_to "Back", :back %>
+
 </div>
 
 
