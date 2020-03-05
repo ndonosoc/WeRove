@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :recommendations
   has_many :user_interests
   has_many :interests, through: :user_interests
+  has_many :bookmarks
+  has_many :bookmarkedrecommendations, through: :bookmarks, source: "recommendation"
 
   has_one_attached :photo
 

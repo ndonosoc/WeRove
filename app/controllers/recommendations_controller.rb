@@ -1,5 +1,8 @@
 class RecommendationsController < ApplicationController
   skip_before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
+  skip_after_action :verify_authorized
+  before_action :skip_pundit?
 
   def index
     # Index should match 5 recommendations according to Location and InterestsCategory picked. How to play interest?
@@ -49,6 +52,8 @@ class RecommendationsController < ApplicationController
 
   def show
     @recommendation = Recommendation.find(params[:id])
+    @bookmark = Bookmark.new
+    authorize @bookmark
   end
 
   private
