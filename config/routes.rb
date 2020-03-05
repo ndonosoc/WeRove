@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
   devise_for :users, path: 'profile', controllers: { registrations: "users/registrations" }
-  resources :matches, only: [:index, :create]
+  resources :matches, only: [:index, :show, :create] do
+    resources :ratings, only: [:index, :new, :create]
+  end
   # patch "/matches", to: "matches#update" unless params[:recommendations].presence?
   get "/matchme", to: "matches#matchme"
+
   resources :bookmarks, only: [:create, :destroy]
   get "/recommendations", to: "recommendations#index"
   resources :recommendations, not: [:index] do
