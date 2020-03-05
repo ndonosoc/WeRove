@@ -16,6 +16,12 @@ class RecommendationsController < ApplicationController
     # search recommendations by city and categories (NOT FINISHED, add location with geocoding GEM)
     # @recommendations = Recommendation.joins(user: :interests).where('interests.title' => params[:category])
 
+  def destroy
+    @recommendation.destroy
+    authorize @recommendation
+    redirect_to recommendations_path
+  end
+
   def new
     @recommendation = current_user.recommendations.build
     authorize @recommendation
