@@ -5,21 +5,32 @@ class RecommendationsController < ApplicationController
   before_action :skip_pundit?
 
   def index
-    params = {
-      location: "Recoleta",
-      category: ["Sports", "Gaming"]
-    }
+    # Index should match 5 recommendations according to Location and InterestsCategory picked. How to play interest?
+    # Save interest picked? How? request.cookies? (como lo capturo?)
+    # interestPicks = []
+
+    @recommendations = Recommendation.joins(user: :interests).where('interests.title' => params[:interests]).limit(4)
+
+    # params = {
+    #   location: "Recoleta",
+    #   category: ["Sports", "Gaming"]
+    # }
+    raise
     # search recommendations by city and categories (NOT FINISHED)
-    @recommendations = policy_scope(Recommendation).where(location: params[:location]).limit(4)
+    # @recommendations = policy_scope(Recommendation).where(location: params[:location]).limit(4)
   end
 
-  def show
-    @recommendation = Recommendation.find(params[:id])
-    @bookmark = Bookmark.new
-    authorize @bookmark
-  end
     # search recommendations by city and categories (NOT FINISHED, add location with geocoding GEM)
-    # @recommendations = Recommendation.joins(user: :interests).where('interests.title' => params[:category])
+
+  def destroy
+    @recommendation = Recommendation.find(params[:id])
+    authorize @recommendation
+    if @recommendation.destroy
+      redirect_to recommendations_path
+    else
+      redirect_to @recommendation
+    end
+  end
 
   def new
     @recommendation = current_user.recommendations.build
@@ -37,6 +48,12 @@ class RecommendationsController < ApplicationController
       render 'new'
       raise
     end
+  end
+
+  def show
+    @recommendation = Recommendation.find(params[:id])
+    @bookmark = Bookmark.new
+    authorize @bookmark
   end
 
   private
