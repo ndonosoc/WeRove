@@ -11,7 +11,7 @@ class Match < ApplicationRecord
     hash = {}
 
     # see every user interests'
-    User.all.where(city: location).each do |local|
+    User.near(location, 10).each do |local|
       score = 0
       if local != tourist && !tourist.local_ids.include?(local.id)
         local.interests.each do |interest|
