@@ -5,7 +5,7 @@ class MatchesController < ApplicationController
   before_action :skip_pundit?
 
   def index
-    @matches = policy_scope(Match).where(tourist_id: current_user.id, accepted: nil).order(created_at: :desc).limit(5)
+    @matches = policy_scope(Match).where(tourist_id: current_user.id, accepted: true).order(created_at: :desc)
   end
 
   def matchme
