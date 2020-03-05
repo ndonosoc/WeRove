@@ -1,23 +1,25 @@
 <div class="home-container">
   <h1 class="title">Join the greatest traveler community.</h1>
   <h2 class="subtitle">Find a local friend everywhere.</h2>
+
+  <form action="recommendations" method="GET">
+
     <%= render 'layouts/components/tags' %>
-  <div class="box">
-    <%= link_to "More options +", "", class: "underlined-link" %>
-  </div>
-  <form action="matches" method="POST">
-  <div class="Where">
-    <label class="label" for="locationInput">Where are you going?</label>
-      <input type="text" class="form-control" id="location" placeholder="Buenos Aires, Argentina" name="location">
-  </div>
-  <div class="When">
-    <label class="label" for="DateInput">When are you going?</label>
-      <input type="text" class="form-control" id="datepicker" placeholder="Select your dates" name="date">
-  </div>
-  <div class="">
-    <input type="submit" value="Find a local" class="btn btn-primary" id="findLocals">
-    <input type="button" value="Recommend me" class="btn btn-outline-primary" id="Recommend">
-  </div>
+    <div class="box">
+      <%= link_to "More options +", "", class: "underlined-link" %>
+    </div>
+    <div class="Where">
+      <label class="label" for="locationInput">Where are you going?</label>
+        <input type="text" class="form-control" id="location" placeholder="Buenos Aires, Argentina" name="location">
+    </div>
+    <div class="When">
+      <label class="label" for="DateInput">When are you going?</label>
+        <input type="text" class="form-control" id="datepicker" placeholder="Select your dates" name="date">
+    </div>
+    <div class="">
+      <input type="submit" value="Find a local" class="btn btn-primary" id="findLocals">
+      <input type="submit" value="Recommend me" class="btn btn-outline-primary" id="Recommend" name="recommendations">
+    </div>
   </form>
 </div>
 
