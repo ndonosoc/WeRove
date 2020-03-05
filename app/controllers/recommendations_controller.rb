@@ -10,16 +10,17 @@ class RecommendationsController < ApplicationController
     @recommendations = policy_scope(Recommendation).where(location: params[:location]).limit(4)
   end
 
-  def show
-    @recommendation = Recommendation.find(params[:id])
-  end
     # search recommendations by city and categories (NOT FINISHED, add location with geocoding GEM)
     # @recommendations = Recommendation.joins(user: :interests).where('interests.title' => params[:category])
 
   def destroy
-    @recommendation.destroy
+    @recommendation = Recommendation.find(params[:id])
     authorize @recommendation
-    redirect_to recommendations_path
+    if @recommendation.destroy
+      redirect_to recommendations_path
+    else
+      redirect_to @recommendation
+    end
   end
 
   def new
@@ -38,6 +39,10 @@ class RecommendationsController < ApplicationController
       render 'new'
       raise
     end
+  end
+
+  def show
+    @recommendation = Recommendation.find(params[:id])
   end
 
   private

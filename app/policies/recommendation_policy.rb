@@ -14,14 +14,14 @@ class RecommendationPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user == record.user
+    record.user == user
   end
 
-  def index
+  def index?
     true
   end
 
-  def show
+  def show?
     true
   end
 end
