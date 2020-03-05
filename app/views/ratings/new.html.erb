@@ -1,0 +1,28 @@
+<div class="ratings mx-auto" style="max-width: 700px;">
+  <div class="ratings-child justify-content-center">
+
+
+
+<div class="home-container justify-content-center">
+  <div class="wrapper-add-recommendation my-3">
+    <h1 class="title mx-auto">Did you have a fluent communication?</h1>
+    <div id="rater"></div>
+  </div>
+  <div class="wrapper-add-recommendation my-3">
+    <h1 class="title">Was the communication useful?</h1>
+    <div id="rater2"></div>
+  </div>
+  <div class="wrapper-add-recommendation my-3">
+    <h1 class="title">Would you recommend this rover?</h1>
+    <div id="rater3"></div>
+  </div>
+        <div class="wrapper-add-recommendations">
+    <%= simple_form_for [@match, @rating] do |f| %>
+      <%= f.input :rating, as: :hidden %>
+      <%= f.button :submit, id:"rate", class: 'btn btn-primary' %>
+    <% end %>
+        </div>
+  </div>
+
+  </div>
+</div>

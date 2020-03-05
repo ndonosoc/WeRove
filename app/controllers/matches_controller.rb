@@ -8,6 +8,11 @@
     @matches = policy_scope(Match).where(tourist_id: current_user.id, accepted: true).order(created_at: :desc)
   end
 
+  def show
+    @match = Match.find(params[:id])
+    authorize @match
+  end
+
   def matchme
     @matches = current_user.tourist_matches.where(accepted: nil).order(created_at: :desc).limit(5)
   end
