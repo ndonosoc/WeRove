@@ -3,15 +3,24 @@
     <h1 class="title">Add a recommendation</h1>
     <p class="label-font" style="padding-bottom: 10px;">Help other rovers have an authentic experience by sharing insider spots/tips of your city.</p>
   </div>
-        <%= simple_form_for @recommendation do |f| %>
-          <%= f.input :category, label_html: { class: 'label-font' }, collection: Recommendation::CATEGORIES.map { |r| [ r[:title], r[:title],  { class: "" }] }, as: :check_boxes, item_wrapper_class: 'category-choice' %>
-          <%= f.input :title, label_html: { class: 'label-font' } %>
-          <%= f.input :description, as: :text, label_html: { class: 'label-font' } %>
-          <%= f.input :location, id: 'location', label_html: { class: 'label-font' } %>
-          <%= f.input :price_range, as: :range, input_html: { class: 'custom-range' }, label_html: { class: 'label-font' } %>
-          <%= f.input :duration, as: :range, input_html: { class: 'custom-range' }, label_html: { class: 'label-font' } %>
-          <%= f.input :reservation, as: :boolean, label_html: { class: 'label-font' } %>
-          <%= f.input :photo, as: :file, label_html: { class: 'label-font' } %>
-          <%= f.button :submit, class: 'btn btn-primary' %>
-        <% end %>
-  </div>
+  <%= simple_form_for @recommendation do |f| %>
+  <%= f.input :category, label_html: { class: 'label-font', style:"display: none;" }, collection: Recommendation::CATEGORIES.map { |r| [ r[:title], r[:title],  { class: "" }] }, as: :check_boxes, item_wrapper_class: 'category-choice' %>
+  <%= f.input :title, label_html: { class: 'label-font' } %>
+  <%= f.input :description, as: :text, label_html: { class: 'label-font' } %>
+  <%= f.input :location, id: 'location', label_html: { class: 'label-font' } %>
+  <input id="basic" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="5" data-slider-value="15"/>
+  <%= f.input :price_range, as: :range, input_html: { class: 'custom-range' }, label_html: { class: 'label-font' } %>
+  <%= f.input :duration, as: :range, input_html: { class: 'custom-range' }, label_html: { class: 'label-font' } %>
+  <%= f.input :reservation, as: :boolean, label_html: { class: 'label-font' } %>
+  <%= f.input :photo, as: :file, label_html: { class: 'label-font' } %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
+<script>
+  var slider = new Slider("#basic", {
+    tooltip: 'always'
+  });
+</script>

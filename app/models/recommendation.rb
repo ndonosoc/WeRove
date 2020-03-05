@@ -1,5 +1,6 @@
 class Recommendation < ApplicationRecord
   belongs_to :user
+  has_many :reviews
   validates :category, presence: true
   validates :description, presence: true
   validates :location, presence: true
