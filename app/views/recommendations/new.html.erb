@@ -1,19 +1,17 @@
 <div class="home-container">
   <div class="wrapper-add-recommendation">
     <h1 class="title">Add a recommendation</h1>
-    <p>Help other rovers have an authentic experience by sharing insider spots/tips of your city.</p>
+    <p class="label-font" style="padding-bottom: 10px;">Help other rovers have an authentic experience by sharing insider spots/tips of your city.</p>
   </div>
         <%= simple_form_for @recommendation do |f| %>
-          <%= f.input :category, collection: ["Sports", "Food", "Outdoors", "Nightlife", "Arts & Culture", "Sightseeing"], as: :check_boxes, class: 'check-boxes-cat' %>
-          <%= f.input :title %>
-          <%= f.input :description, as: :text %>
-          <%= f.input :location, id: 'location' %>
-          <%= f.input :price_range, as: :range, input_html: { class: 'custom-range' } %>
-          <%= f.input :duration, as: :range, input_html: { class: 'custom-range' } %>
-          <%= f.input :reservation, as: :boolean %>
-        <div class="wrapper-add-recommendations">
-          <%= f.input :photo, as: :file %>
-        </div>
+          <%= f.input :category, label_html: { class: 'label-font' }, collection: Recommendation::CATEGORIES.map { |r| [ r[:title], r[:title],  { class: "" }] }, as: :check_boxes, item_wrapper_class: 'category-choice' %>
+          <%= f.input :title, label_html: { class: 'label-font' } %>
+          <%= f.input :description, as: :text, label_html: { class: 'label-font' } %>
+          <%= f.input :location, id: 'location', label_html: { class: 'label-font' } %>
+          <%= f.input :price_range, as: :range, input_html: { class: 'custom-range' }, label_html: { class: 'label-font' } %>
+          <%= f.input :duration, as: :range, input_html: { class: 'custom-range' }, label_html: { class: 'label-font' } %>
+          <%= f.input :reservation, as: :boolean, label_html: { class: 'label-font' } %>
+          <%= f.input :photo, as: :file, label_html: { class: 'label-font' } %>
           <%= f.button :submit, class: 'btn btn-primary' %>
         <% end %>
   </div>
