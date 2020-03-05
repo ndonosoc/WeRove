@@ -6,6 +6,7 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'devise'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'faker'
+gem 'geocoder'
 gem 'jbuilder', '~> 2.0'
 gem 'iso_country_codes', '0.7.8'
 gem 'pg', '~> 0.21'
