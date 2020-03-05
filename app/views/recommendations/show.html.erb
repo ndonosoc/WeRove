@@ -8,7 +8,21 @@
     </div>
     <div class="title">
       <h1><%= @recommendation.title %></h1>
-      <i class="fas fa-bookmark fa-xs"></i>
+        <% if !current_user.bookmarkedrecommendation_ids.include?(@recommendation.id) %>
+          <%= simple_form_for(@bookmark, url: bookmarks_path) do |f| %>
+            <%= f.input :id, as: :hidden, input_html: { value: @recommendation.id } %>
+            <%= button_tag(type: 'submit', class: "btn btn-outline-primary") do %>
+              <i class="fas fa-bookmark fa-xs"></i>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= simple_form_for(@bookmark, url: bookmark_path(Bookmark.find_by(recommendation: @recommendation)), method: :delete) do |f| %>
+            <%= f.input :id, as: :hidden, input_html: { value: Bookmark.find_by(recommendation: @recommendation).id } %>
+            <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+              <i class="fas fa-bookmark fa-xs"></i>
+            <% end %>
+          <% end %>
+        <% end %>
     </div>
     <div class="rating mb-3">
       <i class="fas fa-star fa-xs"></i>
@@ -55,3 +69,5 @@
       <button class="btn btn-primary">Get in touch</button>
     </div>
 </div>
+
+<%=console%>

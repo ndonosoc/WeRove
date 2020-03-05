@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   patch "/matches", to: "matches#update"
   get "/matchme", to: "matches#matchme"
 
+  resources :bookmarks, only: [:create, :destroy]
+
   resources :recommendations
   resources :profile, :controller => "users", only: [:index, :show, :edit, :update]
 
