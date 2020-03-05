@@ -12,6 +12,9 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
+  geocoded_by :city
+  after_validation :geocode, if: :will_save_change_to_city?
+
   # validates :first_name, presence: true, uniqueness: true
   # validates :last_name, presence: true, uniqueness: true
   # validates :email, presence: true, uniqueness: true

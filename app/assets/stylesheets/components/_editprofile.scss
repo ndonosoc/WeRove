@@ -1,0 +1,87 @@
+.subtitle-small {
+  color: #3A3A3A;
+  font-size: 16px;
+}
+
+
+// .title {
+//   color: #3A3A3A;
+//   font-size: 38px;
+// }
+
+
+.interesttag {
+  font-family: $headers-font;
+  font-size: 16px;
+  font-weight: semibold;
+  opacity: 0.4;
+  &:hover {
+    opacity: 1;
+  }
+  &.active {
+    opacity: 1;
+    background-color: white;
+  }
+}
+
+.interesttag label{
+  padding: 0px;
+  position: relative;
+  z-index: 300;
+  color: black;
+  display: block;
+  border-radius: 16px;
+  margin-bottom: 0;
+  border-color: #5D6CF3;
+  font-size: 14px;
+}
+
+#plus {
+  line-height: 2.5;
+  padding-left: 4px;
+
+}
+
+#interestlabel {
+  color: $rover-purple;
+  padding: 10px 10px 10px 10px;
+}
+
+.btn-link {
+  color: $rover-purple;
+  opacity: 0.75;
+  &:hover {
+    color: $rover-purple;
+    opacity: 1;
+  }
+}
+
+
+.modal-title {
+  color: white;
+  font-size: 30px;
+  font-weight: 600;
+}
+.modal-header {
+  background-color: $rover-purple;
+}
+
+.modal-body {
+  background-color: $rover-purple;
+}
+
+.modal-footer {
+  background-color: $rover-purple;
+}
+// .interest-choices {
+//   opacity: .4;
+//   &:hover {
+//     opacity: 1;
+//     cursor: pointer;
+//   }
+//   &.active {
+//   background: $rover-purple;
+//   color: white;
+//   opacity: 1;
+//   }
+// }

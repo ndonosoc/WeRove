@@ -4,17 +4,15 @@
   </div>
   <div class="avatar-profiles">
     <span class="">
-      <%= link_to root_path do %>
-        <img class="avatar-3" alt="avatar-bordered" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
+     <!--  <div class="avatar-flag-each"> -->
+          <!-- <p>Ani</p> -->
+      <% @matches.each do |match| %>
+        <%= link_to profile_path(match.local.id) do %>
+        <%= cl_image_tag match.local.photo.key, class: 'avatar-3' %>
       <% end %>
-       <%= link_to root_path do %>
-        <img class="avatar-3" alt="avatar-bordered" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
-      <% end %>
-       <%= link_to root_path do %>
-        <img class="avatar-3" alt="avatar-bordered" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
-      <% end %>
-       <%= link_to root_path do %>
-        <img class="avatar-3" alt="avatar-bordered" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
+<!--           <img class="avatar-3" alt="avatar-bordered" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" /> -->
+          <!-- <img class="flag-profile" src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Flag_of_Panama.svg"> -->
+     <!--  </div> -->
       <% end %>
     </span>
   </div>

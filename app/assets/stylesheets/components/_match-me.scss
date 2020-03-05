@@ -28,13 +28,28 @@
   padding-top: 16px;
   padding-bottom: 12px;
   font-style: $headers-font;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
 .avatar-profiles {
   display: flex;
+    overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
 .one-message {
   display: flex;
   align-items: center;
+}
+
+.flag-profile {
+  width: 25px;
+  z-index: 1;
+}
+
+.avatar-flag-each {
+  display: flex;
 }
