@@ -6,7 +6,7 @@ class BookmarkPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    !user.nil?
   end
 
   def create?
