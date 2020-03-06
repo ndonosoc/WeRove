@@ -29,5 +29,3 @@ tagger();
 //     $(this).toggleClass("active");
 //   });
 // });
-
-

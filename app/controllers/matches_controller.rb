@@ -10,6 +10,12 @@
 
   def show
     @match = Match.find(params[:id])
+    if @match.local == current_user
+      @matched_user = @match.tourist
+    else
+      @matched_user = @match.local
+    end
+
     authorize @match
     if current_user == @match.local
       tourist = @match.tourist
