@@ -3,7 +3,7 @@ import { initAutocomplete } from "../plugins/init_autocomplete";
 import flatpickr from 'flatpickr';
 
 import '../plugins/toggle_interest';
-import '../plugins/slidebar';
+import { tagger } from '../plugins/slidebar';
 
 import "rater-js";
 import { myRater } from "../plugins/rater";
@@ -22,7 +22,7 @@ myRater2();
 myRater3();
 picker();
 raterFunction();
-
+tagger();
 
 // $(document).ready(function(){
 //   $(".interest-choices").click(function(){
