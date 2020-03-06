@@ -13,4 +13,12 @@
 
 .logo {
   object-fit: cover;
+  font-size: 40px;
+  text-decoration: none;
+  color: $rover-purple;
+}
+
+.logo:hover {
+  transition-duration: 1s;
+  color: black;
 }

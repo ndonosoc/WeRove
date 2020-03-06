@@ -11,3 +11,9 @@
 // Your CSS partials
 @import "components/*";
 @import "pages/index";
+
+@font-face {
+font-family: 'Minute';
+src: url('Minute/OTF/Minute.otf') format('opentype');
+src: url('Minute/TTF/Minute.ttf') format('truetype');
+}
