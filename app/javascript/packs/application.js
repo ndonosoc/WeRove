@@ -29,5 +29,3 @@ raterFunction();
 //     $(this).toggleClass("active");
 //   });
 // });
-
-
