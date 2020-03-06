@@ -28,5 +28,3 @@ initSelect2();
 //     $(this).toggleClass("active");
 //   });
 // });
-
-

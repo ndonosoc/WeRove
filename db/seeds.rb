@@ -12,6 +12,8 @@ require 'json'
 
 Match.delete_all
 Recommendation.delete_all
+Review.delete_all
+Rating.delete_all
 UserInterest.delete_all
 Interest.delete_all
 User.delete_all
@@ -84,12 +86,12 @@ end
 
 end
 
-# 50.times do
-#   Review.create(recommendation_id: rand(1..30),
-#                 user_id: rand(1..50),
-#                 content: Faker::Quote.famous_last_words,
-#                 rating: rand(1..5))
-# end
+50.times do
+  Review.create(recommendation_id: Recommendation.all.sample.id,
+                user_id: User.all.sample.id,
+                content: Faker::Quote.famous_last_words,
+                rating: rand(1..5))
+end
 
 # Match.all.each do |match|
 #   5.times do

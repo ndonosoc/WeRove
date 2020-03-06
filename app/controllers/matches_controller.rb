@@ -10,7 +10,20 @@
 
   def show
     @match = Match.find(params[:id])
+    if @match.local == current_user
+      @matched_user = @match.tourist
+    else
+      @matched_user = @match.local
+    end
+
     authorize @match
+    if current_user == @match.local
+      tourist = @match.tourist
+      @geocode = Geocoder.search([tourist.latitude, tourist.longitude])
+    elsif current_user == @match.tourist
+      local = @match.local
+      @geocode = Geocoder.search([local.latitude, local.longitude])
+    end
   end
 
   def matchme

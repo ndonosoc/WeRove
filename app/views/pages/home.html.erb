@@ -3,10 +3,8 @@
   <h2 class="subtitle">Find a local friend everywhere.</h2>
 
   <form id="home-form" action="matches" method="POST">
+  <label class="label" style="margin-bottom: 0px;">Define your taste:</label>
     <%= render 'layouts/components/tags' %>
-    <div class="box">
-      <%= link_to "More options +", "", class: "underlined-link" %>
-    </div>
     <div class="Where">
       <label class="label" for="locationInput">Where are you going?</label>
         <input type="text" class="form-control" id="location" placeholder="Buenos Aires, Argentina" name="location">

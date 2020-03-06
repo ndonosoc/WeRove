@@ -1,4 +1,4 @@
-class RecommendationPolicy < ApplicationPolicy
+class MessagePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -10,12 +10,6 @@ class RecommendationPolicy < ApplicationPolicy
   end
 
   def show?
-    if !user.nil?
-      return true
-    end
-  end
-
-  def new?
     true
   end
 
@@ -23,7 +17,7 @@ class RecommendationPolicy < ApplicationPolicy
     true
   end
 
-  def destroy?
-    record.user == user
+  def update?
+    true
   end
 end
