@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   end
   resources :profile, :controller => "users", only: [:index, :show, :edit, :update]
 
+  resources :chat_room, only: [:show] do
+    resources :messages, only: [:create]
+  end
   # devise_scope :user do
   #   get 'login', to: 'devise/sessions#new'
     # get 'logout', to: 'devise/sessions#destroy'
