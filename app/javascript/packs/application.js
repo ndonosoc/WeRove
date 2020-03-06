@@ -6,7 +6,6 @@ import 'flatpickr/dist/themes/airbnb.css';
 import '../plugins/toggle_interest';
 import '../plugins/slidebar';
 
-import { bubble } from "../plugins/bubblechat";
 import "rater-js";
 import { myRater } from "../plugins/rater";
 import { myRater2 } from "../plugins/rater";
@@ -19,7 +18,6 @@ import 'flatpickr/dist/flatpickr.min.css';
 import { raterFunction } from "../plugins/ratingspicker";
 
 initAutocomplete();
-bubble();
 myRater();
 myRater2();
 myRater3();
