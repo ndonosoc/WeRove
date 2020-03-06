@@ -45,9 +45,7 @@
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
 
-    <%= render 'aboutme', user: @matched_user %>
-
-    # <%= render 'aboutme', {user: user, match: @match} %>
+    <%= render 'aboutme', {user: @matched_user, match: @match } %>
 
   </div>
   <div class="tab-pane fade" id="recommendations" role="tabpanel" aria-labelledby="recommendations-tab">
