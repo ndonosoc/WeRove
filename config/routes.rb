@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :bookmarks, only: [:create, :destroy]
   get "/recommendations", to: "recommendations#index"
   resources :recommendations, not: [:index] do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:new, :create, :destroy]
   end
   resources :profile, :controller => "users", only: [:index, :show, :edit, :update]
 

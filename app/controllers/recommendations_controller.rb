@@ -27,10 +27,13 @@ class RecommendationsController < ApplicationController
   def destroy
     @recommendation = Recommendation.find(params[:id])
     authorize @recommendation
-    if @recommendation.destroy
-      redirect_to recommendations_path
-    else
-      redirect_to @recommendation
+      if @recommendation.destroy
+      flash[:notice] = "Deleted from recommendations"
+      redirect_back(fallback_location: root_path)
+      else
+      flash[:notice] = "Couldn't delete recommendation"
+      redirect_back(fallback_location: root_path)
+      return
     end
   end
 
