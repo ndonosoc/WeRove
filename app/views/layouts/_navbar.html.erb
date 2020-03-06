@@ -1,7 +1,7 @@
 <nav class="navbar flex-grow-0 align-items-center" style="background-color: white; box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);">
-  <%= link_to root_path do %>
-    <p class="logo pt-2">
-      <%= image_tag "WR.png", alt: "", size: "50", class: "logo d-inline-block" %>
+  <%= link_to root_path, style:"text-decoration: none;" do %>
+    <p class="logo pt-2 my-auto" style="font-family: 'Minute'">
+      wR
     </p>
   <% end %>
   <% if user_signed_in? %>
