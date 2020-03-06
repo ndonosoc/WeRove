@@ -1,4 +1,4 @@
-const tags =  document.querySelectorAll(".category-tag")
+const avtive =  document.querySelectorAll(".category-tag")
 
 if (tags) {
   tags.forEach(tag => {
