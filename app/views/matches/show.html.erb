@@ -6,7 +6,7 @@
 <% else %>
   <% user = @match.local %>
   <% if user.city? %>
-  <% country = IsoCountryCodes.search_by_name(user.city.scan(/\,(\W\w*\W\w*|\W\w*)\b/)[-1][0].strip)[0].alpha2 %>
+  <% country = IsoCountryCodes.search_by_name(@geocode.first.country).first.alpha2 %>
   <% end %>
 <% end %>
 
@@ -18,7 +18,7 @@
       <img src="https://www.countryflags.io/<%= country %>/shiny/32.png" class="mt-1" id="flag">
       </div>
       <div class="location">
-      <i class="fas fa-map-marker-alt fa-xs pr-1"></i><p>Local in <strong><%= user.city.scan(/(.*)\,/)[0][0] %></strong></p>
+      <i class="fas fa-map-marker-alt fa-xs pr-1"></i><p>Local in <strong><%= @geocode.first.city %></strong></p>
       </div>
     </div>
     <% if user.photo.attached? %>
