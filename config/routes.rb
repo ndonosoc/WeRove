@@ -14,10 +14,10 @@ Rails.application.routes.draw do
   end
   resources :profile, :controller => "users", only: [:index, :show, :edit, :update]
 
-  # devise_scope :user do
+  devise_scope :user do
   #   get 'login', to: 'devise/sessions#new'
-    # get 'logout', to: 'devise/sessions#destroy'
+    get 'logout', to: 'devise/sessions#destroy'
   #   get 'sign_out', to: 'devise/sessions#destroy'
   #   get 'signup', to: 'devise/registrations#new'
-  # end
+  end
 end
