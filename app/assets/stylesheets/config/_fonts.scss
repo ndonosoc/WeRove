@@ -7,8 +7,8 @@ $headers-font: "Poppins", "Helvetica", "sans-serif";
 
 @font-face {
 font-family: 'Minute';
-src: url('Minute/OTF/Minute.otf') format('opentype');
-src: url('Minute/TTF/Minute.ttf') format('truetype');
+src: font-url('Minute/OTF/Minute.otf') format('opentype');
+src: font-url('Minute/TTF/Minute.ttf') format('truetype');
 }
 
 
