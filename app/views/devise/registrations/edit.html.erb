@@ -95,13 +95,14 @@
 
 
     </div>
-    <div>
-    <span id="availiable">Show availiable as local</span>
-    <label class="switch">
-      <input type="checkbox" name="user[available]" value="<%= current_user.available ? true : false %>">
-      <span class="slider round"></span>
-    </label>
 
+    <div>
+      <span id="available">Show available as local</span>
+      <label class="switch">
+        <input name="user[available]" type="hidden" value="<%= current_user.available ? 1 : 0 %>">
+        <input type="checkbox" checked="<%= current_user.available ? 'checked' : '' %>" name="user[available]" id="available-input">
+        <span class="slider round"></span>
+      </label>
     </div>
 
     <div class="form-actions ">

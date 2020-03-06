@@ -33,7 +33,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     end
     super
-    raise
+
   end
 
   # DELETE /resource
