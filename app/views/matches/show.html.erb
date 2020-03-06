@@ -1,4 +1,17 @@
+
 <% country = IsoCountryCodes.search_by_name(@matched_user.city.scan(/\,(\W\w*\W\w*|\W\w*)\b/)[-1][0].strip)[0].alpha2 %>
+<% if @match.local.id == current_user.id %>
+<% user = @match.tourist %>
+  <% if user.city? %>
+  <% country = IsoCountryCodes.search_by_name(@geocode.first.country).first.alpha2 %>
+  <% end %>
+<% else %>
+  <% user = @match.local %>
+  <% if user.city? %>
+  <% country = IsoCountryCodes.search_by_name(@geocode.first.country).first.alpha2 %>
+    <% end %>
+<% end %>
+
 
 <div class="aboutcontainer mx-3">
   <div class="header">
@@ -8,7 +21,7 @@
       <img src="https://www.countryflags.io/<%= country %>/shiny/32.png" class="mt-1" id="flag">
       </div>
       <div class="location">
-      <i class="fas fa-map-marker-alt fa-xs pr-1"></i><p>Local in <strong><%= @matched_user.city.scan(/(.*)\,/)[0][0] %></strong></p>
+      <i class="fas fa-map-marker-alt fa-xs pr-1"></i><p>Local in <strong><%= @geocode.first.city %></strong></p>
       </div>
     </div>
     <% if @matched_user.photo.attached? %>
@@ -31,7 +44,11 @@
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+
     <%= render 'aboutme', user: @matched_user %>
+
+    # <%= render 'aboutme', {user: user, match: @match} %>
+
   </div>
   <div class="tab-pane fade" id="recommendations" role="tabpanel" aria-labelledby="recommendations-tab">
     <%= render 'toprecommendations', user: @matched_user %>

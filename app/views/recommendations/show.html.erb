@@ -28,7 +28,6 @@
             <% end %>
           <% end %>
         <% end %>
-      <!--  -->
     </div>
     <div class="rating mb-3">
       <i class="fas fa-star fa-xs"></i>
@@ -41,50 +40,22 @@
       <p><%= @recommendation.description %></p>
     </div>
     <div class="border border-bottom mx-3"></div>
-    <div class="details">
-      <div class="item">
-        <i class="far fa-clock fa-lg pr-3" style="width:30px;"></i>
-        <div class="content">
-          <h1>Duration</h1>
-          <p><%= @recommendation.duration %></p>
-        </div>
-      </div>
-      <div class="item">
-        <i class="fas fa-street-view fa-lg pr-3" style="width:30px;"></i>
-        <div class="content">
-          <h1>Location</h1>
-          <p><%= @recommendation.location %></p>
-        </div>
-      </div>
-      <div class="item">
-        <i class="fas fa-dollar-sign fa-lg pr-3" style="width:30px;"></i>
-        <div class="content">
-          <h1>Price Range</h1>
-          <p><%= @recommendation.price_range %></p>
-        </div>
-      </div>
-      <div class="item">
-        <i class="fas fa-phone-volume fa-lg pr-3" style="width:30px;"></i>
-        <div class="content">
-          <h1>Reservation</h1>
-          <p><%= @recommendation.reservation %></p>
-        </div>
-      </div>
-      <div class="item">
-        <i class="fas fa-heart fa-lg pr-3" style="width:30px;"></i>
-        <div class="content">
-          <h1>Category</h1>
-          <p><%= @recommendation.category %></p>
-        </div>
-      </div>
+      <%= render 'recombody', recommendation: @recommendation %>
     </div>
+    <% if current_user.local_ids.include?(@recommendation.user.id) %>
     <div class="getintouch">
       <button class="btn btn-primary">Get in touch</button>
     </div>
-   <!--  <div class="border border-bottom mx-3"></div>
-       <div class="container">
-          <h1>Feedback!</h1>
-        </div> -->
+    <% end %>
+    <div class="border border-bottom mx-3"></div>
+       <div class="about">
+          <div class="card">
+            <div class="title ml-0 pl-0">
+              <h1 class="ml-0">Reviews</h1><i class="fas fa-star fa-xs" style="color: #5D6CF3;"></i>
+            </div>
+          <% @recommendation.reviews.each do |review| %>
+            <%= render 'review', review: review %>
+          <% end %>
+        </div>
+      </div>
 </div>
-
-<%=console%>

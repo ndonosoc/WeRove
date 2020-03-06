@@ -1,3 +1,6 @@
+const tagger = () => {
+
+
 const tags =  document.querySelectorAll(".category-tag")
 
 if (tags) {
@@ -8,3 +11,7 @@ if (tags) {
     })
   })
 }
+
+}
+
+export { tagger };
