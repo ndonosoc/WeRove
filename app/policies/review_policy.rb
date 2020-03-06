@@ -1,4 +1,4 @@
-class MatchPolicy < ApplicationPolicy
+class ReviewPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -9,23 +9,11 @@ class MatchPolicy < ApplicationPolicy
     true
   end
 
-  def show?
-    true
-  end
-
-  def matchme?
-    true
-  end
-
-  def home?
-    true
-  end
-
   def create?
     true
   end
 
-  def update?
+  def destroy?
     true
   end
 end

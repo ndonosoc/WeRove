@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
   devise_for :users, path: 'profile', controllers: { registrations: "users/registrations" }
-  resources :matches, only: [:index, :create]
+
+  resources :matches, only: [:index, :show, :create] do
+    resources :ratings, only: [:index, :new, :create]
+  end
+  patch "/matches", to: "matches#update"
   get "/matchme", to: "matches#matchme"
   resources :wall, :controller=>"bookmarks", :path => "wall"
   resources :bookmarks, only: [:create, :destroy]
   get "/recommendations", to: "recommendations#index"
-  resources :recommendations, not: [:index]
+  resources :recommendations, not: [:index] do
+    resources :reviews, only: [:new, :create, :destroy]
+  end
   resources :profile, :controller => "users", only: [:index, :show, :edit, :update]
 
   devise_scope :user do

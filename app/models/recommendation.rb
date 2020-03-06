@@ -1,6 +1,7 @@
 class Recommendation < ApplicationRecord
   belongs_to :user
   has_many :bookmarks
+  has_many :reviews, dependent: :destroy
   validates :category, presence: true
   validates :description, presence: true
   validates :location, presence: true
@@ -9,4 +10,31 @@ class Recommendation < ApplicationRecord
   # validates :reservation, presence: true
 
   has_one_attached :photo
+
+  CATEGORIES = [
+    {
+      title: "Sports",
+      icon: "utensils"
+    },
+    {
+      title: "Food",
+      icon: "utensils"
+    },
+    {
+      title: "Outdoors",
+      icon: "utensils"
+    },
+    {
+      title: "Nightlife",
+      icon: "utensils"
+    },
+    {
+      title: "Arts & Culture",
+      icon: "utensils"
+    },
+    {
+      title: "Sightseeing",
+      icon: "utensils"
+    }
+  ]
 end

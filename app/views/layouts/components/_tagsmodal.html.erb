@@ -9,33 +9,36 @@
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog full-size-modal" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Choose your interests</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title modal-title-big text-white font-weight-bold" id="exampleModalLabel">Interests</h5>
+        <button type="button" class="close white-cross" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
+      <div class="bg-rover-purple">
+        <div style="height: 7px; margin: 0 16px;" class="bg-white"></div>
+      </div>
       <div class="modal-body">
         <div class="form-group">
 
           <!-- <input type="hidden" name="user[interest_ids][]" value=""> -->
 
-          <div class="interests-choices">
+          <div class="interests-choices" >
 
-            <% @groups[nil].each do |parent_category| %>
-            <h1 class="subtitle-small my-4"><%= parent_category.title %></h1>
-              <% @groups[parent_category.id].each do |category| %>
-                <div class="tag interesttag interest-choices <%= current_user.interest_ids.include?(category.id) ? "active" : "" %>"@groups@groups id="">
-                  <i class="fa fa-plus" id="plus"></i>
-                  <label for="post_category_ids_<%= category.id %>">
-                  <label id="interestlabel" for=""><%= category.title %></label>
-                  <input type="checkbox" class="hidden" value="<%= category.id %>" name="user[interest_ids][]" id="post_category_ids_<%= category.id %>" <%= current_user.interest_ids.include?(category.id) ? "checked" : "" %>>
-                  </label>
+            <% @groups.each do |category, interests| %>
+              <h2 class="text-white"><%= category  %></h2>
+              <div>
+              <% interests.each do |interest| %>
+                <div class="category-tag <%= current_user.interest_ids.include?(interest.id) ? 'active-tag' : '' %>">
+                  <div>
+                    <span><i class="fa fa-plus" id="plus"></i><%= interest.title %></span>
+                    <input type="checkbox" class="d-none" value="<%= interest.id %>" name="user[interest_ids][]" id="post_category_ids_<%= interest.id %>" <%= current_user.interest_ids.include?(interest.id) ? "checked" : "" %>>
+                  </div>
                 </div>
               <% end %>
+              </div>
             <% end %>
 
 
@@ -44,8 +47,8 @@
       </div>
 
       <div class="modal-footer">
-        <div class="form-actions">
-          <%= f.button :submit, "Update" %>
+        <div class="form-actions btn btn-primary-xs m-auto">
+          <%= f.button :submit, "Update", class: "text" %>
         </div>
       </div>
     </div>

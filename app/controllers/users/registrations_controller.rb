@@ -14,24 +14,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # GET /resource/edit
   def edit
-    @groups = Interest.all.group_by(&:parent_id)
+    @groups = Interest.where.not(parent_id: nil).group_by { |interest| interest.parent.title if interest.parent.present? }
     super
   end
 
   # PUT /resource
   def update
-    @groups = Interest.all.group_by(&:parent_id)
-
+    @groups = Interest.where.not(parent_id: nil).group_by { |interest| interest.parent.title if interest.parent.present? }
     # remove all user interests
-    UserInterest.where(user_id: current_user.id).delete_all
+    current_user.user_interests.delete_all
+    # UserInterest.where(user_id: current_user.id).delete_all
     # remove all empty options
-    interests_id = params[:user][:interest_ids].reject(&:empty?)
     # create new user interests
-    unless interests_id.nil?
-      interests_id.each do |interest_id|
-        @user_interest = UserInterest.create(interest_id: interest_id, user_id: current_user.id)
+    unless params["user"]["interest_ids"].nil?
+      params["user"]["interest_ids"].each do |interest_id|
+        @user_interest = UserInterest.create(interest_id: interest_id, user: current_user)
       end
     end
     super
