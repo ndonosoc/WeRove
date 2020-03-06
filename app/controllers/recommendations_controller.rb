@@ -11,7 +11,6 @@ class RecommendationsController < ApplicationController
 
     @recommendations = policy_scope(Recommendation).joins(user: :interests).where('interests.title' => params[:interests]).limit(4)
     @bookmark = Bookmark.new
-    authorize @bookmark
 
     # params = {
     #   location: "Recoleta",
@@ -57,8 +56,9 @@ class RecommendationsController < ApplicationController
 
   def show
     @recommendation = Recommendation.find(params[:id])
-    @bookmark = Bookmark.new
-    authorize @bookmark
+    authorize @recommendation
+    # @bookmark = Bookmark.new
+    #authorize @bookmark
   end
 
   private
