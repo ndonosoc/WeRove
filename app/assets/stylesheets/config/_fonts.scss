@@ -5,6 +5,13 @@
 $body-font: "Roboto", "Helvetica", "sans-serif";
 $headers-font: "Poppins", "Helvetica", "sans-serif";
 
+@font-face {
+font-family: 'Minute';
+src: url('Minute/OTF/Minute.otf') format('opentype');
+src: url('Minute/TTF/Minute.ttf') format('truetype');
+}
+
+
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";
