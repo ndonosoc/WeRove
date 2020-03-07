@@ -5,7 +5,8 @@
   before_action :skip_pundit?
 
   def index
-    @matches = policy_scope(Match).where(tourist_id: current_user.id, accepted: true).order(created_at: :desc)
+    @matches = policy_scope(Match).where(tourist_id: current_user.id, accepted: true).or(policy_scope(Match).where(local_id: current_user.id))
+    @matches = @matches.order(created_at: :desc)
   end
 
   def show

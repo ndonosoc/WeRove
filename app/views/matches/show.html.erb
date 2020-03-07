@@ -1,5 +1,5 @@
 
-<% country = IsoCountryCodes.search_by_name(@matched_user.city.scan(/\,(\W\w*\W\w*|\W\w*)\b/)[-1][0].strip)[0].alpha2 %>
+<%# country = IsoCountryCodes.search_by_name(@matched_user.city.scan(/\,(\W\w*\W\w*|\W\w*)\b/)[-1][0].strip)[0].alpha2 %>
 <% if @match.local.id == current_user.id %>
 <% user = @match.tourist %>
   <% if user.city? %>
@@ -53,7 +53,7 @@
   </div>
 </div>
 
-<%= render "chat" %>
+<%= render "chat", chat_room: @chat_room %>
 
 <div class="floating-chat">
     <%= link_to root_path do %><i class="fa fa-comments" aria-hidden="true"></i> <% end %>
