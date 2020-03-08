@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :matches, only: [:index, :show, :create] do
     resources :ratings, only: [:index, :new, :create]
-    resources :messages, only: [:create]
+    resources :messages, only: [:index, :create]
   end
   patch "/matches", to: "matches#update"
   get "/matchme", to: "matches#matchme"

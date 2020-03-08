@@ -7,7 +7,7 @@
   <% if user_signed_in? %>
   <%= render 'layouts/components/navbar_partials/user_links' %>
   <% elsif user_signed_in? && current_page?(edit_user_registration_path)%>
-    <%= link_to "#" do %>
+    <%= link_to "match_path" do %>
       <i class="fas fa-comments-alt"></i>
     <% end %>
   <% else %>
