@@ -11,6 +11,17 @@ class RecommendationsController < ApplicationController
 
     @recommendations = policy_scope(Recommendation).joins(user: :interests).where('interests.title' => params[:interests]).limit(4)
     @bookmark = Bookmark.new
+    @list = []
+
+    Match.matcher(current_user, params[:location]).each do |match|
+      if !match[0].recommendations.empty?
+        match[0].recommendations.each do |recommendation|
+        @list << recommendation
+        end
+      end
+    end
+
+    @list = @list.group_by { |recommendation| recommendation.category }
 
     # params = {
     #   location: "Recoleta",
