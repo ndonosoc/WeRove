@@ -1,16 +1,9 @@
 
-<% country = IsoCountryCodes.search_by_name(@matched_user.city.scan(/\,(\W\w*\W\w*|\W\w*)\b/)[-1][0].strip)[0].alpha2 %>
-<% if @match.local.id == current_user.id %>
-<% user = @match.tourist %>
-  <% if user.city? %>
+<%# country = IsoCountryCodes.search_by_name(@matched_user.city.scan(/\,(\W\w*\W\w*|\W\w*)\b/)[-1][0].strip)[0].alpha2 %>
+
+  <% if @matched_user.city? %>
   <% country = IsoCountryCodes.search_by_name(@geocode.first.country).first.alpha2 %>
   <% end %>
-<% else %>
-  <% user = @match.local %>
-  <% if user.city? %>
-  <% country = IsoCountryCodes.search_by_name(@geocode.first.country).first.alpha2 %>
-    <% end %>
-<% end %>
 
 
 <div class="aboutcontainer mx-3">
@@ -45,7 +38,7 @@
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
 
-    <%= render 'aboutme', {user: @matched_user, match: @match } %>
+    <%= render 'aboutme', {user: @matched_user, match: @match, age: @age, people_connected: @people_connected} %>
 
   </div>
   <div class="tab-pane fade" id="recommendations" role="tabpanel" aria-labelledby="recommendations-tab">
@@ -53,6 +46,7 @@
   </div>
 </div>
 
+<%= render "chat", chat_room: @chat_room %>
 <div class="floating-chat">
     <%= link_to match_messages_path(@match) do %><i class="fa fa-comments" aria-hidden="true"></i> <% end %>
 </div>

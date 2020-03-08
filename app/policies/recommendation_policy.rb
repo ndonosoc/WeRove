@@ -5,16 +5,14 @@ class RecommendationPolicy < ApplicationPolicy
     end
   end
 
-  def show?
-    true
-  end
-
-  def destroy?
-    record.user == user
-  end
-
   def index?
     true
+  end
+
+  def show?
+    if !user.nil?
+      return true
+    end
   end
 
   def new?
@@ -23,5 +21,9 @@ class RecommendationPolicy < ApplicationPolicy
 
   def create?
     true
+  end
+
+  def destroy?
+    record.user == user
   end
 end
