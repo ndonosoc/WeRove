@@ -1,4 +1,7 @@
-
+.form-group.hidden {
+  margin: 0;
+  padding: 0;
+}
 
 .aboutcontainer {
 
@@ -55,7 +58,20 @@
   background-color: #5D6CF3;
   padding-top: 16px;
 
-.card {
+  a:hover{
+    text-decoration: none;
+  }
+
+  a:active {
+    text-decoration: none;
+    color: $rover-purple;
+  }
+  a:focus {
+    text-decoration: none;
+    color: $rover-purple;
+  }
+
+  .card {
   width: 90%;
   background-color: white;
   margin: 0px auto 16px auto;
@@ -65,27 +81,26 @@
   box-shadow: 0px 3px 3px 0px rgba(50, 50, 50, 0.4);
 
 
-  .title {
+    .title {
     display: flex;
 
-    h1 {
-      font-size: 16px;
-      flex-grow: 1;
-      color: black;
-      font-family: $headers-font;
+      h1 {
+        font-size: 16px;
+        flex-grow: 1;
+        color: black;
+        font-family: $headers-font;
+      }
     }
   }
-}
 
 
-ul {
-  list-style: none;
-  padding: 0;
-  color: rgba(0,0,0,0.5);
-  font-weight: 400;
-  line-height: 26px;
-}
-
+  ul {
+    list-style: none;
+    padding: 0;
+    color: rgba(0,0,0,0.5);
+    font-weight: 400;
+    line-height: 26px;
+  }
 }
 
 .speech-bubble {

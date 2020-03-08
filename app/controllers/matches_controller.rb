@@ -5,7 +5,7 @@
   before_action :skip_pundit?
 
   def index
-    @matches = policy_scope(Match).where(tourist_id: current_user.id, accepted: true).or(policy_scope(Match).where(local_id: current_user.id))
+    @matches = policy_scope(Match).where(tourist_id: current_user.id, accepted: true).or(policy_scope(Match).where(local_id: current_user.id, accepted: true))
     @matches = @matches.order(created_at: :desc)
   end
 
@@ -25,6 +25,10 @@
       local = @match.local
       @geocode = Geocoder.search([local.latitude, local.longitude])
     end
+
+    @age = (Time.now.to_s(:number).to_i - @matched_user.birthday.to_time.to_s(:number).to_i)/10e9.to_i
+    @people_connected = policy_scope(Match).where(tourist_id: @matched_user.id, accepted: true).or(policy_scope(Match).where(local_id: @matched_user.id, accepted: true)).count
+
   end
 
   def matchme

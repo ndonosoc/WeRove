@@ -57,8 +57,8 @@ class RecommendationsController < ApplicationController
   def show
     @recommendation = Recommendation.find(params[:id])
     authorize @recommendation
-    # @bookmark = Bookmark.new
-    #authorize @bookmark
+    @bookmark = Bookmark.new
+    authorize @bookmark
   end
 
   private

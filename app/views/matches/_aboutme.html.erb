@@ -1,21 +1,23 @@
 <div class="about">
   <% if !match.ratings.where(rater_id: current_user.id).present? %>
-  <div class="card">
     <%=link_to new_match_rating_path(match) do %>
-      <p class="btn btn-outline-primary my-0">RATE THIS USER</p>
-    <% end %>
+  <div class="card btn btn-outline-primary">
+     <strong>RATE THIS USER</strong>
   </div>
+    <% end %>
   <% end %>
   <div class="card">
     <div class="title">
       <h1>Personal information</h1><i class="fas fa-id-card-alt fa-xs" style="color: #5D6CF3;"></i>
     </div>
     <ul>
-      <li>Age: <%= user.birthday %></li>
+      <li>Age: <%= age %></li>
       <li>Occupation: <%= user.occupation %></li>
       <li>Languages:
+        <% if !user.languages.nil? && !user.languages.empty?  %>
         <% user.languages.each do |language| %>
         <%= language %>
+        <% end %>
         <% end %>
       </li>
     </ul>
@@ -25,6 +27,9 @@
     <div class="title">
       <h1>Interests</h1><i class="fas fa-heart fa-xs" style="color: #5D6CF3;"></i>
     </div>
+    <% user.interests.each do |interest| %>
+    <%= interest %>
+    <% end %>
   </div>
 
   <div class="card">
@@ -33,9 +38,15 @@
     </div>
     <ul>
       <li>Rating: <%= user.score %></li>
-      <li>Cities Visited:</li>
-      <li>People Connected: </li>
+      <li>Cities Visited:
+      <% @matched_user.locals.group_by { |local| local.city }.keys.each do |city| %>
+      <%= city %>
+      <% end %>
+      </li>
+      <li>People Connected: <%= people_connected %> </li>
     </ul>
   </div>
 
 </div>
+
+<%= console %>
