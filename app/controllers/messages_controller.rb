@@ -1,4 +1,17 @@
 class MessagesController < ApplicationController
+  def index
+    @matches = policy_scope(Match)
+    @message = Message.new
+    @match = Match.find(params[:match_id])
+    if @match.local == current_user
+      @matched_user = @match.tourist
+    else
+      @matched_user = @match.local
+    end
+    authorize @match
+    authorize @message
+  end
+
   def create
     @message = Message.new(message_params)
     @match = Match.find(params[:match_id])
