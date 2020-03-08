@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :bookmarks
   has_many :bookmarkedrecommendations, through: :bookmarks, source: "recommendation"
   has_many :ratings, foreign_key: "rated_id"
+  has_many :reviews
+  has_many :rated_recommendations, through: :reviews, source: "recommendation"
 
   has_one_attached :photo
 
