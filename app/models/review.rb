@@ -5,5 +5,4 @@ class Review < ApplicationRecord
   # only uncomment if needed, it might break the create new reviews.
   validates :rating, presence: true
   validates :content, presence: true
-  validates :recommendation_id, presence: true, uniqueness: true
 end
