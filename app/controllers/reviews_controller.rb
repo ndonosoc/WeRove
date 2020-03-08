@@ -9,6 +9,12 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     authorize @review
+
+    if current_user.rated_recommendations.include?(@recommendation)
+       flash[:notice] = "You already reviewed this recommendation"
+       redirect_back(fallback_location: root_path)
+       return
+     end
   end
 
   def create
@@ -17,7 +23,7 @@ class ReviewsController < ApplicationController
     authorize @review
     @review.recommendation = @recommendation
     if @review.save!
-      redirect_to recommendations_path
+      redirect_to recommendation_path(@recommendation)
     else
       render :new
     end

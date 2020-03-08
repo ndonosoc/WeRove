@@ -47,6 +47,14 @@
       <button class="btn btn-primary">Get in touch</button>
     </div>
     <% end %>
+    <% if user_signed_in? && !current_user.rated_recommendations.include?(@recommendation)%>
+    <div class="getintouch">
+      <%= link_to new_recommendation_review_path(@recommendation) do %>
+      <button class="btn btn-primary">Add a Review!</button>
+      <% end %>
+    </div>
+    <% end %>
+    <%= console %>
     <div class="border border-bottom mx-3"></div>
        <div class="about">
           <div class="card">
