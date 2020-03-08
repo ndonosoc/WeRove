@@ -23,16 +23,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     @groups = Interest.where.not(parent_id: nil).group_by { |interest| interest.parent.title if interest.parent.present? }
     # remove all user interests
-    current_user.user_interests.delete_all
-    # UserInterest.where(user_id: current_user.id).delete_all
+    # current_user.user_interests.delete_all
+    UserInterest.where(user_id: current_user.id).delete_all
     # remove all empty options
     # create new user interests
     unless params["user"]["interest_ids"].nil?
       params["user"]["interest_ids"].each do |interest_id|
-        @user_interest = UserInterest.create(interest_id: interest_id, user: current_user)
+        UserInterest.create(interest_id: interest_id, user: current_user)
       end
     end
     super
+
   end
 
   # DELETE /resource
@@ -58,7 +59,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:languages])
   # end
 
   # The path used after sign up.

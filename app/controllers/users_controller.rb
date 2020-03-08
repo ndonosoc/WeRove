@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @groups = Interest.where.not(parent_id: nil).group_by { |interest| interest.parent.title if interest.parent.present? }
+    @groups = current_user.interests.where.not(parent_id: nil).group_by { |interest| interest.parent.title if interest.parent.present? }
   end
 
   def show

@@ -1,20 +1,18 @@
 import "bootstrap";
+import $ from 'jquery';
+import "../components/home_search";
 import { initAutocomplete } from "../plugins/init_autocomplete";
 import flatpickr from 'flatpickr';
-
-// import '../plugins/toggle_interest';
 import { tagger } from '../plugins/slidebar';
-
-import "rater-js";
 import { myRater } from "../plugins/rater";
 import { myRater2 } from "../plugins/rater";
 import { myRater3 } from "../plugins/rater";
 import { picker } from "../plugins/datepicker";
-import "../components/home_search";
-import $ from 'jquery';
-
-import 'flatpickr/dist/flatpickr.min.css';
+import { initSelect2 } from "../plugins/init_select2";
 import { raterFunction } from "../plugins/ratingspicker";
+
+import 'select2/dist/css/select2.css';
+import 'flatpickr/dist/flatpickr.min.css';
 
 initAutocomplete();
 myRater();
@@ -23,6 +21,7 @@ myRater3();
 picker();
 raterFunction();
 tagger();
+initSelect2();
 
 // $(document).ready(function(){
 //   $(".interest-choices").click(function(){
