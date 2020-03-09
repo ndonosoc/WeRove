@@ -8,22 +8,23 @@
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+  margin-right: 20px;
 
   .recomcard {
     display: flex;
-    margin: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 33vh;
   }
 }
 .recomcard-style {
-  width: 90%;
-  margin: 0 auto 16px auto;
-  min-height: 200px;
-  max-height: 370px;
+  width: 80vw;
+  margin-right: 20px;
+  height: 100%;
   background-color: white;
   display: flex;
   flex-direction: column;
   border-radius: 4px;
-  box-shadow: 30px 30px 30px rgba(0,0,0,0.1);
 
   img {
     width: 100%;
@@ -52,6 +53,11 @@
       margin: 0;
       color: rgba(0,0,0,0.7);
       font-family: $body-font;
+    p {
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 
   .footer {
