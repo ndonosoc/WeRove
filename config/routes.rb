@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
   devise_for :users, path: 'profile', controllers: { registrations: "users/registrations" }
-
+  resources :registration_steps
   resources :matches, only: [:index, :show, :create] do
     resources :ratings, only: [:index, :new, :create]
     resources :messages, only: [:index, :create]

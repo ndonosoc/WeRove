@@ -3,7 +3,7 @@ import $ from 'jquery';
 import "../components/home_search";
 import { initAutocomplete } from "../plugins/init_autocomplete";
 import flatpickr from 'flatpickr';
-import { tagger } from '../plugins/slidebar';
+import { tagger, reverseTagger } from '../plugins/slidebar';
 import { myRater } from "../plugins/rater";
 import { myRater2 } from "../plugins/rater";
 import { myRater3 } from "../plugins/rater";
@@ -22,6 +22,7 @@ myRater3();
 picker();
 raterFunction();
 tagger();
+reverseTagger();
 initSelect2();
 
 // $(document).ready(function(){
