@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :rated_recommendations, through: :reviews, source: "recommendation"
   has_many :messages, class_name: "Message", foreign_key: "receiver_id"
+  has_one :city
 
   has_one_attached :photo
 
