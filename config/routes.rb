@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   patch "/matches", to: "matches#update"
   get "/matchme", to: "matches#matchme"
   resources :wall, :controller=>"bookmarks", :path => "wall"
-  resources :bookmarks, only: [:create, :destroy]
+  resources :bookmarks, only: [:destroy]
   get "/recommendations", to: "recommendations#index"
   resources :recommendations, not: [:index] do
     resources :reviews, only: [:new, :create, :destroy]
+    resources :bookmarks, only: [:create]
   end
   resources :profile, :controller => "users", only: [:index, :show, :edit, :update]
 

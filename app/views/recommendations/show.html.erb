@@ -10,23 +10,21 @@
       <h1><%= @recommendation.title %></h1>
         <% if @recommendation.user == current_user %>
           <%= link_to recommendation_path, method: :delete do %>
-            <i class="far fa-trash-alt fa-xs" style="margin-right: 8px;"></i>
+            <i class="far fa-trash-alt fa-xs" style="margin-right: 8px; color: #5D6CF3"></i>
           <% end %>
         <% end -%>
         <% if !current_user.bookmarkedrecommendation_ids.include?(@recommendation.id) %>
-          <%= simple_form_for(@bookmark, url: bookmarks_path) do |f| %>
-            <%= f.input :id, as: :hidden, input_html: { value: @recommendation.id, class: "m-0 p-0" } %>
-            <%= button_tag(type: 'submit', class: "btn btn-outline-primary mt-0") do %>
-              <i class="fas fa-bookmark fa-xs"></i>
-            <% end %>
+
+          <%= link_to (recommendation_bookmarks_path(@recommendation)), method: :post do %>
+            <i class="far fa-bookmark fa-xs" style="margin-right: 8px; color: #5D6CF3"></i>
           <% end %>
+
         <% else %>
-          <%= simple_form_for(@bookmark, url: bookmark_path(Bookmark.find_by(recommendation: @recommendation)), method: :delete) do |f| %>
-            <%= f.input :id, as: :hidden, input_html: { value: Bookmark.find_by(recommendation: @recommendation).id } %>
-            <%= button_tag(type: 'submit', class: "btn btn-primary mt-0") do %>
-              <i class="fas fa-bookmark fa-xs"></i>
-            <% end %>
+
+          <%= link_to bookmark_path(@recommendation.bookmarks.find_by_user_id(current_user.id)), method: :delete do %>
+            <i class="fas fa-bookmark fa-xs" style="margin-right: 8px; color: #5D6CF3"></i>
           <% end %>
+
         <% end %>
     </div>
     <div class="rating mb-3">

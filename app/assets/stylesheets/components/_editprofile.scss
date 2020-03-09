@@ -131,63 +131,62 @@
 }
 
 /* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
+// .slider {
+//   position: absolute;
+//   cursor: pointer;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   -webkit-transition: .4s;
+//   transition: .4s;
+// }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
+// .slider:before {
+//   position: absolute;
+//   content: "";
+//   height: 26px;
+//   width: 26px;
+//   left: 4px;
+//   bottom: 4px;
+//   background-color: white;
+//   -webkit-transition: .4s;
+//   transition: .4s;
+// }
 
-input:checked + .slider {
-  background-color: $rover-purple;
-}
+// input:checked + .slider {
+//   background-color: $rover-purple;
+// }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px $rover-purple;
-}
+// input:focus + .slider {
+//   box-shadow: 0 0 1px $rover-purple;
+// }
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
+// input:checked + .slider:before {
+//   -webkit-transform: translateX(26px);
+//   -ms-transform: translateX(26px);
+//   transform: translateX(26px);
+// }
 
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
+// /* Rounded sliders */
+// .slider.round {
+//   border-radius: 34px;
+// }
 
-.slider.round:before {
-  border-radius: 50%;
-}
+// .slider.round:before {
+//   border-radius: 50%;
+// }
 
-.btn-primary-sm {
-  background-color: #5D6CF3;
-  margin-top: 16px;
-  border-color: #5D6CF3;
-  font-family: 'Poppins', sans-serif;
-  font-size: 13px;
-  width: 50%;
-  padding: 8px;
-  margin-bottom: 16px;
-}
+// .btn-primary-sm {
+//   background-color: #5D6CF3;
+//   margin-top: 16px;
+//   border-color: #5D6CF3;
+//   font-family: 'Poppins', sans-serif;
+//   font-size: 13px;
+//   width: 50%;
+//   padding: 8px;
+//   margin-bottom: 16px;
+// }
 
 #light {
   color:#999999;
