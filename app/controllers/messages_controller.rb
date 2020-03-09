@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   def index
-    @matches = policy_scope(Match)
+    @matches = policy_scope(Match).where(tourist_id: current_user.id, accepted: true).or(policy_scope(Match).where(local_id: current_user.id, accepted: true))
+    @matches = @matches.order(created_at: :desc)
     @message = Message.new
     @match = Match.find(params[:match_id])
     if @match.local == current_user
