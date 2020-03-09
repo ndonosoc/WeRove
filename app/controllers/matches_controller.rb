@@ -17,6 +17,8 @@
       @matched_user = @match.local
     end
 
+    current_user.mark_match_as_seen(@match)
+
     authorize @match
     @geocode = Geocoder.search([@matched_user.latitude, @matched_user.longitude])
 

@@ -7,14 +7,18 @@
       <% @matches.each do |match| %>
         <%= link_to match_path(match) do %>
           <% if match.tourist == current_user %>
-          <% if match.local.photo.attached? %>
-            <%= cl_image_tag match.local.photo.key, class: 'avatar-3' %>
+            <% if match.local.photo.attached? %>
+              <%= cl_image_tag match.local.photo.key, class: 'avatar-3', style:"#{match.tourist_seen == true ? "" : "border-color: red"}" %>
+            <% else %>
+              <img class="avatar-3" alt="avatar-bordered" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80", <%= style="#{match.tourist_seen == true ? "" : "border-color: red"}" %> />
+            <% end %>
           <% else %>
-            <img class="avatar-3" alt="avatar-bordered" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
-          <% end %>
-          <% else %>
-          <%= cl_image_tag match.tourist.photo.key, class: 'avatar-3' %>
-          <% end %>
+            <% if match.tourist.photo.attached? %>
+              <%= cl_image_tag match.tourist.photo.key, class: 'avatar-3', style:"#{match.local_seen == true ? "" : "border-color: red"}" %>
+            <% else %>
+              <img class="avatar-3" alt="avatar-bordered" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80", <%= style="#{match.local_seen == true ? "" : "border-color: red"}" %> />
+            <% end %>
+            <% end %>
         <% end %>
       <% end %>
     </span>

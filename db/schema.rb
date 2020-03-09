@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_143737) do
+ActiveRecord::Schema.define(version: 2020_03_09_160800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 2020_03_05_143737) do
     t.boolean "accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "tourist_seen", default: false
+    t.boolean "local_seen", default: false
     t.index ["local_id"], name: "index_matches_on_local_id"
     t.index ["tourist_id"], name: "index_matches_on_tourist_id"
   end
@@ -69,6 +71,8 @@ ActiveRecord::Schema.define(version: 2020_03_05_143737) do
     t.bigint "messager_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "read"
+    t.bigint "receiver_id"
     t.index ["match_id"], name: "index_messages_on_match_id"
   end
 

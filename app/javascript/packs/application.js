@@ -14,6 +14,7 @@ import { raterFunction } from "../plugins/ratingspicker";
 import 'select2/dist/css/select2.css';
 import 'flatpickr/dist/flatpickr.min.css';
 
+Notification.requestPermission().then(function (result) {})
 initAutocomplete();
 myRater();
 myRater2();
