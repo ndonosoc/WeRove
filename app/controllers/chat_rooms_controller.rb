@@ -3,4 +3,3 @@ class ChatRoomsController < ApplicationController
     @chat_room = ChatRoom.includes(messages: :user).find(params[:match_id])
   end
 end
->>>>>>> master
