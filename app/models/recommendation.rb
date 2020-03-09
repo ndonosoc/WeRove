@@ -37,4 +37,24 @@ class Recommendation < ApplicationRecord
       icon: "utensils"
     }
   ]
+
+  def self.matcher(interests, location)
+    # create a storage hash
+    @list = []
+
+    # see every user interests'
+    User.near(location, 10).each do |local|
+      local.interests.each do |interest|
+    # count +1 for every interest in common with the tourist's interests
+        if local.interests.include?(interest)
+          local.recommendations.each do |recommendation|
+            @list << recommendation
+          end
+        end
+      end
+    end
+
+    return @list
+
+  end
 end
