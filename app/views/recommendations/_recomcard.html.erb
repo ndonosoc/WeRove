@@ -9,7 +9,7 @@
           <% end %>
         </h1>
         <% if user_signed_in? %>
-          <i class="fas fa-bookmark fa-xs"></i>
+          <%= render 'bookmarktag', recommendation: recommendation %>
         <% end %>
       </div>
       <div class="body">
