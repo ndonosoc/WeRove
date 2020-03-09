@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class= "h-100">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -14,7 +14,7 @@
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
     <%= render 'shared/ios_pwa_links' %>
   </head>
-  <body style="background-color: white">
+  <body class="main-body h-100 d-flex flex-column">
     <% unless current_page?(user_registration_path) %>
     <%= render 'layouts/navbar' %>
     <% end %>
