@@ -31,13 +31,14 @@
   end
 
   def create
-    sleep 10
-
     array = Match.matcher(current_user, params["location"])
 
     if array.empty?
+      array = current_user.tourist_matches.where(accepted: false).limit(5)
+      if array.empty?
       redirect_to root_path, alert: "No matches for that city"
       return
+    end
     end
 
     for i in (0...5) do
