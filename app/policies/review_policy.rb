@@ -6,14 +6,14 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    user
   end
 
   def create?
-    true
+    user
   end
 
   def destroy?
-    true
+    user
   end
 end

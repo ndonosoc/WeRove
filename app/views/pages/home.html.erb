@@ -7,7 +7,7 @@
 
   <form id="home-form" action="matches" method="POST">
     <% if !user_signed_in? %>
-  <label class="label" style="margin-bottom: 0px;">Define your taste:</label>
+  <label class="label" style="margin-bottom: 0px;">Take a sneak peek! Define your taste and see some recommendations:</label>
     <%= render 'layouts/components/tags' %>
     <% end %>
     <div class="Where">
@@ -18,9 +18,11 @@
       <label class="label" for="DateInput">When are you going?</label>
         <input type="text" class="form-control" id="datepicker" placeholder="Select your dates" name="date">
     </div>
+    <% if user_signed_in? %>
     <div class="">
       <input type="submit" value="Find a local" class="btn btn-primary" id="findLocals">
     </div>
+    <% end %>
   </form>
   <input type="submit" value="Recommend me" class="btn btn-outline-primary" id="Recommend" name="recommendations">
 </div>
