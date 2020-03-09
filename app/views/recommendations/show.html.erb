@@ -44,7 +44,9 @@
     </div>
     <% if current_user.local_ids.include?(@recommendation.user.id) %>
     <div class="getintouch">
+      <%= link_to match_path(Match.find_by(local_id: @recommendation.user.id)) do %>
       <button class="btn btn-primary">Get in touch</button>
+      <% end %>
     </div>
     <% end %>
     <% if user_signed_in? && !current_user.rated_recommendations.include?(@recommendation)%>
