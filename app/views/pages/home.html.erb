@@ -1,9 +1,11 @@
 <div class="home-container">
-  <% if user_signed_in? %>
-    <div class="container" style="padding-top: 44px;"></div>
-  <% end %>
+  <% if !user_signed_in? %>
   <h1 class="title">Join the greatest traveler community.</h1>
   <h2 class="subtitle">Find a local friend everywhere.</h2>
+  <% else %>
+  <h1 class="title"><%= current_user.first_name.nil? ? "Welcome again!" : "Hi, #{current_user.first_name}!" %></h1>
+  <h2 class="subtitle">What do you want to do today?</h2>
+  <% end %>
 
   <form id="home-form" action="matches" method="POST">
     <% if !user_signed_in? %>
@@ -22,9 +24,11 @@
     <div class="">
       <input type="submit" value="Find a local" class="btn btn-primary" id="findLocals">
     </div>
-    <% end %>
   </form>
-  <input type="submit" value="Recommend me" class="btn btn-outline-primary" id="Recommend" name="recommendations">
+  <input type="submit" value="Recommend me" class="btn btn-outline-primary" id="Recommend" name="user_recommendations">
+   <% else %>
+  <input type="submit" value="Take a sneak peek!" class="btn btn-outline-primary" id="Recommend" name="recommendations">
+   <% end %>
 </div>
 
 <%= console %>

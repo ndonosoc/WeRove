@@ -10,6 +10,7 @@ import { myRater3 } from "../plugins/rater";
 import { picker } from "../plugins/datepicker";
 import { initSelect2 } from "../plugins/init_select2";
 import { raterFunction } from "../plugins/ratingspicker";
+import { buttonDisabler } from "../plugins/button_disabler";
 
 import 'select2/dist/css/select2.css';
 import 'flatpickr/dist/flatpickr.min.css';
@@ -23,6 +24,7 @@ picker();
 raterFunction();
 tagger();
 initSelect2();
+buttonDisabler();
 
 // $(document).ready(function(){
 //   $(".interest-choices").click(function(){
