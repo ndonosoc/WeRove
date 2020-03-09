@@ -10,17 +10,15 @@ class RecommendationPolicy < ApplicationPolicy
   end
 
   def show?
-    if !user.nil?
-      return true
-    end
+    user
   end
 
   def new?
-    true
+    user
   end
 
   def create?
-    true
+    user
   end
 
   def destroy?

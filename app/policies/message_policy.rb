@@ -6,18 +6,18 @@ class MessagePolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    user
   end
 
   def show?
-    true
+    user
   end
 
   def create?
-    true
+    user
   end
 
   def update?
-    true
+    user
   end
 end
