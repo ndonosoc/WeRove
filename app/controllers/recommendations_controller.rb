@@ -26,6 +26,7 @@ class RecommendationsController < ApplicationController
     end
 
     @list = @list.group_by { |recommendation| recommendation.category }
+    @my_recomendations = current_user.recommendations
 
     # params = {
     #   location: "Recoleta",

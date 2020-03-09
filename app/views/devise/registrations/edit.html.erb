@@ -119,11 +119,13 @@
 
 
 </div>
- <div class="tab-pane fade show active" id="myrecommendations" role="tabpanel" aria-labelledby="myrecommendations-tab">
+ <div class="tab-pane fade show" id="myrecommendations" role="tabpanel" aria-labelledby="myrecommendations-tab">
+  <% current_user.recommendations.each do |recomendation| %>
+    <%= recomendation.title %>
+  <% end -%>
   <%= link_to new_recommendation_path(@recommendation) do %>
       <button class="btn btn-primary">Add a Recommendation!</button>
-      <% end %>
-
+  <% end %>
 </div>
 <div>
 
