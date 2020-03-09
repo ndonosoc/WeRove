@@ -14,5 +14,21 @@ const tagger = () => {
     })
   }
 }
+const reverseTagger = () => {
+  const tags =  document.querySelectorAll(".category-tag-reverse")
 
-export { tagger };
+  if (tags) {
+    tags.forEach(tag => {
+      tag.addEventListener("click", (event) => {
+        tag.classList.toggle("active-tag-reverse");
+        if (tag.children[0].children[1].checked) {
+          tag.children[0].children[1].checked = false;
+        } else {
+          tag.children[0].children[1].checked = true;
+        }
+      })
+    })
+  }
+}
+
+export { tagger, reverseTagger };
