@@ -1,7 +1,7 @@
 <div class="container">
 
-  <h2 class ="title">Edit <%= resource_name.to_s.humanize %></h2>
-  <h4 class ="subtitle-small mb-4">A local in # since # </h4>
+  <h2 class ="title">Edit profile</h2>
+  <h4 class ="subtitle-small mb-4">A local in <%= current_user.city %> since <%= current_user.created_at.strftime("%B #{current_user.created_at.day.ordinalize}") %></h4>
 
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -9,7 +9,7 @@
     <a class="nav-link active" id="interest-tab" data-toggle="tab" href="#interests" role="tab" aria-controls="interests" aria-selected="true">Interests</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Settings</a>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
@@ -35,6 +35,9 @@
 
     <div class="form-inputs mt-4">
       <%= f.input :email, required: true, autofocus: true %>
+      <%= f.input :first_name, required: true, autofocus: true %>
+      <%= f.input :last_name, required: true, autofocus: true %>
+      <%= f.input :city, required: true, autofocus: true, label: "Where are you a local?" %>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
@@ -57,52 +60,26 @@
       <%= f.input :biography, required: false, autofocus: true, placeholder: "Add some information about yourself" %>
       <%= f.input :occupation, required: false, autofocus: true %>
 
-          <!-- Button trigger modal -->
-        <button type="button" class="btn btn-link mt-4" data-toggle="modal" data-target="#exampleModal">
-          Change your password
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Change your password</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <%= f.input :password,
-                    hint: "leave it blank if you don't want to change it",
-                    required: false,
-                    input_html: { autocomplete: "new-password" } %>
-                <%= f.input :password_confirmation,
-                    required: false,
-                    input_html: { autocomplete: "new-password" } %>
-                <%= f.input :current_password,
-                    hint: "we need your current password to confirm your changes",
-                    required: true,
-                    input_html: { autocomplete: "current-password" } %>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
+     <div class="form-groups mb-3">
+            <% if current_user.photo.attached? %>
+            <p>Current Photo:</p>
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.photo.key %>" />
+            <%= f.input :photo, label: "Change photo", as: :file %>
+            <% else %>
+            <%= f.input :photo, as: :file %>
+            <% end %>
           </div>
-        </div>
+
+      <%= f.input :current_password,
+          hint: "we need your current password to confirm your changes",
+          required: true,
+          input_html: { autocomplete: "current-password" } %>
+
 
 
     </div>
-
-    <div>
-      <span id="available">Show available as local</span>
-      <label class="switch">
-        <input name="user[available]" type="hidden" value="<%= current_user.available ? 1 : 0 %>">
-        <input type="checkbox" checked="<%= current_user.available ? 'checked' : '' %>" name="user[available]" id="available-input">
-        <span class="slider round"></span>
-      </label>
+    <div class= "form-actions">
+      <%= f.input :available, label: "Availiable as local" %>
     </div>
 
     <div class="form-actions ">

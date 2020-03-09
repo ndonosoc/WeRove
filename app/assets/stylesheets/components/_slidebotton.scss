@@ -1,0 +1,150 @@
+.custom-control-label::before {
+  height: 100%;
+  width: 100%;
+  left: 4px;
+  bottom: 4px;
+}
+
+.was-validated .custom-control-input:valid:checked ~ .custom-control-label::before, .custom-control-input.is-valid:checked ~ .custom-control-label::before {
+  border-color: $rover-purple;
+  background-color: $rover-purple;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: $rover-purple;
+  background-color: $rover-purple;
+}
+
+
+.custom-switch .custom-control-label::after {
+  top: calc(0.25rem + 2px);
+  left: calc(-2.25rem + 2px);
+  width: calc(1rem - 4px);
+  height: calc(1rem - 4px);
+  background-color: $rover-purple;
+  border-radius: 0.5rem;
+  -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+}
+
+
+.was-validated .custom-control-input:valid ~ .custom-control-label::before, .custom-control-input.is-valid ~ .custom-control-label::before {
+  border-color: $rover-purple;
+}
+
+.was-validated .custom-control-input:valid ~ .custom-control-label, .custom-control-input.is-valid ~ .custom-control-label {
+  color: $rover-purple;
+}
+
+
+/* line 45, node_modules/bootstrap/scss/mixins/_forms.scss */
+.valid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: $rover-purple;
+}
+
+/* line 53, node_modules/bootstrap/scss/mixins/_forms.scss */
+.valid-tooltip {
+  position: absolute;
+  top: 100%;
+  z-index: 5;
+  display: none;
+  max-width: 100%;
+  padding: 0.25rem 0.5rem;
+  margin-top: .1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #212529;
+  background-color: $rover-purple;
+  opacity: 0.9;
+  border-radius: 2px;
+}
+
+
+/* line 33, node_modules/bootstrap/scss/mixins/_forms.scss */
+.was-validated .form-control:valid, .form-control.is-valid {
+  border-color: $rover-purple;
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%231EDD88' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+/* line 87, node_modules/bootstrap/scss/mixins/_forms.scss */
+.was-validated .form-control:valid:focus, .form-control.is-valid:focus {
+  border-color: $rover-purple;
+  box-shadow: 0 0 0 0.2rem rgba(30, 221, 136, 0.25);
+}
+
+/* line 33, node_modules/bootstrap/scss/mixins/_forms.scss */
+.was-validated textarea.form-control:valid, textarea.form-control.is-valid {
+  padding-right: calc(1.5em + 0.75rem);
+  background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
+}
+
+/* line 33, node_modules/bootstrap/scss/mixins/_forms.scss */
+.was-validated .custom-select:valid, .custom-select.is-valid {
+  border-color: #1EDD88;
+  padding-right: calc(0.75em + 2.3125rem);
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%231EDD88' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") #fff no-repeat center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+/* line 113, node_modules/bootstrap/scss/mixins/_forms.scss */
+.was-validated .custom-select:valid:focus, .custom-select.is-valid:focus {
+  border-color: $rover-purple;
+  box-shadow: 0 0 0 0.2rem rgba(30, 221, 136, 0.25);
+}
+
+/* line 122, node_modules/bootstrap/scss/mixins/_forms.scss */
+.was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
+  color: #1EDD88;
+}
+
+
+
+/* line 135, node_modules/bootstrap/scss/mixins/_forms.scss */
+.was-validated .custom-control-input:valid ~ .custom-control-label, .custom-control-input.is-valid ~ .custom-control-label {
+  color: $rover-purple;
+}
+
+/* line 138, node_modules/bootstrap/scss/mixins/_forms.scss */
+.was-validated .custom-control-input:valid ~ .custom-control-label::before, .custom-control-input.is-valid ~ .custom-control-label::before {
+  border-color: $rover-purple;
+}
+
+/* line 144, node_modules/bootstrap/scss/mixins/_forms.scss */
+.was-validated .custom-control-input:valid:checked ~ .custom-control-label::before, .custom-control-input.is-valid:checked ~ .custom-control-label::before {
+  border-color: $rover-purple;
+  background-color: $rover-purple;
+}
+
+/* line 151, node_modules/bootstrap/scss/mixins/_forms.scss */
+.was-validated .custom-control-input:valid:focus ~ .custom-control-label::before, .custom-control-input.is-valid:focus ~ .custom-control-label::before {
+  box-shadow: 0 0 0 0.1rem;
+  box-shadow-color: $rover-purple;
+  opacity: 0.25;
+}
+
+/* line 155, node_modules/bootstrap/scss/mixins/_forms.scss */
+.was-validated .custom-control-input:valid:focus:not(:checked) ~ .custom-control-label::before, .custom-control-input.is-valid:focus:not(:checked) ~ .custom-control-label::before {
+  border-color: $rover-purple;
+}
+
+/* line 165, node_modules/bootstrap/scss/mixins/_forms.scss */
+.was-validated .custom-file-input:valid ~ .custom-file-label, .custom-file-input.is-valid ~ .custom-file-label {
+  border-color: $rover-purple;
+}
+
+/* line 170, node_modules/bootstrap/scss/mixins/_forms.scss */
+.was-validated .custom-file-input:valid:focus ~ .custom-file-label, .custom-file-input.is-valid:focus ~ .custom-file-label {
+  border-color: $rover-purple;
+  box-shadow: 0 0 0 0.2rem ;
+  box-shadow-color: $rover-purple;
+}
