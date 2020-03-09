@@ -1,54 +1,47 @@
-<div class="container mx-auto" style="width: 100%;">
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <div class="chat-header">
-        <div class="chat-avatar" style="display: flex; justify-content: space-between;">
-        <h3 class="pr-2"><%= @matched_user.first_name %></h3>
-          <% if @matched_user.photo.attached? %>
-          <%= cl_image_tag @matched_user.photo.key, class: "avatar-bordered my-2" %>
-          <% else %>
-          <img src="" alt="" class="avatar-bordered my-2">
-          <% end %>
-        </div>
-        <div class="messages">
-          <% @match.messages.each do |message| %>
-            <%= render "message", message: message %>
-          <% end %>
-        </div>
-        <div id="create-message">
-          <%= simple_form_for [ @match, Message.new ], remote: true do |f| %>
-            <%= f.input :content, label: false %>
-          <% end %>
-        </div>
-      </div>
-    </div>
+<!-- Chat Box-->
+<div class="d-flex flex-column min-vh-100">
+  <h5 class="p-3 flex-grow-0" style="font-size: 16px; box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);">
+    <%= @matched_user.first_name %> <%= @matched_user.last_name %>
+    <%= @matched_user.email %>
+  </h5>
+  <div id="chat-messages" class="messages flex-grow-1">
+    <% @match.messages.each do |message| %>
+    <%= render "message", message: message %>
+    <% end %>
+  </div>
+  <div class="chat-input flex-grow-0 d-flex">
+    <%= simple_form_for [ @match, Message.new ], remote: true do |f| %>
+    <%= f.input :content, label: false %>
+    <%= f.submit class:"d-none" %>
+    <% end %>
+    <button id="button-addon2" type="submit" class="btn btn-airplane flex-grow-0"> <i class="fa fa-paper-plane"></i></button>
   </div>
 </div>
-</div>
-  <script>
 
-    function scrollLastMessageIntoView() {
-      const messages = document.querySelectorAll('.message');
-      const lastMessage = messages[messages.length - 1];
-
-      if (lastMessage !== undefined) {
-        lastMessage.scrollIntoView();
-      }
+<script>
+  function scrollLastMessageIntoView() {
+    const messages = document.querySelectorAll('.message');
+    const lastMessage = messages[messages.length - 1];
+    if (lastMessage !== undefined) {
+      lastMessage.scrollIntoView();
     }
-    scrollLastMessageIntoView();
-
-    setTimeout(function(){
-      App['match_<%= @match.id %>'] = App.cable.subscriptions.create(
-        { channel: 'MatchesChannel', match_id: <%= @match.id %> },
-        {
-          received: (data) => {
-            if (data.current_user_id !== <%= current_user.id %>) {
-              const messagesContainer = document.querySelector('.messages');
-              messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-              scrollLastMessageIntoView();
-            }
+    document.getElementById("message_content").focus()
+  }
+  scrollLastMessageIntoView();
+  setTimeout(function(){
+    App['match_<%= @match.id %>'] = App.cable.subscriptions.create(
+      { channel: 'MatchesChannel', match_id: <%= @match.id %> },
+      {
+        received: (data) => {
+          if (data.current_user_id !== <%= current_user.id %>) {
+            const messagesContainer = document.querySelector('.messages');
+            messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+            console.log(data.message_partial)
+            scrollLastMessageIntoView();
+            document.getElementById("message_content").focus()
           }
         }
+      }
       )
-    }, 2000);
-  </script>
+  }, 2000);
+</script>

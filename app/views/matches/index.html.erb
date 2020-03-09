@@ -3,9 +3,13 @@
     My Rovers
   </div>
   <div class="avatar-profiles">
-    <span class="">
+    <span class="d-flex">
       <% @matches.each do |match| %>
-      <%= render 'matchesprofiles', match: match %>
+      <div class="align-items-center d-flex flex-column mr-2 match-avatar">
+        <%= render 'matchesprofiles', match: match %>
+        <img src="https://www.countryflags.io/<%= match.local.country_flag %>/flat/32.png" class="flag">
+        <%= match.local.first_name %>
+      </div>
       <% end %>
     </span>
   </div>
@@ -14,34 +18,21 @@
       Messages
     </div>
   </div>
+  <span class="">
+      <% @matches.each do |match| %>
+      <% next if match.messages.blank? %>
+      <div class="one-message">
+        <%= render 'matchesprofiles', match: match %>
+    <%= link_to match_messages_path(match) do %>
+        <div class="">
+          <p style="padding-left: 12px; margin-bottom: 2px;"><strong><%= match.local.first_name %></strong></p>
+          <p style="padding-top: 8px; padding-left: 12px; color: grey; margin-bottom: 2px;"> <%= truncate(match.messages.last&.content, length: 32, omission: '...') %> </p>
+        </div>
+      <% end %>
+      </div>
+      <% end %>
+    </span>
     <span class="">
-      <div class="one-message">
-        <%= link_to root_path do %>
-          <img class="avatar-3" alt="avatar-bordered" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
-        <% end %>
-        <div class="">
-          <p style="padding-left: 12px; margin-bottom: 2px;"><strong>Ani</strong></p>
-          <p style="padding-top: 8px; padding-left: 12px; color: grey; margin-bottom: 2px;">Hello Analida, wanna go to..</p>
-        </div>
-      </div>
-       <div class="one-message">
-        <%= link_to root_path do %>
-          <img class="avatar-3" alt="avatar-bordered" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
-        <% end %>
-        <div class="">
-          <p style="padding-left: 12px; margin-bottom: 2px;"><strong>Ani</strong></p>
-          <p style="padding-top: 8px; padding-left: 12px; color: grey; margin-bottom: 2px;">Hello Analida, wanna go to..</p>
-        </div>
-      </div>
-      <div class="one-message">
-        <%= link_to root_path do %>
-          <img class="avatar-3" alt="avatar-bordered" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
-        <% end %>
-        <div class="">
-          <p style="padding-left: 12px; margin-bottom: 2px;"><strong>Ani</strong></p>
-          <p style="padding-top: 8px; padding-left: 12px; color: grey; margin-bottom: 2px;">Hello Analida, wanna go to..</p>
-        </div>
-      </div>
       <div class="one-message">
         <%= link_to root_path do %>
           <img class="avatar-3" alt="avatar-bordered" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
