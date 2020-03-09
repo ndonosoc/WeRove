@@ -43,7 +43,7 @@ class RecommendationsController < ApplicationController
     authorize @recommendation
       if @recommendation.destroy
       flash[:notice] = "Deleted from recommendations"
-      redirect_back(fallback_location: root_path)
+      redirect_to root_path
       else
       flash[:notice] = "Couldn't delete recommendation"
       redirect_back(fallback_location: root_path)
@@ -65,20 +65,18 @@ class RecommendationsController < ApplicationController
       redirect_to recommendation_path(@recommendation)
     else
       render 'new'
-      raise
     end
   end
 
   def show
     @recommendation = Recommendation.find(params[:id])
     authorize @recommendation
-    @bookmark = Bookmark.new
-    authorize @bookmark
+    console
   end
 
   private
 
   def recommendation_params
-    # params.require(:recommendation).permit(:title, :description, :location, :price_range, :reservation, :duration, :user_id)
+    params.require(:recommendation).permit(:title, :description, :location, :price_range, :reservation, :duration, :user_id)
   end
 end

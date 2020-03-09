@@ -1,5 +1,6 @@
 <% @matches.each do |match| %>
   <div class="wrapper-match my-3">
+<h5 class="name" style="padding: 8px; color: #5D6CF3"><%= match.local.first_name %></h5>
     <div class="match-photo" style="display: flex; justify-content: space-between;">
       <%= cl_image_tag match.local.photo.key, alt: "avatar", class: "avatar-2" %>
        <p class="match-info">
@@ -16,9 +17,8 @@
          Nightlife
        </p>
     </div>
-    <div class="bio-match"><%= match.local.biography %></div>
+    <div class="bio-match pt-3"> <%= truncate(match.local.biography, length: 120, omission: '...') %> </div>
     <div class="">
-      <%= link_to "See More +", "", class: "underlined-link" %>
       <%= simple_form_for(match, url: matches_path) do |f| %>
         <%= f.input :accepted, as: :hidden, input_html: { value: true } %>
         <%= f.input :id, as: :hidden, input_html: { value: match.id } %>

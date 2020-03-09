@@ -16,7 +16,7 @@ class BookmarksController < ApplicationController
     authorize @bookmark
 
     @bookmark.user = current_user
-    @bookmark.recommendation_id = bookmark_params["id"].to_i
+    @bookmark.recommendation_id = params[:recommendation_id].to_i
 
 
     if @bookmark.save
@@ -30,7 +30,7 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    @bookmark = Bookmark.find(params["id"].to_i)
+    @bookmark = Bookmark.find(params[:id])
     authorize @bookmark
     if @bookmark.destroy
       flash[:notice] = "Deleted from bookmarks"
@@ -42,9 +42,4 @@ class BookmarksController < ApplicationController
     end
   end
 
-  private
-
-  def bookmark_params
-    params.require(:bookmark).permit(:id)
-  end
 end
