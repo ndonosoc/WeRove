@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   def index
-    @matches = policy_scope(Match)
+    @matches = policy_scope(Match).where(tourist_id: current_user.id, accepted: true).or(policy_scope(Match).where(local_id: current_user.id, accepted: true))
+    @matches = @matches.order(created_at: :desc)
     @message = Message.new
     @match = Match.find(params[:match_id])
     if @match.local == current_user
@@ -10,6 +11,7 @@ class MessagesController < ApplicationController
     end
     authorize @match
     authorize @message
+    current_user.mark_messages_as_read(@match)
   end
 
   def create
@@ -17,6 +19,13 @@ class MessagesController < ApplicationController
     @match = Match.find(params[:match_id])
     @message.match = @match
     @message.messager_id = current_user.id
+
+    if @match.local == current_user
+      @message.receiver_id = @match.tourist.id
+    else
+      @message.receiver_id = @match.local.id
+    end
+
     authorize(@message)
     if @message.save!
       respond_to do |format|

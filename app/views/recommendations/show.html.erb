@@ -8,24 +8,7 @@
     </div>
     <div class="title">
       <h1><%= @recommendation.title %></h1>
-        <% if @recommendation.user == current_user %>
-          <%= link_to recommendation_path, method: :delete do %>
-            <i class="far fa-trash-alt fa-xs" style="margin-right: 8px; color: #5D6CF3"></i>
-          <% end %>
-        <% end -%>
-        <% if !current_user.bookmarkedrecommendation_ids.include?(@recommendation.id) %>
-
-          <%= link_to (recommendation_bookmarks_path(@recommendation)), method: :post do %>
-            <i class="far fa-bookmark fa-xs" style="margin-right: 8px; color: #5D6CF3"></i>
-          <% end %>
-
-        <% else %>
-
-          <%= link_to bookmark_path(@recommendation.bookmarks.find_by_user_id(current_user.id)), method: :delete do %>
-            <i class="fas fa-bookmark fa-xs" style="margin-right: 8px; color: #5D6CF3"></i>
-          <% end %>
-
-        <% end %>
+      <%= render 'bookmarktag', recommendation: @recommendation %>
     </div>
     <div class="rating mb-3">
       <i class="fas fa-star fa-xs"></i>

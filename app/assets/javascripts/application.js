@@ -1,5 +1,6 @@
 //= require rails-ujs
 //= require_tree .
+//= require ./cable.js
 
 
 // While one is hidden, the other one is visible.... & viceversa

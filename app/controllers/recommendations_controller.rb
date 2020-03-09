@@ -1,8 +1,5 @@
 class RecommendationsController < ApplicationController
-  skip_before_action :authenticate_user!
-  skip_before_action :verify_authenticity_token
-  skip_after_action :verify_authorized
-  before_action :skip_pundit?
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     # Index should match 5 recommendations according to Location and InterestsCategory picked. How to play interest?
@@ -16,7 +13,7 @@ class RecommendationsController < ApplicationController
     if params[:interests].present?
       @list = Recommendation.matcher(params[:interests][0], params[:location])
     else
-      Match.matcher(current_user, params[:location]).each do |match|
+      Match.recommendations_matcher(current_user, params[:location]).each do |match|
         if !match[0].recommendations.empty?
           match[0].recommendations.each do |recommendation|
           @list << recommendation
@@ -72,7 +69,6 @@ class RecommendationsController < ApplicationController
   def show
     @recommendation = Recommendation.find(params[:id])
     authorize @recommendation
-    console
   end
 
   private

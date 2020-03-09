@@ -31,4 +31,29 @@ class Match < ApplicationRecord
     list[0...5]
   end
 
+  def self.recommendations_matcher(tourist, location)
+    # create a storage hash
+    hash = {}
+
+    # see every user interests'
+    User.near(location, 10).each do |local|
+      score = 0
+      if local != tourist
+        local.interests.each do |interest|
+    # count +1 for every interest in common with the tourist's interests
+          if tourist.interests.include?(interest)
+            score += 1
+          end
+        end
+    # store in a hash local: score
+        hash[local] = score.to_i
+      end
+    end
+    # order users by matching score
+    list = hash.sort_by{ |k,v| -v }
+
+    # select 5 with highest scores
+    list[0...5]
+  end
+
 end

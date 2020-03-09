@@ -6,14 +6,14 @@ class RatingPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    user
   end
 
   def new?
-    true
+    user
   end
 
   def create?
-    true
+    user
   end
 end

@@ -10,6 +10,7 @@ require 'faker'
 require "open-uri"
 require 'json'
 
+Bookmark.delete_all
 Match.delete_all
 Recommendation.delete_all
 Review.delete_all

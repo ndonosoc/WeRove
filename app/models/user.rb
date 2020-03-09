@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :ratings, foreign_key: "rated_id"
   has_many :reviews
   has_many :rated_recommendations, through: :reviews, source: "recommendation"
+  has_many :messages, class_name: "Message", foreign_key: "receiver_id"
 
   has_one_attached :photo
 
@@ -28,6 +29,20 @@ class User < ApplicationRecord
     end
     self.score = sum.fdiv(ratings.length).round(2)
     self.save
+  end
+
+  def mark_messages_as_read(match)
+    self.messages.where(read: nil, match: match.id).each do |message|
+      message.update(read: true)
+    end
+  end
+
+  def mark_match_as_seen(match)
+    if match.local == self
+      match.update(local_seen: true)
+    elsif match.tourist == self
+      match.update(tourist_seen: true)
+    end
   end
 
   # validates :first_name, presence: true, uniqueness: true

@@ -1,1 +1,12 @@
+<div class="container mb-3">
+  <div class="title-matches-index">
+    My Rovers
+  </div>
+  <div class="avatar-profiles">
+    <span class="">
+      <% @matches.each do |match| %>
+        <%= render 'matches/matchesprofiles', match: match %>
+      <% end %>
+    </span>
+  </div>
 <%= render "matches/chat" %>

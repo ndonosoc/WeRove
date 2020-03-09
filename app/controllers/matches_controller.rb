@@ -1,8 +1,4 @@
  class MatchesController < ApplicationController
-  skip_before_action :authenticate_user!
-  skip_before_action :verify_authenticity_token
-  skip_after_action :verify_authorized
-  before_action :skip_pundit?
 
   def index
     @matches = policy_scope(Match).where(tourist_id: current_user.id, accepted: true).or(policy_scope(Match).where(local_id: current_user.id, accepted: true))
@@ -16,6 +12,8 @@
     else
       @matched_user = @match.local
     end
+
+    current_user.mark_match_as_seen(@match)
 
     authorize @match
     @geocode = Geocoder.search([@matched_user.latitude, @matched_user.longitude])
