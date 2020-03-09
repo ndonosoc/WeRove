@@ -5,16 +5,20 @@
     <%= @matched_user.email %>
   </h5>
   <div id="chat-messages" class="messages flex-grow-1">
-    <% @match.messages.each do |message| %>
-    <%= render "message", message: message %>
-    <% end %>
+    <div class="container-fluid">
+      <% @match.messages.each do |message| %>
+      <%= render "message", message: message %>
+      <% end %>
+    </div>
   </div>
   <div class="chat-input flex-grow-0 d-flex">
     <%= simple_form_for [ @match, Message.new ], remote: true do |f| %>
     <%= f.input :content, label: false %>
-    <%= f.submit class:"d-none" %>
+    <%= button_tag(type: 'submit', class: "btn btn-primary my-0 px-2") do %>
+      <i class="fa fa-paper-plane">
     <% end %>
-    <button id="button-addon2" type="submit" class="btn btn-airplane flex-grow-0"> <i class="fa fa-paper-plane"></i></button>
+    <% end %>
+    </div>
   </div>
 </div>
 
@@ -36,7 +40,6 @@
           if (data.current_user_id !== <%= current_user.id %>) {
             const messagesContainer = document.querySelector('.messages');
             messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-            console.log(data.message_partial)
             scrollLastMessageIntoView();
             document.getElementById("message_content").focus()
           }

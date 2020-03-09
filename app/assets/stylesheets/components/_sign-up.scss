@@ -24,4 +24,84 @@
   color: dark-grey;
 }
 
+.setuplater {
+  color: $rover-purple;
+  font-size: 18px;
+  font-weight: lighter;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+}
 
+
+.wrapper-interests {
+  background: white;
+  width: 90%;
+  margin: 0 auto;
+  padding: 24px 24px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0px 3px 3px 0px rgba(50, 50, 50, 0.4);
+}
+
+.interests-container {
+  background-color: #5D6CF3;
+  background-size: cover;
+  padding: 20px;
+}
+
+
+.category-tag-reverse {
+  background-color: white;
+  border: 2px solid $rover-purple;
+  border-radius: 35px;
+  padding: 0px 14px;
+  font-size: 16px;
+  color: $rover-purple;
+  display: inline-block;
+  margin: 0px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  i {
+    padding-right: 5px;
+  }
+}
+
+
+.interest-tag-reverse {
+  background-color: white;
+  border: 2px solid $rover-purple;
+  border-radius: 35px;
+  padding: 0px 14px;
+  font-size: 16px;
+  color: $rover-purple;
+  display: inline-block;
+  margin: 0px;
+  cursor: pointer;
+  i {
+    padding-right: 5px;
+  }
+}
+
+
+.active-tag-reverse {
+  background-color: $rover-purple;
+  padding: 0px;
+  display: inline-block;
+  color: white;
+  div {
+    padding: 0px 14px;
+    border: 2px solid white;
+    border-radius: 35px;
+  }
+}
+
+.text-purple {
+  color: $rover-purple
+}
+
+#pluspurple {
+  line-height: 2.5;
+  padding-left: 4px;
+  color: $rover-purple;
+
+}

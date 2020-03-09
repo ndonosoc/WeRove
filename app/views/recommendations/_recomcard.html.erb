@@ -1,23 +1,19 @@
-   <div>
-
-    <div class="rcard">
-      <%= cl_image_tag recommendation.photo.key, class: "img" %>
-      <div class="title">
-        <h1>
-          <%= link_to recommendation_path(recommendation) do %>
-          <%= recommendation.title %>
-          <% end %>
-        </h1>
-        <% if user_signed_in? %>
-          <%= render 'bookmarktag', recommendation: recommendation %>
+  <div class="recomcard-style">
+    <%= cl_image_tag recommendation.photo.key, class: "img" %>
+    <div class="title">
+      <h1>
+        <%= link_to recommendation_path(recommendation) do %>
+        <%= recommendation.title %>
         <% end %>
-      </div>
-      <div class="body">
-        <p><%= recommendation.description %></p>
-      </div>
-      <div class="footer">
-        <i class="fas fa-map-marker-alt fa-s"></i><p><%= recommendation.location %></p>
-      </div>
+      </h1>
+      <% if user_signed_in? %>
+      <%= render 'recommendations/bookmarktag', recommendation: recommendation %>
+      <% end %>
     </div>
-
+    <div class="body">
+      <p><%= recommendation.description.truncate(100) %></p>
+    </div>
+    <div class="footer">
+      <i class="fas fa-map-marker-alt fa-s"></i><p><%= recommendation.location %></p>
+    </div>
   </div>

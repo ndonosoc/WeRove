@@ -6,6 +6,7 @@ class Match < ApplicationRecord
   validates :local_id, presence: true
   validates :tourist_id, presence: true
 
+
   def self.matcher(tourist, location)
     # create a storage hash
     hash = {}

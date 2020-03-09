@@ -33,6 +33,21 @@
   outline: none;
 }
 
+.message {
+  display: flex;
+  margin-bottom: 10px;
+  &.right {
+    flex-direction: row-reverse;
+    .message-content {
+      background-color: #F2F9FC;
+    }
+  }
+}
+
+.bg-primary {
+    background-color: #5D6CF3 !important;
+}
+
 // ::-webkit-scrollbar {
 //   width: 5px;
 // }
@@ -63,9 +78,7 @@
 //   border-radius: 0.5rem;
 // }
 
-// .bg-primary {
-//     background-color: #5D6CF3 !important;
-// }
+
 
 // input::placeholder {
 //   font-size: 0.9rem;

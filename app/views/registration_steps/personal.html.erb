@@ -1,0 +1,36 @@
+<div class="interests-container">
+  <div class="wrapper-interests">
+    <p class="logo">
+      <%= image_tag "WR.png", alt: "", size: "50", class: "logo d-inline-block pt-3" %>
+    </p>
+    <h2 class="subtitle" style="font-size: 24px; color: black;">Personalize your profile</h2>
+
+    <%= simple_form_for(@user, url: registration_path(@user), html: { method: :put }) do |f| %>
+
+    <%= f.error_notification %>
+    <div class="session-form">
+      <% @groups.each do |category, interests| %>
+        <h2 class="subtitle-small"><%= category %></h2>
+        <div>
+        <% interests.each do |interest| %>
+          <div class="category-tag-reverse <%= current_user.interest_ids.include?(interest.id) ? 'active-tag-reverse' : '' %>">
+            <div>
+              <span><i class="fa fa-plus" id="plus"></i><%= interest.title %></span>
+              <input type="checkbox" class="d-none" value="<%= interest.id %>" name="user[interest_ids][]" id="post_category_ids_<%= interest.id %>" <%= current_user.interest_ids.include?(interest.id) ? "checked" : "" %>>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="form-actions" style="padding-top: 0px;">
+      <%= f.button :submit, "Add interests", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+    <button class="btn btn-outline-primary sign-up-fb">
+      <%= link_to 'Skip and customize interests later', next_wizard_path, class: "setuplater" %>
+    </button>
+  </div>
+</div>
+
+

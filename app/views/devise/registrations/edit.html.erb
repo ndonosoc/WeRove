@@ -47,11 +47,11 @@
       <% end %>
 
       <%= f.input :languages,
-                    required: false,
-                    autofocus: true,
-                    :collection => %w[Spanish Italian German English French Portuguese Greek Russian Polish Rumanian Danish],
-                    input_html: { multiple: true },
-                    prompt: "-- Select languages --" %>
+                  required: false,
+                  autofocus: true,
+                  :collection => %w[Spanish Italian German English French Portuguese Greek Russian Polish Rumanian Danish],
+                  input_html: { multiple: true },
+                  prompt: "-- Select languages --" %>
 
       <%= f.input :birthday,
                   as: :date,
