@@ -31,6 +31,8 @@
   end
 
   def create
+    sleep 10
+
     array = Match.matcher(current_user, params["location"])
 
     if array.empty?
