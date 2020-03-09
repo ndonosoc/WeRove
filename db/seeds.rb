@@ -12,8 +12,8 @@ require 'json'
 
 Bookmark.delete_all
 Match.delete_all
-Recommendation.delete_all
 Review.delete_all
+Recommendation.delete_all
 Rating.delete_all
 UserInterest.delete_all
 Interest.delete_all

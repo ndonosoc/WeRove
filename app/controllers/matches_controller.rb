@@ -1,4 +1,7 @@
  class MatchesController < ApplicationController
+  before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
+  skip_after_action :verify_authorized
 
   def index
     @matches = policy_scope(Match).where(tourist_id: current_user.id, accepted: true).or(policy_scope(Match).where(local_id: current_user.id, accepted: true))

@@ -1,5 +1,7 @@
 class RecommendationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :verify_authenticity_token
+  skip_after_action :verify_authorized
 
   def index
     # Index should match 5 recommendations according to Location and InterestsCategory picked. How to play interest?

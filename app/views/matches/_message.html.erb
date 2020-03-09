@@ -1,3 +1,3 @@
-<div class="message <%= "right" if current_user.id == message.messager_id %>">
+<div class="message <%= current_user.id == message.messager_id ? "right" : "" %>">
   <div class="message-content"><%= message.content %></div>
 </div>
