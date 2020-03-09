@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
   <%= render 'recommendations/logged_in', list: @list %>
 <% else %>
-  <%= render 'recommendations/not_logged_in' %>
+  <%= render 'recommendations/not_logged_in', list: @list %>
 <% end %>
 
+<%= console %>

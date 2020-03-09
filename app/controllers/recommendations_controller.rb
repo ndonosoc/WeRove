@@ -13,10 +13,14 @@ class RecommendationsController < ApplicationController
     @bookmark = Bookmark.new
     @list = []
 
-    Match.matcher(current_user, params[:location]).each do |match|
-      if !match[0].recommendations.empty?
-        match[0].recommendations.each do |recommendation|
-        @list << recommendation
+    if params[:interests].present?
+      @list = Recommendation.matcher(params[:interests][0], params[:location])
+    else
+      Match.matcher(current_user, params[:location]).each do |match|
+        if !match[0].recommendations.empty?
+          match[0].recommendations.each do |recommendation|
+          @list << recommendation
+          end
         end
       end
     end
