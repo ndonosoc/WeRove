@@ -1,4 +1,8 @@
 class BookmarksController < ApplicationController
+  before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
+  skip_after_action :verify_authorized
+
   def index
     #to be done after the bookmark save in recommendation is working
     @bookmarks = policy_scope(Bookmark).where(user_id: current_user.id).group_by(&:category)

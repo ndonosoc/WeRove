@@ -1,6 +1,8 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_recommendation
+  skip_before_action :verify_authenticity_token
+  skip_after_action :verify_authorized
 
   def index
     @reviews = policy_scope(Review).order(created_at: :desc)

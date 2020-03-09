@@ -1,4 +1,7 @@
 class RatingsController < ApplicationController
+    before_action :authenticate_user!
+    skip_before_action :verify_authenticity_token
+    skip_after_action :verify_authorized
 
   def index
     @ratings = policy_scope(Rating)
