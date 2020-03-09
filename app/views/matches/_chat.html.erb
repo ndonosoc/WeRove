@@ -16,8 +16,11 @@
           <% end %>
         </div>
         <div id="create-message">
-          <%= simple_form_for [ @match, Message.new ], remote: true do |f| %>
+          <%= simple_form_for [ @match, Message.new ], remote: true, html: { class:"d-flex" } do |f| %>
             <%= f.input :content, label: false %>
+            <%= button_tag(type: 'submit', class: "btn btn-primary my-0 ml-2 mr-0 px-2", style: "width:30px;") do %>
+              <i class="fas fa-share"></i>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -34,6 +37,7 @@
       if (lastMessage !== undefined) {
         lastMessage.scrollIntoView();
       }
+              document.getElementById("message_content").focus()
     }
     scrollLastMessageIntoView();
 
@@ -46,6 +50,7 @@
               const messagesContainer = document.querySelector('.messages');
               messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
               scrollLastMessageIntoView();
+              document.getElementById("message_content").focus()
             }
           }
         }
