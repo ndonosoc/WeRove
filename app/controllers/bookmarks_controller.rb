@@ -5,9 +5,9 @@ class BookmarksController < ApplicationController
 
   def index
     #to be done after the bookmark save in recommendation is working
-    @bookmarks = policy_scope(Bookmark).where(user_id: current_user.id).group_by(&:category)
-    authorize @bookmark
-    raise
+    @bookmarks = policy_scope(Bookmark).where(user_id: current_user.id)
+    authorize @bookmarks
+    @bookmarks = @bookmarks.map { |bookmark| bookmark.recommendation }.group_by{ |recommendation| recommendation.category }
   end
 
   def create
