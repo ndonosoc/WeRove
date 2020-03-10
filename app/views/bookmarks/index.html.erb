@@ -1,1 +1,10 @@
-  <%= render 'recommendations/logged_in', list: @bookmarks %>
+<ul class="nav nav-tabs mx-3 mt-3" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="recommendations-tab" data-toggle="tab" href="#recommendations" role="tab" aria-controls="recommendations" aria-selected="false">
+      <strong>Your bookmarks</strong>
+    </a>
+  </li>
+</ul>
+
+<%= render "recommendations/recommendation-list", list: @bookmarks %>
+
