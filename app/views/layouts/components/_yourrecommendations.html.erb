@@ -1,0 +1,14 @@
+<div class="interests">
+
+  <div class="card">
+    <h5 class="name" style="color: #5D6CF3">Your recommendations</h5>
+
+      <% current_user.recommendations.each do |recomendation| %>
+          <%= recomendation.title %>
+        <% end -%>
+        <%= link_to new_recommendation_path(@recommendation) do %>
+            <button class="btn btn-primary">Add a Recommendation!</button>
+        <% end %>
+
+  </div>
+</div>
