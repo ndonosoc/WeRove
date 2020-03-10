@@ -9,7 +9,7 @@
 
   <form id="home-form" action="matches" method="POST">
     <% if !user_signed_in? %>
-  <label class="label" style="margin-bottom: 0px;">Take a sneak peek! Define your taste and see some recommendations:</label>
+  <label class="label" style="margin-bottom: 0px;"> For more accurate results, tell us which word fits you better:</label>
     <%= render 'layouts/components/tags' %>
     <% end %>
     <div class="Where">
@@ -27,7 +27,8 @@
   </form>
   <input type="submit" value="Recommend me" class="btn btn-outline-primary" id="Recommend" name="user_recommendations">
    <% else %>
-  <input type="submit" value="Take a sneak peek!" class="btn btn-outline-primary" id="Recommend" name="recommendations">
+   <input type="submit" value="Find a local" class="btn btn-primary" id="findLocals">
+  <input type="submit" value="Recommend me" class="btn btn-outline-primary" id="Recommend" name="recommendations">
    <% end %>
 </div>
 <%= render 'loader' %>

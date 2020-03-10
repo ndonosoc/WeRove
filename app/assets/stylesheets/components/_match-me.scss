@@ -23,11 +23,11 @@
 
 .title-matches-index {
   color: #5D6CF3;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   padding-top: 16px;
   padding-bottom: 12px;
-  font-style: $headers-font;
+  font-family: 'Poppins', sans-serif;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -38,6 +38,7 @@
     overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+  font-family: 'Poppins', sans-serif;
 }
 
 .one-message {
@@ -50,6 +51,4 @@
   z-index: 1;
 }
 
-.avatar-flag-each {
-  display: flex;
-}
+
