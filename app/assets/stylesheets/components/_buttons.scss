@@ -21,7 +21,15 @@
   font-size: 13px;
   width: 100%;
   padding: 8px;
+  opacity: 0.9;
+  &:hover {
+    opacity: 1;
+    background-color: #5D6CF3;
+    border-color: #5D6CF3;
+  }
 }
+
+
 
 .btn-outline-primary {
   margin-top: 16px;
@@ -31,7 +39,10 @@
   font-size: 13px;
   width: 100%;
   padding: 8px;
+  opacity: 0.9;
 }
+
+
 
 .underlined-link {
   color: #5D6CF3;
@@ -43,5 +54,11 @@
 .sign-up-fb {
   color: grey;
   border-color: grey;
+}
+
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: $rover-purple;
+  border-color: $rover-purple;
 }
 
