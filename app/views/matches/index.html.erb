@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="title-matches-index mt-3">
+  <div class="title-matches-index2 mt-3">
     My Rovers
   </div>
   <div class="avatar-profiles">
@@ -14,7 +14,7 @@
     </span>
   </div>
   <div class="messages-avatars mt-3">
-    <div class="title-matches-index">
+    <div class="title-matches-index2">
       Messages
     </div>
   </div>
@@ -25,22 +25,11 @@
         <%= render 'matchesprofiles', match: match %>
         <%= link_to match_messages_path(match), class:"flex-grow-1 text-decoration-none" do %>
           <div class="">
-            <p style="padding-left: 12px; margin-bottom: 2px;"><strong><%= match.local.first_name %></strong></p>
-            <p style="padding-top: 8px; padding-left: 12px; color: grey; margin-bottom: 2px;"> <%= truncate(match.messages.last&.content, length: 32, omission: '...') %> </p>
+            <p style="padding-left: 12px; margin-bottom: 2px; font-size: 16px; color: #495057d9; font-family: 'Poppins';"><strong><%= match.local.first_name %></strong></p>
+            <p style="padding-top: 8px; padding-left: 12px; color: grey; margin-bottom: 2px; font-size: 14px;"> <%= truncate(match.messages.last&.content, length: 32, omission: '...') %> </p>
           </div>
         <% end %>
       </div>
       <% end %>
-    </span>
-    <span class="">
-      <div class="one-message">
-        <%= link_to root_path do %>
-          <img class="avatar-3" alt="avatar-bordered" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" />
-        <% end %>
-        <div class="">
-          <p style="padding-left: 12px; margin-bottom: 2px;"><strong>Ani</strong></p>
-          <p style="padding-top: 8px; padding-left: 12px; color: grey; margin-bottom: 2px;">Hello Analida, wanna go to..</p>
-        </div>
-      </div>
     </span>
 </div>
