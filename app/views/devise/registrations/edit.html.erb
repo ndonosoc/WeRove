@@ -4,111 +4,29 @@
   <h4 class ="subtitle-small mb-4">A local in <%= current_user.city %> since <%= current_user.created_at.strftime("%B #{current_user.created_at.day.ordinalize}") %></h4>
 
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="interest-tab" data-toggle="tab" href="#interests" role="tab" aria-controls="interests" aria-selected="true">Interests</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Settings</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="myrecommendations-tab" data-toggle="tab" href="#myrecommendations" role="tab" aria-controls="myrecommendations" aria-selected="false">Recommendations</a>
-  </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="interests" role="tabpanel" aria-labelledby="interests-tab">
-
-<div>
-  <% current_user.interests.group_by(&:parent_id).values.each do |group| %>
-  <h1 class="subtitle-small my-4"><%= group.first.parent.title %></h1>
-    <% group.each do |interest| %>
-    <div class="interest-tag xmt-4">
-      <label id="interestlabel" for=""><%= interest.title %></label>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="interest-tab" data-toggle="tab" href="#interests" role="tab" aria-controls="interests" aria-selected="true">Interests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Settings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="myrecommendations-tab" data-toggle="tab" href="#myrecommendations" role="tab" aria-controls="myrecommendations" aria-selected="false">Recommendations</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="interests" role="tabpanel" aria-labelledby="interests-tab">
+        <%= render 'layouts/components/interests' %>
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <%= render 'layouts/components/settings' %>
+      </div>
+      <div class="tab-pane fade show" id="myrecommendations" role="tabpanel" aria-labelledby="myrecommendations-tab">
+        <%= render 'layouts/components/yourrecommendations' %>
+      </div>
     </div>
-  <% end %>
-  <% end %>
-</div>
-
-  <%= render 'layouts/components/tagsmodal' %>
-
-  </div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "test" }) do |f| %>
-    <%= f.error_notification %>
-
-    <div class="form-inputs mt-4">
-      <%= f.input :email, required: true, autofocus: true %>
-      <%= f.input :first_name, required: true, autofocus: true %>
-      <%= f.input :last_name, required: true, autofocus: true %>
-      <%= f.input :city, required: true, autofocus: true, label: "Where are you a local?" %>
-
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-      <% end %>
-
-      <%= f.input :languages,
-                  required: false,
-                  autofocus: true,
-                  :collection => %w[Spanish Italian German English French Portuguese Greek Russian Polish Rumanian Danish],
-                  input_html: { multiple: true },
-                  prompt: "-- Select languages --" %>
-
-      <%= f.input :birthday,
-                  as: :date,
-                  start_year: Date.today.year - 90,
-                  end_year: Date.today.year - 12, discard_day: false,
-                  order: [:day, :month, :year],
-                  required: false %>
-
-      <%= f.input :biography, required: false, autofocus: true, placeholder: "Add some information about yourself" %>
-      <%= f.input :occupation, required: false, autofocus: true %>
-
-     <div class="form-groups mb-3">
-            <% if current_user.photo.attached? %>
-            <p>Current Photo:</p>
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.photo.key %>" />
-            <%= f.input :photo, label: "Change photo", as: :file %>
-            <% else %>
-            <%= f.input :photo, as: :file %>
-            <% end %>
-          </div>
-
-      <%= f.input :current_password,
-          hint: "we need your current password to confirm your changes",
-          required: true,
-          input_html: { autocomplete: "current-password" } %>
-
-
-
-    </div>
-    <div class= "form-actions">
-      <%= f.input :available, label: "Availiable as local" %>
-    </div>
-
-    <div class="form-actions ">
-      <%= f.button :submit, "Update", class: "text btn btn-primary-sm" %>
-    </div>
-
-  <% end %>
-
-
-  <p id="light" >Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "linkdiscrete" %></p>
-
-
-</div>
- <div class="tab-pane fade show" id="myrecommendations" role="tabpanel" aria-labelledby="myrecommendations-tab">
-  <% current_user.recommendations.each do |recomendation| %>
-    <%= recomendation.title %>
-  <% end -%>
-  <%= link_to new_recommendation_path(@recommendation) do %>
-      <button class="btn btn-primary">Add a Recommendation!</button>
-  <% end %>
-</div>
 <div>
 
 
-
-  </div>
-  </div>
-</div>
 
