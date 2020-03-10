@@ -1,6 +1,6 @@
-<% @matches.each do |match| %>
-  <div class="wrapper-match my-3">
-<h5 class="name" style="padding: 8px; color: #5D6CF3"><%= match.local.first_name %></h5>
+<% @list.each do |match| %>
+<div class="wrapper-match my-3" hidden>
+  <h5 class="name" style="padding: 8px; color: #5D6CF3"><%= match.local.first_name %></h5>
     <div class="match-photo" style="display: flex; justify-content: space-between;">
       <%= cl_image_tag match.local.photo.key, alt: "avatar", class: "avatar-2" %>
        <p class="match-info">
