@@ -21,7 +21,6 @@
     authorize @match
     @geocode = Geocoder.search([@matched_user.latitude, @matched_user.longitude])
 
-    @age = (Time.now.to_s(:number).to_i - @matched_user.birthday.to_time.to_s(:number).to_i)/10e9.to_i
     @people_connected = policy_scope(Match).where(tourist_id: @matched_user.id, accepted: true).or(policy_scope(Match).where(local_id: @matched_user.id, accepted: true)).count
 
   end
