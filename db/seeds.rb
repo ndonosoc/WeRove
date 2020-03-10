@@ -22,20 +22,20 @@ User.delete_all
 
 50.times do
   user = User.new(
-    first_name: Faker::GreekPhilosophers.name,
-    last_name: Faker::Superhero.suffix,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
-    city: ["Buenos Aires, Argentina", "Paris, France", "London, United Kingdom", "New York, United States", "Tokyo, Japan", "Zurich, Switzerland"].sample,
+    city: ["Buenos Aires", "Paris", "London", "New York"].sample,
     languages: ["french", "spanish", "english", "japanese"].sample(2),
     gender: ["male", "female", "non-binary"].sample,
     birthday: Faker::Date.between(from: 10000.days.ago, to: 8000.days.ago),
-    biography: Faker::Hipster.paragraph,
+    biography: Faker::Quote.matz,
     available: true,
     occupation: Faker::Job.title,
     score: rand(1..5),
     password: '123456'
   )
-    file = URI.open("http://placeimg.com/640/480/people")
+    file = URI.open("https://source.unsplash.com/640x480/?people")
     user.photo.attach(io: file, filename: "#{user.first_name}-#{user.last_name}.jpg", content_type: "image/jpeg")
     if user.save!
     puts "saved"
@@ -53,7 +53,7 @@ end
 # end
 
 User.all.each do |user|
-  Interest.all.sample(3).each do |interest|
+  Interest.where.not(parent_id: nil).sample(15).each do |interest|
     UserInterest.create(
       user_id: user.id,
       interest_id: interest.id
