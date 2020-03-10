@@ -1,7 +1,7 @@
 <div class="sign-up-container h-100">
   <div class="wrapper">
-    <p class="logo">
-      <%= image_tag "WR.png", alt: "", size: "50", class: "logo d-inline-block" %>
+     <p class="logo my-4 d-inline-block pt-3" style="font-family: 'Minute'">
+      wR
     </p>
     <h2 class="subtitle" style="font-size: 24px; color: black;">Welcome back!</h2>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -18,9 +18,9 @@
         <div class="form-actions" style="padding-top: 0px;">
         <%= f.button :submit, "Log in", class: "btn btn-primary" %>
         </div>
-        <button class="btn btn-outline-primary sign-up-fb">
+        <button class="btn btn-outline-primary sign-up-fb mb-3">
           <i class="fab fa-facebook-square" style="color: #4267b2; padding-right: 8px;"></i>Log in with Facebook
         </button>
         <% end %>
-    <%= render "devise/shared/links" %>
+    <%= render "devise/shared/links_without_signup" %>
   </div>
