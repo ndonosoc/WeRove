@@ -12,7 +12,7 @@
     <% if @matched_user.photo.attached? %>
     <%= cl_image_tag @matched_user.photo.key, id: "avatar", class: "avatar-bordered my-2" %>
     <% else %>
-    <img src="" alt="" class="avatar-bordered my-2" id="avatar">
+    <img src="https://www.cashforkidsgive.co.uk/static/images/peer-2-peer/no-profile-pic.png" alt="" class="avatar-bordered my-2" id="avatar">
     <% end %>
   </div>
 <p style="padding-top: 8px;"><%= @matched_user.biography %></p>
