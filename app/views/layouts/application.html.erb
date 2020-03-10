@@ -14,12 +14,14 @@
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
     <%= render 'shared/ios_pwa_links' %>
   </head>
-  <body class="main-body h-100 d-flex flex-column" style="padding-top: 70px;">
+  <body class="main-body h-100 d-flex flex-column">
     <% unless current_page?(user_registration_path) %>
-    <%= render 'layouts/navbar' %>
+    <%= render 'layouts/navbar' unless params[:controller] == "messages" && params[:action] == "index" %>
     <% end %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div style="<%= params[:controller] == "messages" && params[:action] == "index" ? '' : 'padding-top: 70px;' %>">
+      <%= yield %>
+    </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>

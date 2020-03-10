@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="title-matches-index">
+  <div class="title-matches-index mt-3">
     My Rovers
   </div>
   <div class="avatar-profiles">
     <span class="d-flex">
       <% @matches.each do |match| %>
-      <div class="align-items-center d-flex flex-column mr-2 match-avatar">
+      <div class="align-items-center d-flex flex-column match-avatar">
         <%= render 'matchesprofiles', match: match %>
         <img src="https://www.countryflags.io/<%= match.local.country_flag %>/flat/32.png" class="flag">
         <%= match.local.first_name %>
@@ -13,7 +13,7 @@
       <% end %>
     </span>
   </div>
-  <div class="messages-avatars">
+  <div class="messages-avatars mt-3">
     <div class="title-matches-index">
       Messages
     </div>
@@ -21,14 +21,14 @@
   <span class="">
       <% @matches.each do |match| %>
       <% next if match.messages.blank? %>
-      <div class="one-message">
+      <div class="one-message d-flex">
         <%= render 'matchesprofiles', match: match %>
-    <%= link_to match_messages_path(match) do %>
-        <div class="">
-          <p style="padding-left: 12px; margin-bottom: 2px;"><strong><%= match.local.first_name %></strong></p>
-          <p style="padding-top: 8px; padding-left: 12px; color: grey; margin-bottom: 2px;"> <%= truncate(match.messages.last&.content, length: 32, omission: '...') %> </p>
-        </div>
-      <% end %>
+        <%= link_to match_messages_path(match), class:"flex-grow-1 text-decoration-none" do %>
+          <div class="">
+            <p style="padding-left: 12px; margin-bottom: 2px;"><strong><%= match.local.first_name %></strong></p>
+            <p style="padding-top: 8px; padding-left: 12px; color: grey; margin-bottom: 2px;"> <%= truncate(match.messages.last&.content, length: 32, omission: '...') %> </p>
+          </div>
+        <% end %>
       </div>
       <% end %>
     </span>
