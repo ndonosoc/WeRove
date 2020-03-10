@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   #   get 'sign_out', to: 'devise/sessions#destroy'
   #   get 'signup', to: 'devise/registrations#new'
   end
+  mount ActionCable.server => "/cable"
 end

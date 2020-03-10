@@ -21,24 +21,35 @@
     authorize @match
     @geocode = Geocoder.search([@matched_user.latitude, @matched_user.longitude])
 
-    @age = (Time.now.to_s(:number).to_i - @matched_user.birthday.to_time.to_s(:number).to_i)/10e9.to_i
     @people_connected = policy_scope(Match).where(tourist_id: @matched_user.id, accepted: true).or(policy_scope(Match).where(local_id: @matched_user.id, accepted: true)).count
 
   end
 
   def matchme
+    # choose last 5 matches
     @matches = current_user.tourist_matches.where(accepted: nil).order(created_at: :desc).limit(5)
+    last_city = @matches.first.local.nearbys(30)
+    @list = []
+
+    @matches.each do |match|
+      if last_city.include?(match.local)
+        @list << match
+      end
+    end
+
+    if @list.empty?
+      redirect_to matches_path
+      return
+    end
+    # select from those matches the ones that are from the same city as the last match
   end
 
   def create
     array = Match.matcher(current_user, params["location"])
 
     if array.empty?
-      array = current_user.tourist_matches.where(accepted: false).limit(5)
-      if array.empty?
       redirect_to root_path, alert: "No matches for that city"
       return
-    end
     end
 
     for i in (0...5) do

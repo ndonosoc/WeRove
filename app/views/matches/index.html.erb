@@ -7,7 +7,7 @@
       <% @matches.each do |match| %>
       <div class="align-items-center d-flex flex-column match-avatar">
         <%= render 'matchesprofiles', match: match %>
-        <img src="https://www.countryflags.io/<%= match.local.country_flag %>/flat/32.png" class="flag">
+        <img src="https://www.countryflags.io/<%= match.local.country_flag %>/shiny/32.png" class="flag">
         <%= match.local.first_name %>
       </div>
       <% end %>

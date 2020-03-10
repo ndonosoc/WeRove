@@ -11,10 +11,11 @@ require "open-uri"
 require 'json'
 
 Bookmark.delete_all
+Rating.delete_all
+Message.delete_all
 Match.delete_all
 Review.delete_all
 Recommendation.delete_all
-Rating.delete_all
 UserInterest.delete_all
 Interest.delete_all
 User.delete_all
