@@ -40,6 +40,8 @@
   color: #5D6CF3;
   border-radius: 30px;
   background: white;
+  opacity: 0.5;
+
 }
 
 .tag input[type=radio] {
@@ -52,23 +54,28 @@
   height: 100%;
 
     &:hover + label{
-     opacity: 100%;
+     opacity: 1;
    }
 
     &:checked + label{
-     opacity: 100%;
+     opacity: 1;
    }
 }
 
 
 
 .tag {
-  opacity: 0.5;
   &:hover,
   &.active {
     opacity: 1;
   }
+  &.checked {
+    opacity: 1;
+  }
 
+  input:checked + label {
+    opacity: 1;
+  }
 
 
   label{
@@ -83,7 +90,7 @@
     font-size: 14px;
 
       &:checked + label{
-       opacity: 100%;
+       opacity: 1;
      }
   }
 

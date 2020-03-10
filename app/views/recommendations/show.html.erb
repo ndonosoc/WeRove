@@ -23,17 +23,12 @@
     <div class="border border-bottom mx-3"></div>
       <%= render 'recombody', recommendation: @recommendation %>
     </div>
-    <% if current_user.local_ids.include?(@recommendation.user.id) %>
-    <div class="getintouch">
-      <%= link_to match_path(Match.find_by(local_id: @recommendation.user.id)) do %>
-      <button class="btn btn-primary">Get in touch</button>
-      <% end %>
-    </div>
-    <% end %>
-    <% if user_signed_in? && !current_user.rated_recommendations.include?(@recommendation)%>
+    <% if user_signed_in? && !current_user.rated_recommendations.include?(@recommendation) && @recommendation.user != current_user %>
     <div class="getintouch">
       <%= link_to new_recommendation_review_path(@recommendation) do %>
-      <button class="btn btn-primary">Add a Review!</button>
+      <div class="card btn btn-outline-primary">
+         <strong>Add a Review!</strong>
+      </div>
       <% end %>
     </div>
     <% end %>
@@ -49,3 +44,9 @@
         </div>
       </div>
 </div>
+
+<% if current_user.local_ids.include?(@recommendation.user.id) %>
+  <div class="floating-chat">
+    <%= link_to match_messages_path(Match.find_by(local_id: @recommendation.user.id)) do %><i class="fa fa-comments fa-4x" aria-hidden="true"></i> <% end %>
+  </div>
+<% end %>

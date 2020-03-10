@@ -56,19 +56,25 @@ body {
 .floating-chat {
     cursor: pointer;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white;
     position: fixed;
     bottom: 10px;
     right: 10px;
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     opacity: 1;
+    background-color: #48BF84;
+    // box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
+    border: white solid 2px;
+//#FFBE0B
+//#478978
     i {
-      color: white;}
-    @include fancy-background;
+      color: white; }
+    // @include fancy-background;
     // &.enter:hover {
     //     box-shadow: 0 10px 20px rgba(0, 0, 0, 1), 0 6px 6px rgba(0, 0, 0, 1);
     //     opacity: 1;

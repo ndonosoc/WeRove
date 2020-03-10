@@ -1,7 +1,7 @@
 Geocoder.configure(
 
-  units: :km # defaults to miles (:mi)
-
+  units: :km, # defaults to miles (:mi)
+  timeout: 30
   # Geocoding options
   # timeout: 3,                 # geocoding service timeout (secs)
   # lookup: :nominatim,         # name of geocoding service (symbol)
