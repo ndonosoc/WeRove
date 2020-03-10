@@ -1,9 +1,17 @@
 <div class="about">
   <% user.recommendations.each do |recommendation| %>
     <div class="rcard">
-      <div class="img"></div>
+        <% if recommendation.photo.attached? %>
+        <%= cl_image_tag recommendation.photo.key, class: "img" %>
+        <% else %>
+        <img src="https://images.maketheswitch.com.au/toppic/darkplace.jpg" alt="" class="img">
+        <% end %>
       <div class="title">
-        <h1><%= recommendation.title %></h1>
+        <h1>
+        <%= link_to recommendation_path(recommendation) do %>
+        <%= recommendation.title %>
+        <% end %>
+        </h1>
         <i class="fas fa-bookmark fa-xs"></i>
       </div>
       <div class="body">

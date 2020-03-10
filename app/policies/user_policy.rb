@@ -10,7 +10,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    user.id == record.id
   end
 
   def update?
