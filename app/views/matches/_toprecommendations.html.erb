@@ -1,4 +1,4 @@
-<div class="about">
+<div class="about h-100">
   <% user.recommendations.each do |recommendation| %>
     <div class="rcard">
         <%= cl_image_tag recommendation.photo.key, class: "img" %>
