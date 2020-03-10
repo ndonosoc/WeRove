@@ -18,7 +18,6 @@
 <p style="padding-top: 8px;"><%= @matched_user.biography %></p>
 </div>
 
-
 <ul class="nav nav-tabs mx-3" id="myTab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">About me</a>
@@ -27,13 +26,14 @@
     <a class="nav-link" id="recommendations-tab" data-toggle="tab" href="#recommendations" role="tab" aria-controls="recommendations" aria-selected="false">Top Recommendations</a>
   </li>
 </ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+
+<div class="tab-content flex-grow-1" id="myTabContent">
+  <div class="tab-pane fade show active h-100" id="about" role="tabpanel" aria-labelledby="about-tab">
 
     <%= render 'aboutme', {user: @matched_user, match: @match, age: @age, people_connected: @people_connected} %>
 
   </div>
-  <div class="tab-pane fade" id="recommendations" role="tabpanel" aria-labelledby="recommendations-tab">
+  <div class="tab-pane fade h-100" id="recommendations" role="tabpanel" aria-labelledby="recommendations-tab">
     <%= render 'toprecommendations', user: @matched_user %>
   </div>
 </div>

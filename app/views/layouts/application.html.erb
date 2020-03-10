@@ -19,7 +19,7 @@
     <%= render 'layouts/navbar' unless params[:controller] == "messages" && params[:action] == "index" %>
     <% end %>
     <%= render 'shared/flashes' %>
-    <div style="<%= params[:controller] == "messages" && params[:action] == "index" ? '' : 'padding-top: 70px;' %>">
+    <div style="<%= params[:controller] == "messages" && params[:action] == "index" ? '' : 'padding-top: 70px;' %>" class="d-flex flex-column h-100">
       <%= yield %>
     </div>
     <%= javascript_include_tag 'application' %>
