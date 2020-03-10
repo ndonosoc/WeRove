@@ -20,6 +20,7 @@ class User < ApplicationRecord
   geocoded_by :city
   after_validation :geocode, if: :will_save_change_to_city?
   before_save :set_country_flag
+  before_save :set_age
 
   def update_rating
     ratings = self.ratings
@@ -49,6 +50,11 @@ class User < ApplicationRecord
     geocode = Geocoder.search([self.latitude, self.longitude])
     country = IsoCountryCodes.search_by_name(geocode.first.country).first.alpha2
     self.country_flag = country
+  end
+
+  def set_age
+    age = (Time.now.to_s(:number).to_i - self.birthday.to_time.to_s(:number).to_i)/10e9.to_i
+    self.age = age
   end
 
   # validates :first_name, presence: true, uniqueness: true

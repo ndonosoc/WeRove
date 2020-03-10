@@ -1,36 +1,47 @@
+<div class="matchme-container">
+
 <% @list.each do |match| %>
 <div class="wrapper-match my-3" hidden>
-  <h5 class="name" style="padding: 8px; color: #5D6CF3"><%= match.local.first_name %></h5>
-    <div class="match-photo" style="display: flex; justify-content: space-between;">
-      <%= cl_image_tag match.local.photo.key, alt: "avatar", class: "avatar-2" %>
-       <p class="match-info">
-         <strong>Age</strong>
-         <br>
-          <%= match.local.birthday %>
-          <br>
-         <strong>Ocuppation</strong>
-         <br>
-         <%= match.local.occupation %>
-         <br>
-         <strong>Recommends</strong>
-         <br>
-         Nightlife
-       </p>
+  <h5 class="name" style="padding: 8px; color: #5D6CF3"><%= "#{match.local.first_name}, #{match.local.age}" %></h5>
+    <div class="match-photo mt-3" style="display: flex;">
+      <%= cl_image_tag match.local.photo.key, alt: "avatar", class: "avatar-match" %>
+       <div class="match-info">
+       <h2>
+        Your match
+       </h2>
+       <h1>
+        95%
+       </h1>
+       </div>
     </div>
-    <div class="bio-match pt-3"> <%= truncate(match.local.biography, length: 120, omission: '...') %> </div>
-    <div class="">
-      <%= simple_form_for(match, url: matches_path) do |f| %>
+    <% if !match.local.interests.empty? %>
+      <div class="bio-match pt-3">
+        <% match.local.interests.limit(4).each do |interest| %>
+          <p class="interest-tag"><%= interest.title %></p>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="bio-match mt-3">
+        <p><%= match.local.biography.truncate(140) %></p>
+    </div>
+    <div class="d-flex justify-content-around mt-3">
+      <%= simple_form_for(match, url: matches_path, html: { class: "accept-match"}) do |f| %>
         <%= f.input :accepted, as: :hidden, input_html: { value: true } %>
         <%= f.input :id, as: :hidden, input_html: { value: match.id } %>
-        <%= f.button :submit, 'Accept', class: "btn btn-primary" %>
+        <%= button_tag(type: 'submit', class: "btn my-0 px-2 w-100 rounded-pill green") do %>
+          <i class="fas fa-check" style="color: white"></i>
+        <% end %>
       <% end %>
-      <%= simple_form_for(match, url: matches_path) do |f| %>
+      <%= simple_form_for(match, url: matches_path, html: { class: "reject-match"}) do |f| %>
         <%= f.input :accepted, as: :hidden, input_html: { value: false } %>
         <%= f.input :id, as: :hidden, input_html: { value: match.id } %>
-        <%= f.button :submit, 'Pass', class: "btn btn-outline-primary" %>
+        <%= button_tag(type: 'submit', class: "btn my-0 px-2 w-100 rounded-pill red") do %>
+          <i class="fas fa-times" style="color: white"></i>
+        <% end %>
       <% end %>
       </div>
     </div>
   </div>
 <% end %>
 
+</div>
