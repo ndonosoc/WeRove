@@ -11,9 +11,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if @user.city?
-      @country = IsoCountryCodes.search_by_name(@user.city.scan(/\,(\W\w*\W\w*|\W\w*)\b/)[-1][0].strip)[0].alpha2
-    end
+    @geocode = Geocoder.search([current_user.latitude, current_user.longitude])
+    @people_connected = policy_scope(Match).where(tourist_id: current_user.id, accepted: true).or(policy_scope(Match).where(local_id: current_user.id, accepted: true)).count
   end
 
 end
