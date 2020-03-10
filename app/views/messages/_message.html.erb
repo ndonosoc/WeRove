@@ -1,7 +1,7 @@
 <div class="message <%= current_user.id == message.messager_id ? "right" : "" %>">
   <div class="media w-50 mb-3">
     <% if current_user.id != message.messager_id %>
-      <img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user" width="50" class="rounded-circle">
+      <%= cl_image_tag @matched_user.photo.key, alt: "avatar", class: "avatar-1" %>
     <% end %>
     <div class="media-body ml-3">
       <div class="bg-light rounded py-3 px-3 mb-2 <%= current_user.id == message.messager_id ? "bg-primary" : "" %>">
