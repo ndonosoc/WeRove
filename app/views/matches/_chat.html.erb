@@ -1,9 +1,13 @@
 <!-- Chat Box-->
 <div class="d-flex flex-column min-vh-100">
-  <h5 class="p-3 flex-grow-0" style="font-size: 16px; box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);">
-    <%= @matched_user.first_name %> <%= @matched_user.last_name %>
-    <%= @matched_user.email %>
+  <div class="match-photo" style="display: flex; justify-content: left; box-shadow: 0 2px 2px -2px rgba(0,0,0,.2); padding: 8px; background-color: #f8f9fa; margin-bottom: 8px;">
+    <!-- <i class="fas fa-chevron-left fa-2x" style="color: #aaaaaa7d; padding-top: 6px; margin: 10px;"></i> -->
+    <%= cl_image_tag @matched_user.photo.key, alt: "avatar", class: "avatar-1" %>
+   <h5 class="p-3 m-0 flex-grow-0" style="font-size: 16px; color: grey;">
+     <%= @matched_user.first_name %>
   </h5>
+  </div>
+
   <div id="chat-messages" class="messages flex-grow-1">
     <div class="container-fluid">
       <% @match.messages.each do |message| %>

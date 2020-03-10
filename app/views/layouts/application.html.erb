@@ -14,7 +14,7 @@
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
     <%= render 'shared/ios_pwa_links' %>
   </head>
-  <body class="main-body h-100 d-flex flex-column">
+  <body class="main-body h-100 d-flex flex-column" style="padding-top: 70px;">
     <% unless current_page?(user_registration_path) %>
     <%= render 'layouts/navbar' %>
     <% end %>
