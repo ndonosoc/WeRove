@@ -14,8 +14,8 @@
   <div class="chat-input flex-grow-0 d-flex">
     <%= simple_form_for [ @match, Message.new ], remote: true do |f| %>
     <%= f.input :content, label: false %>
-    <%= button_tag(type: 'submit', class: "btn btn-primary my-0 px-2") do %>
-      <i class="fa fa-paper-plane">
+    <%= button_tag(type: 'submit', class: "btn bg-primary my-0 px-2", style: "border-radius: 50%") do %>
+    <i class="fas fa-paper-plane" style="color: white"></i>
     <% end %>
     <% end %>
     </div>
