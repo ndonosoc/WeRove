@@ -12,7 +12,7 @@
       autofocus: true,
       input_html: { autocomplete: "email" }%>
       <%= f.input :first_name, required: true, autofocus: true %>
-      <%= f.input :city, required: true, autofocus: true, label: "Where are you a local?" %>
+      <%= f.input :city, required: true, autofocus: true, label: "Where are you a local?", input_html: { id: "location" } %>
       <%= f.input :birthday,
                   as: :date,
                   start_year: Date.today.year - 90,
@@ -32,7 +32,7 @@
       <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
     </div>
     <% end %>
-    <button class="btn btn-outline-primary sign-up-fb">
+    <button class="btn btn-outline-primary sign-up-fb mb-3">
       <i class="fab fa-facebook-square" style="color: #4267b2; padding-right: 8px;"></i>Sign up with Facebook
     </button>
   </div>
