@@ -121,3 +121,27 @@
     font-family: 'Minute'
   }
 }
+
+.alert.alert-warning.alert-dismissible {
+  background-color: #F25252;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  border-color: #F25252;
+  margin: auto;
+  position: fixed;
+  right: 8px;
+  left: 8px;
+}
+
+.alert.alert-info.alert-dismissible {
+  background-color: #85B55F;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  border-color: #85B55F;
+  margin: auto;
+  position: fixed;
+  right: 8px;
+  left: 8px;
+}
