@@ -15,7 +15,7 @@
         No reviews yet!
       <% else %>
         <% 5.times do |num| %>
-          <% if num < @recommendation.rating %>
+          <% if num < @recommendation.rating.to_i %>
             <i class="fas fa-star fa-xs"></i>
           <% end %>
         <% end %>
