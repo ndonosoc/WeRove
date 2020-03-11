@@ -29,7 +29,7 @@
     # choose last 5 matches
     @matches = current_user.tourist_matches.where(accepted: nil).order(created_at: :desc).limit(5)
     last_city = @matches.first.local.nearbys(30)
-    @list = []
+    @list = @matches.first.local
 
     @matches.each do |match|
       if last_city.include?(match.local)
