@@ -4,13 +4,39 @@
     <p class="label-font" style="padding-bottom: 10px;">Help other rovers have an authentic experience by sharing insider spots/tips of your city.</p>
   </div>
   <%= simple_form_for @recommendation do |f| %>
-  <%= f.input :category, label_html: { class: 'label-font', style:"display: none;" }, collection: Recommendation::CATEGORIES.map { |r| [ r[:title], r[:title],  { class: "" }] }, as: :check_boxes, item_wrapper_class: 'category-choice' %>
+
+  <div class="form-group">
+    <!-- <input type="hidden" name="user[interest_ids][]" value=""> -->
+    <div class="interests-choices" >
+      <div>
+        <% Recommendation::CATEGORIES.map { |r| r[:title]}.each do |category| %>
+        <div class="category-tag active-tag">
+          <div>
+            <span><i class="fa fa-plus" id="plus"></i><%= category %></span>
+            <input type="checkbox" class="d-none" value="<%= category.downcase %>" name="recommendation[category][]">
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <%#= f.input :category, label_html: { class: 'label-font', style:"display: none;" }, collection: Recommendation::CATEGORIES.map { |r| [ r[:title], r[:title],  { class: "" }] }, as: :check_boxes, item_wrapper_class: 'category-choice' %>
+
   <%= f.input :title, label_html: { class: 'label-font' } %>
   <%= f.input :description, as: :text, label_html: { class: 'label-font' } %>
   <%= f.input :location, id: 'location', label_html: { class: 'label-font' } %>
-  <input id="basic" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="5" data-slider-value="15"/>
-  <%= f.input :price_range, as: :range, input_html: { class: 'custom-range' }, label_html: { class: 'label-font' } %>
-  <%= f.input :duration, as: :range, input_html: { class: 'custom-range' }, label_html: { class: 'label-font' } %>
+  <div class="d-flex flex-column mb-3">
+  <label class="range required label-font mb-3" for="recommendation_price_range">Price Range ($)<abbr title="required">*</abbr></label>
+  <input id="price_range" type="range" data-slider-min="0" data-slider-max="100" data-slider-step="10" data-slider-value="50" name="recommendation[price_range]" id="recommendation_price_range"/>
+  </div>
+  <%#= f.input :price_range, as: :range, input_html: { class: 'custom-range', id:"" }, label_html: { class: 'label-font' } %>
+  <div class="d-flex flex-column mb-3">
+  <label class="range required label-font mb-3" for="recommendation_duration">Duration (min) <abbr title="required">*</abbr></label>
+  <input id="duration" type="range" data-slider-min="0" data-slider-max="300" data-slider-step="30" data-slider-value="150" name="recommendation[duration]" id="recommendation_duration"/>
+  </div>
+
+  <%#= f.input :duration, as: :range, input_html: { class: 'custom-range' }, label_html: { class: 'label-font' } %>
   <%= f.input :reservation, as: :boolean, label_html: { class: 'label-font' } %>
   <%= f.input :photo, as: :file, label_html: { class: 'label-font' } %>
   <%= f.button :submit, class: 'btn btn-primary' %>
@@ -20,7 +46,10 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
 <script>
-  var slider = new Slider("#basic", {
+  var slider = new Slider("#price_range", {
+    tooltip: 'always'
+  });
+  var slider = new Slider("#duration", {
     tooltip: 'always'
   });
 </script>

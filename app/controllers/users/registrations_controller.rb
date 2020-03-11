@@ -15,6 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def edit
+    @recomendation = Recommendation.new
     @groups = Interest.where.not(parent_id: nil).group_by { |interest| interest.parent.title if interest.parent.present? }
     super
   end
