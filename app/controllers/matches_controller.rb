@@ -28,12 +28,15 @@
   def matchme
     # choose last 5 matches
     @matches = current_user.tourist_matches.where(accepted: nil).order(created_at: :desc).limit(5)
-    last_city = @matches.first.local.nearbys(30)
-    @list = [@matches.first]
+    @list = []
+    if !@matches.empty?
+      last_city = @matches.first.local.nearbys(30)
+      @list = [@matches.first]
 
-    @matches.each do |match|
-      if last_city.include?(match.local)
-        @list << match
+      @matches.each do |match|
+        if last_city.include?(match.local)
+          @list << match
+        end
       end
     end
 
@@ -45,7 +48,7 @@
   end
 
   def create
-    array = Match.matcher(current_user, params["location"])
+    array = Match.matcher(current_user, params["location"]).reverse
 
     if array.empty?
       redirect_to root_path, alert: "No matches for that city"
@@ -54,7 +57,7 @@
 
     for i in (0...5) do
       if array[i]
-        @match = Match.new(tourist: current_user, local: array[i][0])
+        @match = Match.new(tourist: current_user, local: array[i][0], percentage: array[i][1])
         authorize @match
         @match.save
       end

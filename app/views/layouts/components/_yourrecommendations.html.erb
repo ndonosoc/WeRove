@@ -1,14 +1,28 @@
 <div class="interests">
-
-  <div class="card">
-    <h5 class="name" style="color: #5D6CF3">Your recommendations</h5>
-
-      <% current_user.recommendations.each do |recomendation| %>
-          <%= recomendation.title %>
-        <% end -%>
-        <%= link_to new_recommendation_path(@recommendation) do %>
-            <button class="btn btn-primary">Add a Recommendation!</button>
+    <h5 class="name" style="color: white; text-align: center;">Your recommendations</h5>
+    <%= link_to new_recommendation_path(recommendation) do %>
+    <button class="btn btn-outline-primary edit-btn-out" style="align-items: center;">Create new Recommendation!</button>
+    <% end %>
+    <% current_user.recommendations.each do |recommendation| %>
+      <div class="recomcard-style your-recomcard">
+        <%= link_to recommendation_path(recommendation) do %>
+          <% if recommendation.photo.attached? %>
+            <%= cl_image_tag recommendation.photo.key, class: "img" %>
+          <% end %>
+          <div class="title">
+            <h1>
+              <%= link_to recommendation_path(recommendation) do %>
+                <%= recommendation.title %>
+              <% end -%>
+            </h1>
+          </div>
+          <div class="body">
+            <p><%= recommendation.description.truncate(140) %></p>
+          </div>
+          <div class="footer">
+            <i class="fas fa-map-marker-alt fa-s"></i><p><%= recommendation.location %></p>
+          </div>
         <% end %>
-
-  </div>
+      </div>
+    <% end %>
 </div>

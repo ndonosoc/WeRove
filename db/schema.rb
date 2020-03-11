@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_03_11_201914) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_03_11_201914) do
     t.datetime "updated_at", null: false
     t.boolean "tourist_seen", default: false
     t.boolean "local_seen", default: false
+    t.integer "percentage"
     t.index ["local_id"], name: "index_matches_on_local_id"
     t.index ["tourist_id"], name: "index_matches_on_tourist_id"
   end

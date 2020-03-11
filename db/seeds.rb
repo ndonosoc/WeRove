@@ -81,10 +81,12 @@ end
 end
 
 50.times do
-  Review.create(recommendation_id: Recommendation.all.sample.id,
+  recommendation = Recommendation.all.sample
+  Review.create(recommendation_id: recommendation.id,
                 user_id: User.all.sample.id,
                 content: Faker::Quote.famous_last_words,
                 rating: rand(1..5))
+  recommendation.update_rating
 end
 
 # Match.all.each do |match|

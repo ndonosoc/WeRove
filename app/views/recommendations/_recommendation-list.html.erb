@@ -1,12 +1,16 @@
 <div class="recommendations-bg">
-  <% list.keys.each do |category| %>
-    <h2 class="subtitle-white mt-2 mb-4 mx-4"><%= category %></h2>
-    <div class="scrolling-wrapper mb-5">
-      <div class="recomcard">
-        <% list[category].each do |recommendation| %>
-          <%= render 'recommendations/recomcard', recommendation: recommendation %>
-        <% end %>
+
+    <% list.keys.each do |category| %>
+    <div class="scroller">
+
+      <h2 class="subtitle-small-bold mt-4 mb-2 mx-4"><%= category %></h2>
+      <div class="scrolling-wrapper mb-3  ">
+        <div class="recomcard">
+          <% list[category].each do |recommendation| %>
+            <%= render 'recommendations/recomcard', recommendation: recommendation %>
+          <% end %>
+        </div>
       </div>
     </div>
-  <% end %>
+    <% end %>
 </div>

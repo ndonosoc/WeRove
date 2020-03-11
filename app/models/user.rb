@@ -27,7 +27,6 @@ class User < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_city?
   before_save :set_country_flag
   before_save :set_age
-  before_save :set_photo
 
   def update_rating
     ratings = self.ratings
@@ -64,6 +63,7 @@ class User < ApplicationRecord
     self.age = age
   end
 
+
   private
 
   def set_photo
@@ -94,4 +94,5 @@ class User < ApplicationRecord
 
     return user
   end
+
 end

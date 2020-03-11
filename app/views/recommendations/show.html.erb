@@ -11,11 +11,15 @@
       <%= render 'bookmarktag', recommendation: @recommendation %>
     </div>
     <div class="rating mb-3">
-      <i class="fas fa-star fa-xs"></i>
-      <i class="fas fa-star fa-xs"></i>
-      <i class="fas fa-star fa-xs"></i>
-      <i class="fas fa-star fa-xs"></i>
-      <i class="fas fa-star fa-xs"></i>
+      <% if @recommendation.reviews.empty? %>
+        No reviews yet!
+      <% else %>
+        <% 5.times do |num| %>
+          <% if num < @recommendation.rating.to_i %>
+            <i class="fas fa-star fa-xs"></i>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
     <div class="body">
       <p><%= @recommendation.description %></p>
