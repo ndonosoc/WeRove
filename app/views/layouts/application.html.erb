@@ -30,15 +30,6 @@
     <%= render 'shared/ios_pwa_links' %>
   </head>
   <body class="main-body h-100 d-flex flex-column">
-    <% if notice %>
-    <div class="notice_wrapper">
-      <p class="notice"><%= notice %></p>
-    </div>
-    <% elsif alert %>
-    <div class="notice_wrapper">
-      <p class="alert"><%= alert %></p>
-    </div>
-    <% end %>
 
     <% unless current_page?(user_registration_path) %>
     <% if user_signed_in? %>
