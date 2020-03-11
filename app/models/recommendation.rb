@@ -69,7 +69,7 @@ class Recommendation < ApplicationRecord
     ratings = self.reviews
     sum = 0
     ratings.each do |rating|
-      sum += rating.rating
+      sum += rating.rating.to_i
     end
     self.rating = sum.fdiv(ratings.count).round(1)
     self.save
