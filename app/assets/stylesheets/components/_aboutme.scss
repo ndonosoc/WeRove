@@ -57,7 +57,7 @@
     background-color: #5D6CF3;
     padding-top: 16px;
     padding-bottom: 10px;
-    height: calc(100vh - 70px);
+    height: 100%;
 
   a:hover{
     text-decoration: none;
@@ -120,4 +120,8 @@
   border-right: 0;
   margin-left: -1px;
   margin-bottom: -2px;
+}
+
+.tab-pane, .tab-content {
+  height: 100%;
 }

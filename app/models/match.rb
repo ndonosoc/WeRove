@@ -54,7 +54,7 @@ class Match < ApplicationRecord
     list = hash.sort_by{ |k,v| -v }
 
     # select 5 with highest scores
-    list[0...5]
+    list[0...20]
   end
 
 end
