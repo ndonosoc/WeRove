@@ -1,8 +1,5 @@
 <% if user_signed_in? %>
 <nav class="navbar align-items-center d-flex sticky" style="background-color: white; box-shadow: 0 2px 2px -2px rgba(0,0,0,.2); height:70px;">
-  <%= link_to url_for(:back) do %>
-    <i class="far fa-arrow-alt-circle-left fa-2x" style="color:#5D6CF3"></i>
-  <% end %>
   <%= link_to root_path, style:"text-decoration: none;", class: "mr-auto p-2" do %>
     <p class="logo pt-2 my-auto" style="font-family: 'Minute'">
       wR
