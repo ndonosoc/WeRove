@@ -8,10 +8,4 @@ class RegistrationStepsController < ApplicationController
     render_wizard
   end
 
-  private
-
-  def finish_wizard_path
-    redirect_to root_path, notice: "Thanks for signing up."
-  end
-
 end
