@@ -11,7 +11,7 @@
       <%= render 'bookmarktag', recommendation: @recommendation %>
     </div>
     <div class="rating mb-3">
-      <% if @recommendation.reviews.nil? %>
+      <% if @recommendation.reviews.empty? %>
         No reviews yet!
       <% else %>
         <% 5.times do |num| %>
