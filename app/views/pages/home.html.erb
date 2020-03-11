@@ -1,3 +1,5 @@
+<% if user_signed_in? %>
+
 <div class="home-container">
   <% if !user_signed_in? %>
   <h1 class="title">Join the greatest traveler community.</h1>
@@ -32,3 +34,39 @@
    <% end %>
 </div>
 <%= render 'loader' %>
+
+<% else %>
+
+<div id="carouselExampleIndicators" class="carousel slide home-slides" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <h1>Join the greatest travelers community</h1>
+    </div>
+    <div class="carousel-item">
+      <h1>Sign up, load your interests, and be matched</h1>
+    </div>
+    <div class="carousel-item">
+      <div>
+        <h1>That's it, the rest is up to you!</h1>
+      </div>
+      <div class="links">
+      <%= link_to "I'm already a user", new_user_session_path, class: "log-in btn btn-light rounded-lg" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "sign-up btn btn-light rounded-lg" %>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<% end %>
