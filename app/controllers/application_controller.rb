@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   require 'open-uri'
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
+
   include Pundit
 
   # Pundit: white-list approach.

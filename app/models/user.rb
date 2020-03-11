@@ -28,6 +28,7 @@ class User < ApplicationRecord
   before_save :set_country_flag
   before_save :set_age
 
+
   def update_rating
     ratings = self.ratings
     sum = 0
