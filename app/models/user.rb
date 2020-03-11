@@ -66,8 +66,8 @@ class User < ApplicationRecord
 
   def set_photo
     if !self.photo.attached?
-      file = URI.open("https://www.cashforkidsgive.co.uk/static/images/peer-2-peer/no-profile-pic.png")
-      self.photo.attach(io: file, filename: "#{self.first_name}-#{self.id}.png", content_type: "image/png")
+      file = URI.open("https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg")
+      self.photo.attach(io: file, filename: "#{self.first_name}-#{self.id}.jpg", content_type: "image/jpg")
       self.save
     end
   end
