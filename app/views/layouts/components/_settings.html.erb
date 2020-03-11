@@ -20,8 +20,7 @@
                       required: false,
                       autofocus: true,
                       :collection => %w[Spanish Italian German English French Portuguese Greek Russian Polish Rumanian Danish],
-                      input_html: { multiple: true, placeholder: "Select languages"},
-                      prompt: "-- Select languages --" %>
+                      input_html: { multiple: true}, data: { placeholder: "Select languages"} %>
 
           <%= f.input :birthday,
                       as: :date,
@@ -34,14 +33,14 @@
           <%= f.input :occupation, required: false, autofocus: true %>
 
          <div class="form-groups mb-3">
-                <% if current_user.photo.attached? %>
-                <p>Current Photo:</p>
-                <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.photo.key %>" />
-                <%= f.input :photo, label: "Change photo", as: :file %>
-                <% else %>
-                <%= f.input :photo, as: :file %>
-                <% end %>
-              </div>
+            <% if current_user.photo.attached? %>
+              <p>Current Photo:</p>
+              <img class="avatar-match dropdown-toggle mb-3" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.photo.key %>" />
+              <%= f.input :photo, label: "Change photo", as: :file %>
+            <% else %>
+              <%= f.input :photo, as: :file %>
+            <% end %>
+          </div>
 
           <%= f.input :current_password,
               hint: "we need your current password to confirm your changes",
