@@ -27,7 +27,7 @@
   <%= f.input :description, as: :text, label_html: { class: 'label-font' } %>
   <%= f.input :location, id: 'location', label_html: { class: 'label-font' } %>
   <div class="d-flex flex-column mb-3">
-  <label class="range required label-font mb-3" for="recommendation_price_range">Price <abbr title="required">*</abbr></label>
+  <label class="range required label-font mb-3" for="recommendation_price_range">Price Range ($)<abbr title="required">*</abbr></label>
   <input id="price_range" type="range" data-slider-min="0" data-slider-max="100" data-slider-step="10" data-slider-value="50" name="recommendation[price_range]" id="recommendation_price_range"/>
   </div>
   <%#= f.input :price_range, as: :range, input_html: { class: 'custom-range', id:"" }, label_html: { class: 'label-font' } %>
