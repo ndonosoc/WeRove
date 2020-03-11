@@ -62,5 +62,4 @@ class User < ApplicationRecord
     self.age = age
   end
 
-
 end

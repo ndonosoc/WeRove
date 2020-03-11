@@ -8,8 +8,11 @@
 </div>
 
 <div class="nav-item dropdown px-2">
+  <% if current_user.photo.attached? %>
     <img class="avatar-1" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.photo.key %>" />
-
+  <% else %>
+    <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg" alt="" class="avatar-1" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+  <% end %>
   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
     <%= link_to edit_user_registration_path do %>
       <button class="dropdown-item" type="button">User Panel</button>

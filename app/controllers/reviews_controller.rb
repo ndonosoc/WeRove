@@ -25,6 +25,7 @@ class ReviewsController < ApplicationController
     authorize @review
     @review.recommendation = @recommendation
     if @review.save!
+      @recommendation.update_rating
       redirect_to recommendation_path(@recommendation)
     else
       render :new

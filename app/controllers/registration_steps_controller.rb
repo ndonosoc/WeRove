@@ -11,4 +11,5 @@ class RegistrationStepsController < ApplicationController
   def finish_wizard_path
     root_path
   end
+
 end

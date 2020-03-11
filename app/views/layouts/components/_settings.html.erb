@@ -6,6 +6,15 @@
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: "test" }) do |f| %>
         <%= f.error_notification %>
 
+         <div class="form-groups mb-3">
+            <% if current_user.photo.attached? %>
+              <p>Current Photo:</p>
+              <img class="avatar-match dropdown-toggle mb-3" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.photo.key %>" />
+              <%= f.input :photo, label: "Change photo", as: :file %>
+            <% else %>
+              <%= f.input :photo, as: :file %>
+            <% end %>
+          </div>
         <div class="form-inputs mt-4">
           <%= f.input :email, required: true, autofocus: true %>
           <%= f.input :first_name, required: true, autofocus: true %>
@@ -32,15 +41,6 @@
           <%= f.input :biography, required: false, autofocus: true, placeholder: "Add some information about yourself" %>
           <%= f.input :occupation, required: false, autofocus: true %>
 
-         <div class="form-groups mb-3">
-            <% if current_user.photo.attached? %>
-              <p>Current Photo:</p>
-              <img class="avatar-match dropdown-toggle mb-3" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.photo.key %>" />
-              <%= f.input :photo, label: "Change photo", as: :file %>
-            <% else %>
-              <%= f.input :photo, as: :file %>
-            <% end %>
-          </div>
 
           <%= f.input :current_password,
               hint: "we need your current password to confirm your changes",
