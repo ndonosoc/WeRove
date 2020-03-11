@@ -1,32 +1,37 @@
-<div class="container">
-
-  <h2 class ="title">Edit profile</h2>
-  <h4 class ="subtitle-small mb-4">A local in <%= current_user.city %> since <%= current_user.created_at.strftime("%B #{current_user.created_at.day.ordinalize}") %></h4>
-
-
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active" id="interest-tab" data-toggle="tab" href="#interests" role="tab" aria-controls="interests" aria-selected="true">Interests</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Settings</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="myrecommendations-tab" data-toggle="tab" href="#myrecommendations" role="tab" aria-controls="myrecommendations" aria-selected="false">Recommendations</a>
-      </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="interests" role="tabpanel" aria-labelledby="interests-tab">
-        <%= render 'layouts/components/interests' %>
-      </div>
-      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        <%= render 'layouts/components/settings' %>
-      </div>
-      <div class="tab-pane fade show" id="myrecommendations" role="tabpanel" aria-labelledby="myrecommendations-tab">
-        <%= render 'layouts/components/yourrecommendations', recommendation: @recommendation %>
+  <div class="aboutcontainer mx-3">
+    <div class= "header">
+      <div class= "container mx-0 px-0">
+        <h2 class ="title">Edit profile</h2>
+        <h4 class ="subtitle-small mb-4">A local in <%= current_user.city %> since <%= current_user.created_at.strftime("%B #{current_user.created_at.day.ordinalize}") %></h4>
       </div>
     </div>
-<div>
+  </div>
+
+
+  <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="interest-tab" data-toggle="tab" href="#interests" role="tab" aria-controls="interests" aria-selected="true">Interests</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Settings</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="myrecommendations-tab" data-toggle="tab" href="#myrecommendations" role="tab" aria-controls="myrecommendations" aria-selected="false">Recommendations</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="interests" role="tabpanel" aria-labelledby="interests-tab">
+      <%= render 'layouts/components/interests' %>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <%= render 'layouts/components/settings' %>
+
+    </div>
+    <div class="tab-pane fade show" id="  myrecommendations" role="tabpanel" aria-labelledby="myrecommendations-tab">
+      <%= render 'layouts/components/yourrecommendations', recommendation: @recommendation %>
+    </div>
+  </div>
+
 
 
 

@@ -25,12 +25,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @groups = Interest.where.not(parent_id: nil).group_by { |interest| interest.parent.title if interest.parent.present? }
     # remove all user interests
     # current_user.user_interests.delete_all
-    UserInterest.where(user_id: current_user.id).delete_all
-    # remove all empty options
-    # create new user interests
-    unless params["user"]["interest_ids"].nil?
-      params["user"]["interest_ids"].each do |interest_id|
-        UserInterest.create(interest_id: interest_id, user: current_user)
+    if params["user"]["interest_ids"].present?
+      UserInterest.where(user_id: current_user.id).delete_all
+      # remove all empty options
+      # create new user interests
+      unless params["user"]["interest_ids"].nil?
+        params["user"]["interest_ids"].each do |interest_id|
+          UserInterest.create(interest_id: interest_id, user: current_user)
+        end
       end
     end
     super

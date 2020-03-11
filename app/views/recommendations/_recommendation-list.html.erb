@@ -1,13 +1,11 @@
-<div>
+<div class="recommendations-bg">
   <% list.keys.each do |category| %>
-    <div class="about">
-      <h2 class="category"><%= category %></h2>
-      <div class="scrolling-wrapper">
-        <div class="recomcard">
-          <% list[category].each do |recommendation| %>
-            <%= render 'recommendations/recomcard', recommendation: recommendation %>
-          <% end %>
-        </div>
+    <h2 class="subtitle-white mt-2 mb-4 mx-4"><%= category %></h2>
+    <div class="scrolling-wrapper mb-5">
+      <div class="recomcard">
+        <% list[category].each do |recommendation| %>
+          <%= render 'recommendations/recomcard', recommendation: recommendation %>
+        <% end %>
       </div>
     </div>
   <% end %>
