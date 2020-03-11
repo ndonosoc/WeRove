@@ -10,6 +10,7 @@ class Recommendation < ApplicationRecord
   # validates :reservation, presence: true
 
   has_one_attached :photo
+  before_save :set_photo
 
   CATEGORIES = [
     {
@@ -53,8 +54,14 @@ class Recommendation < ApplicationRecord
         end
       end
     end
-
     return @list
+  end
 
+  def set_photo
+    if !self.photo.attached?
+      file = URI.open("https://crossword365.com/thumbnail/unknown-place.png")
+      self.photo.attach(io: file, filename: "#{self.title}-#{self.created_at}.jpg", content_type: "image/png")
+      self.save
+    end
   end
 end

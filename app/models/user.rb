@@ -17,10 +17,15 @@ class User < ApplicationRecord
   has_many :messages, class_name: "Message", foreign_key: "receiver_id"
   has_one_attached :photo
 
+  validates :first_name, presence: true
+  validates :city, presence: true
+  validates :birthday, presence: true
+
   geocoded_by :city
   after_validation :geocode, if: :will_save_change_to_city?
   before_save :set_country_flag
   before_save :set_age
+  before_save :set_photo
 
   def update_rating
     ratings = self.ratings
@@ -57,11 +62,13 @@ class User < ApplicationRecord
     self.age = age
   end
 
-  # validates :first_name, presence: true, uniqueness: true
-  # validates :last_name, presence: true, uniqueness: true
-  # validates :email, presence: true, uniqueness: true
-  # validates :password, presence: true, uniqueness: true
-  # validates :city, presence: true, uniqueness: true
-  # validates :languages, presence: true
-  # validates :gender, presence: true
+  private
+
+  def set_photo
+    if !self.photo.attached?
+      file = URI.open("https://www.cashforkidsgive.co.uk/static/images/peer-2-peer/no-profile-pic.png")
+      self.photo.attach(io: file, filename: "#{self.first_name}-#{self.id}.png", content_type: "image/png")
+      self.save
+    end
+  end
 end
