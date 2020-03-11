@@ -1,12 +1,13 @@
 <div class="interests">
 
   <div class="card">
-    <h5 class="name" style="color: #5D6CF3">Your interests</h5>
 
+    <h5 class="name-interests mb-3" style="color: #5D6CF3; margin: 0 16px;">Your interests</h5>
 
-    <div>
+    <div style="height: 7px; margin: 0 16px;" class="bg-purple"></div>
+    <div style= "margin: 0 16px;">
       <% current_user.interests.group_by(&:parent_id).values.each do |group| %>
-      <h1 class="subtitle-small my-4"><%= group.first.parent.title %></h1>
+      <h1 class="text-purple-h5 my-4"><%= group.first.parent.title %></h1>
         <% group.each do |interest| %>
         <div class="interest-tag xmt-4">
           <label id="interestlabel" for=""><%= interest.title %></label>

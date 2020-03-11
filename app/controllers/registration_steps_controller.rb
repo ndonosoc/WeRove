@@ -8,8 +8,4 @@ class RegistrationStepsController < ApplicationController
     render_wizard
   end
 
-  def finish_wizard_path
-    root_path
-  end
-
 end
