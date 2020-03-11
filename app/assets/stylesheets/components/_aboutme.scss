@@ -57,7 +57,7 @@
     background-color: #5D6CF3;
     padding-top: 16px;
     padding-bottom: 10px;
-    height: 100%;
+    height: auto;
 
   a:hover{
     text-decoration: none;
@@ -81,6 +81,21 @@
   border-radius: 5px;
   box-shadow: 0px 3px 3px 0px rgba(50, 50, 50, 0.4);
 
+    .interests {
+      display: flex;
+      background-color: white;
+      flex-wrap: wrap;
+
+      .interest-tag {
+        color: $rover-purple;
+        font-size: 16px;
+        padding: 8px 16px;
+        text-transform: lowercase;
+        font-style: normal;
+        margin: 4px 8px 4px 0;
+        font-family: $body-font;
+      }
+    }
 
     .title {
     display: flex;
