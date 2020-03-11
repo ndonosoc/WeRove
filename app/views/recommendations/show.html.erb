@@ -51,6 +51,6 @@
 
 <% if current_user.local_ids.include?(@recommendation.user.id) %>
   <div class="floating-chat">
-    <%= link_to match_messages_path(Match.find_by(local_id: @recommendation.user.id)) do %><i class="fa fa-comments fa-4x" aria-hidden="true"></i> <% end %>
+    <%= link_to match_messages_path(Match.find_by(local_id: @recommendation.user.id)) do %><i class="fas fa-paper-plane fa-3x" aria-hidden="true"></i> <% end %>
   </div>
 <% end %>

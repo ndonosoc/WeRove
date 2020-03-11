@@ -183,11 +183,15 @@ Interest.create(title: "Punk", parent_id: parent.id)
 Interest.create(title: "Country", parent_id: parent.id)
 Interest.create(title: "Pop", parent_id: parent.id)
 
+list = Interest.where.not(parent_id: nil).group_by { |x| x.parent_id }
+
 User.all.each do |user|
-  Interest.where.not(parent_id: nil).sample(15).each do |interest|
-    UserInterest.create(
-      user_id: user.id,
-      interest_id: interest.id
-    )
+  list.keys.each do |parent|
+    list[parent].sample(4).each do |interest|
+      UserInterest.create(
+        user_id: user.id,
+        interest_id: interest.id
+        )
+    end
   end
 end

@@ -31,7 +31,7 @@ class RatingsController < ApplicationController
     @rated = User.find(@rating.rated_id)
     if @rating.save
       @rated.update_rating
-      redirect_to match_path(match), alert: "Thank you for your rating!"
+      redirect_to match_path(match), notice: "Thank you for your rating!"
     else
       raise
       redirect_to match_path(match), alert: "The rating was not saved!"
