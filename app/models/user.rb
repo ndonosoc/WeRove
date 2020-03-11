@@ -25,7 +25,6 @@ class User < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_city?
   before_save :set_country_flag
   before_save :set_age
-  before_save :set_photo
 
   def update_rating
     ratings = self.ratings
@@ -62,13 +61,4 @@ class User < ApplicationRecord
     self.age = age
   end
 
-  private
-
-  def set_photo
-    if !self.photo.attached?
-      file = URI.open("https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg")
-      self.photo.attach(io: file, filename: "#{self.first_name}-#{self.id}.jpg", content_type: "image/jpg")
-      self.save
-    end
-  end
 end

@@ -1,6 +1,6 @@
 class Recommendation < ApplicationRecord
   belongs_to :user
-  has_many :bookmarks
+  has_many :bookmarks, dependent: :destroy
   has_many :reviews, dependent: :destroy
   validates :category, presence: true
   validates :description, presence: true
@@ -63,5 +63,15 @@ class Recommendation < ApplicationRecord
       self.photo.attach(io: file, filename: "#{self.title}-#{self.created_at}.jpg", content_type: "image/png")
       self.save
     end
+  end
+
+  def update_rating
+    ratings = self.reviews
+    sum = 0
+    ratings.each do |rating|
+      sum += rating.rating
+    end
+    self.rating = sum.fdiv(ratings.count).round(1)
+    self.save
   end
 end
