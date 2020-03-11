@@ -52,14 +52,6 @@ end
 #   )
 # end
 
-User.all.each do |user|
-  Interest.where.not(parent_id: nil).sample(15).each do |interest|
-    UserInterest.create(
-      user_id: user.id,
-      interest_id: interest.id
-    )
-  end
-end
 
 20.times do
   users = User.all.sample(2)
@@ -188,3 +180,12 @@ Interest.create(title: "Jazz", parent_id: parent.id)
 Interest.create(title: "Punk", parent_id: parent.id)
 Interest.create(title: "Country", parent_id: parent.id)
 Interest.create(title: "Pop", parent_id: parent.id)
+
+User.all.each do |user|
+  Interest.where.not(parent_id: nil).sample(15).each do |interest|
+    UserInterest.create(
+      user_id: user.id,
+      interest_id: interest.id
+    )
+  end
+end
