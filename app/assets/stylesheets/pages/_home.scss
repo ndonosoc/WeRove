@@ -1,4 +1,6 @@
 // // Specific CSS for your home-page
+@media (max-width: 500px) {
+
 .main-body {
  background-color: white
 }
@@ -127,4 +129,6 @@
     font-size: 18px;
     font-family: 'Minute'
   }
+}
+
 }
