@@ -20,14 +20,18 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   validates :first_name, presence: true
-  validates :city, presence: true
-  validates :birthday, presence: true
+  validates :city, presence: true, if: :facebook_auth
+  validates :birthday, presence: true, if: :facebook_auth
 
   geocoded_by :city
   after_validation :geocode, if: :will_save_change_to_city?
-  before_save :set_country_flag
-  before_save :set_age
+  before_save :set_country_flag, if: :facebook_auth
+  before_save :set_age, if: :facebook_auth
 
+
+  def facebook_auth
+    uid.nil?
+  end
 
   def update_rating
     ratings = self.ratings
@@ -89,7 +93,7 @@ class User < ApplicationRecord
       user.update(user_params)
     else
       user = User.new(user_params)
-      user.password = Devise.friendly_token[0,20]  # Fake password for validation
+      user.password = Devise.friendly_token[6,20]  # Fake password for validation
       user.save
     end
 
