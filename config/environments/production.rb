@@ -43,8 +43,8 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
-  config.action_cable.url = 'wss://werove.world/cable'
-  config.action_cable.allowed_request_origins = [ 'https://werove.herokuapp.com', "http://werove.herokuapp.com", "https://werove.world", "http://werove.world"  ]
+  config.action_cable.url = 'wss://www.werove.world/cable'
+  config.action_cable.allowed_request_origins = [ "https://www.werove.world", "http://www.werove.world" ]
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
 
