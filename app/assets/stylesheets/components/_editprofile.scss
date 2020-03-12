@@ -3,6 +3,23 @@
   font-size: 16px;
 }
 
+h5.name-interests {
+   font-size: 32px;
+   font-weight: 900;
+}
+
+.text-purple-h5 {
+  color: $rover-purple;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.bg-purple {
+  background-color: $rover-purple;
+}
+
 #plus {
   line-height: 2.5;
   padding-left: 4px;
@@ -23,6 +40,7 @@
     opacity: 1;
   }
 }
+
 
 .category-tag {
   background-color: #626fe1;
@@ -83,11 +101,18 @@
   background-color: $rover-purple;
 }
 
+@media (max-width: 768px) {
+  .full-size-modal {
+    margin: 0px;
+  }
+}
+
 .full-size-modal {
-  margin: 0;
   opacity: 0.85;
+  width: 100%;
   .modal-header {
     background-color: $rover-purple;
+    min-height: 100%;
   }
 
   .modal-body {

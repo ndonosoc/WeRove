@@ -1,5 +1,5 @@
 <div class="message <%= current_user.id == message.messager_id ? "right" : "" %>">
-  <div class="media w-50 mb-3">
+  <div class="media w-50">
     <% if current_user.id != message.messager_id %>
       <% if @matched_user.photo.attached? %>
         <%= cl_image_tag @matched_user.photo.key, alt: "avatar", class: "avatar-1" %>
@@ -8,7 +8,7 @@
       <% end %>
     <% end %>
     <div class="media-body ml-3">
-      <div class="bg-light rounded py-3 px-3 mb-2 <%= current_user.id == message.messager_id ? "bg-primary" : "" %>">
+      <div style="border-radius: 8px;" class="bg-light py-3 px-3 mb-2 <%= current_user.id == message.messager_id ? "bg-primary" : "" %>">
         <div class="text-small mb-0 <%= current_user.id == message.messager_id ? "text-white" : "text-muted" %>"><%= message.content %></div>
       </div>
       <p class="small text-muted"><%= message.created_at.strftime("%l:%M %p  |  %b %e") %></p>
