@@ -19,7 +19,7 @@
        </div>
     </div>
     <% if !match.local.interests.empty? %>
-      <div class="bio-match pt-3">
+      <div class="bio-match">
         <% match.local.interests.limit(4).each do |interest| %>
           <p class="interest-tag"><%= interest.title %></p>
         <% end %>
