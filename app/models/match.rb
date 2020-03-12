@@ -33,8 +33,13 @@ class Match < ApplicationRecord
           end
         end
       end
-      match_percentage = (score * 100) / ((tourist.interests.count + local.interests.count)/2)
-      storage[local] = match_percentage
+      divisor = (tourist.interests.count + local.interests.count)
+      if divisor != 0
+        match_percentage = (score * 100) / (divisor/2)
+        storage[local] = match_percentage
+      else
+        storage[local] = 0
+      end
     end
     return storage.sort_by{ |k,v| -v}[0...5]
   end

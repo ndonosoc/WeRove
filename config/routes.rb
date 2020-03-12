@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :ratings, only: [:index, :new, :create]
     resources :messages, only: [:index, :create]
   end
+  get "/privacy", to: "pages#privacy"
   patch "/matches", to: "matches#update"
   get "/matchme", to: "matches#matchme"
   resources :wall, :controller=>"bookmarks", :path => "wall"
