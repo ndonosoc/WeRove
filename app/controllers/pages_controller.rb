@@ -6,4 +6,7 @@ class PagesController < ApplicationController
   def home
     @match = Match.new
   end
+
+  def privacy
+  end
 end
