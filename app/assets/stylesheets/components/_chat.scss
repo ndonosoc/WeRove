@@ -35,7 +35,7 @@
 
 .message {
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 0;
   &.right {
     flex-direction: row-reverse;
     .message-content {
@@ -81,3 +81,11 @@
 }
 
 
+#chatter {
+  position: absolute;
+  bottom:0px;
+  right: 0px;
+  left: 0px;
+  width: 100%;
+  margin: 0;
+}
