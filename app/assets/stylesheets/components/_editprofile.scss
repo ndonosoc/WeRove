@@ -3,24 +3,46 @@
   font-size: 16px;
 }
 
-h5.name-interests {
-   font-size: 32px;
-   font-weight: 900;
+
+@media (max-width: 500px) {
+
+  h5.name-recommendation {
+     font-size: 30px;
+     font-weight: 900;
+  }
+  h5.name-interests {
+     font-size: 30px;
+     font-weight: 900;
+  }
+  .text-purple-h5 {
+    color: $rover-purple;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+}
+@media (max-width: 400px) {
+
+  h5.name-recommendation {
+     font-size: 24px;
+     font-weight: 900;
+  }
+    h5.name-interests {
+     font-size: 24px;
+     font-weight: 900;
+  }
+  .text-purple-h5 {
+    color: $rover-purple;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
 }
 
-h5.name-recommendation {
-   font-size: 30px;
-   font-weight: 900;
-}
 
 
-.text-purple-h5 {
-  color: $rover-purple;
-  margin-top: 15px;
-  margin-bottom: 10px;
-  font-size: 22px;
-  font-weight: bold;
-}
 
 .bg-purple {
   background-color: $rover-purple;
