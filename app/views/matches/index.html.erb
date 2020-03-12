@@ -1,5 +1,13 @@
 <div class="container">
-  <div class="title-matches-index2 mt-3">
+  <% if @matches.empty? %>
+
+    <%= link_to root_path do %>
+    <button class="btn btn-primary mb-3" style="align-items: center;">Find a local</button>
+    <% end %>
+
+  <% else %>
+
+ <div class="title-matches-index2 mt-3">
     My Rovers
   </div>
   <div class="avatar-profiles">
@@ -37,4 +45,5 @@
       </div>
       <% end %>
     </span>
+  <% end %>
 </div>
