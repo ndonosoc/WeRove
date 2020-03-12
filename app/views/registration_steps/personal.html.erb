@@ -1,9 +1,6 @@
 <div class="interests-container">
   <div class="wrapper-interests">
-    <p class="logo">
-      <%= image_tag "WR.png", alt: "", size: "50", class: "logo d-inline-block pt-3" %>
-    </p>
-    <h2 class="subtitle" style="font-size: 24px; color: black;">Personalize your profile</h2>
+       <h2 class="subtitle" style="font-size: 24px; color: black;">Personalize your profile</h2>
 
     <%= simple_form_for(@user, url: registration_path(@user), html: { method: :put }) do |f| %>
 
