@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
-  devise_for :users, path: 'profile', controllers: { registrations: "users/registrations" }
+  devise_for :users, path: 'profile', controllers: { registrations: "users/registrations", omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :registration_steps
   resources :matches, only: [:index, :show, :create] do
     resources :ratings, only: [:index, :new, :create]

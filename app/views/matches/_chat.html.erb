@@ -20,9 +20,9 @@
     <% end %>
   </div>
   <div class="chat-input">
-    <%= simple_form_for [ @match, Message.new ], html: { class: "form-row d-flex"}, remote: true do |f| %>
+    <%= simple_form_for [ @match, Message.new ], html: { class: "form-row d-flex", id: "chatter"}, remote: true do |f| %>
     <%= f.input :content, label: false, input_html: { class: "flex-grow-1", style: "height: 45px"}, wrapper_html: { class: "flex-grow-1", style: "height: 45px"} %>
-    <%= button_tag(type: 'submit', class: "btn bg-primary my-0 px-2 flex-grow-0", style: "width: 45px") do %>
+    <%= button_tag(type: 'submit', class: "btn bg-primary my-0 px-2 flex-grow-0", style: "width: 45px", id: "sender") do %>
     <i class="fas fa-paper-plane" style="color: white; margin-left: -7px;"></i>
     <% end %>
     <% end %>

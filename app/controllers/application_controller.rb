@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   require 'open-uri'
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
+
   include Pundit
 
   # Pundit: white-list approach.
@@ -11,7 +12,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
-    redirect_to(new_user_session_path)
+    redirect_to(root_path)
   end
 
   def configure_permitted_parameters

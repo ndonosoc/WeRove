@@ -11,6 +11,8 @@ import { picker } from "../plugins/datepicker";
 import { initSelect2 } from "../plugins/init_select2";
 import { raterFunction } from "../plugins/ratingspicker";
 import { buttonDisabler } from "../plugins/button_disabler";
+import { senderDisabler } from "../plugins/sender_disabler";
+import { chatFocus } from "../plugins/chat_focus";
 import { loader } from "../plugins/loader";
 import { matchmeDisplayer } from "../plugins/matchme_displayer";
 
@@ -29,6 +31,8 @@ initSelect2();
 buttonDisabler();
 loader();
 matchmeDisplayer();
+senderDisabler();
+chatFocus();
 
 // $(document).ready(function(){
 //   $(".interest-choices").click(function(){

@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html class= "h-100">
   <head>
+    <!-- TWITTER METADATA CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="We Rove - Connecting Travelers with Locals everywhere">
+    <meta name="twitter:description" content="We Rove is the app which allows you to connect and share experiences with Travelers or Locals all around the world.">
+    <meta name="twitter:image:src" content="werovelogo.png">
+    <!-- FACEBOOK METADATA CARD -->
+    <meta property="og:title" content="We Rove - Connecting Travelers with Locals everywhere">
+    <meta property="og:image" content="werovelogo.png">
+    <meta property="og:description" content="We Rove is the app which allows you to connect and share experiences with Travelers or Locals all around the world.">
+    <meta property="og:site_name" content="We Rove"/>
+
+    <!-- GOOGLE METADATA CARD-->
+    <meta name="description" content="We Rove is the app which allows you to connect and share experiences with Travelers or Locals all around the world.">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="HandheldFriendly" content="true" />
@@ -16,6 +30,7 @@
     <%= render 'shared/ios_pwa_links' %>
   </head>
   <body class="main-body h-100 d-flex flex-column">
+
     <% unless current_page?(user_registration_path) %>
     <% if user_signed_in? %>
       <%= render 'layouts/navbar' unless params[:controller] == "messages" && params[:action] == "index" %>

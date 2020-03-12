@@ -1,8 +1,11 @@
 <div class="interests-container">
   <div class="wrapper-interests">
-       <h2 class="subtitle" style="font-size: 24px; color: black;">Personalize your profile</h2>
+    <p class="logo my-4 d-inline-block pt-3" style="font-family: 'Minute'">
+      wR
+    </p>
+    <h2 class="subtitle" style="font-size: 24px; color: black;">Personalize your profile</h2>
 
-    <%= simple_form_for(@user, url: registration_path(@user), html: { method: :put }) do |f| %>
+    <%= simple_form_for(@user, url: user_registration_path(), html: { method: :patch }) do |f| %>
 
     <%= f.error_notification %>
     <div class="session-form">
@@ -21,12 +24,9 @@
       <% end %>
     </div>
     <div class="form-actions" style="padding-top: 0px;">
-      <%= f.button :submit, "Add interests", class: "btn btn-primary" %>
+      <%= f.button :submit, "Continue", class: "btn btn-primary" %>
     </div>
     <% end %>
-    <button class="btn btn-outline-primary sign-up-fb">
-      <%= link_to 'Skip and customize interests later', next_wizard_path, class: "setuplater" %>
-    </button>
   </div>
 </div>
 
