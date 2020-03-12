@@ -45,18 +45,26 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <h1>Join the greatest travelers community</h1>
+      <div class="d-flex flex-column">
+        <h3 style="font-family: 'Minute'; color: white; font-size: 120px; padding-left: 12px; padding-top: 12px; text-shadow: 3px 3px #747fda; text-align: center; margin-top: 36px; justify-content: center;">wR</h3>
+        <h1 style="text-align: center; font-size: 28px; margin-top: 30px; margin-bottom: 30px;">Join the greatest travelers community</h1>
+      <div class="d-flex flex-column" style="margin-top: 30px;">
+        <%= link_to "Sign Up", new_user_registration_path, class: "sign-up btn btn-light rounded-lg" %>
+        <%= link_to "I'm already a user", new_user_session_path, class: "log-in btn btn-light rounded-lg", style: "margin-top: 20px;" %>
+      </div>
+      </div>
     </div>
     <div class="carousel-item">
-      <h1>Sign up, load your interests, and be matched</h1>
+      <h1>Add interests to your profile.</h1>
     </div>
     <div class="carousel-item">
       <div>
-        <h1>That's it, the rest is up to you!</h1>
+        <h1>Choose the city you are traveling to.</h1>
       </div>
-      <div class="links">
-      <%= link_to "I'm already a user", new_user_session_path, class: "log-in btn btn-light rounded-lg" %>
-      <%= link_to "Sign Up", new_user_registration_path, class: "sign-up btn btn-light rounded-lg" %>
+    </div>
+     <div class="carousel-item">
+      <div>
+        <h1>Get paired! Find a local friend everywhere.</h1>
       </div>
     </div>
   </div>

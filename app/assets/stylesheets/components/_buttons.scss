@@ -88,3 +88,16 @@ a.log-in {
   margin-left: 23px;
   margin-bottom: 10px;
 }
+
+.landing-btn {
+  color: $rover-purple;
+  font-style: 'Poppins';
+  font-weight: 800;
+  background-color: white !important;
+  opacity: 0;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+.landing-btn2 {
+  border: white 2px solid;
+  color: white;
+}
