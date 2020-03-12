@@ -6,11 +6,24 @@
   justify-content: center;
   height: 100%;
   margin-top: 16px;
+  text-align: center;
 
   .ratings-child {
     margin: auto;
   }
   h1 {
     font-size: 18px;
+  }
+}
+
+.rating-matches {
+  margin: auto;
+  width: 80%;
+  text-align: center;
+
+  .avatar-match.right {
+    margin-left: -40px;
+    z-index: 99;
+    border: 0;
   }
 }
