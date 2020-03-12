@@ -1,7 +1,18 @@
 <div class="ratings mx-auto" style="max-width: 700px;">
   <div class="ratings-child justify-content-center">
 
-
+<div class="rating-matches justify-content-center mx-auto">
+    <% if @match.local.photo.attached? %>
+    <%= cl_image_tag @match.local.photo.key, id: "avatar", class: "avatar-match my-2" %>
+    <% else %>
+    <img src="https://www.cashforkidsgive.co.uk/static/images/peer-2-peer/no-profile-pic.png" alt="" class="avatar-match my-2" id="avatar">
+    <% end %>
+    <% if @match.tourist.photo.attached? %>
+    <%= cl_image_tag @@match.tourist.photo.key, id: "avatar", class: "avatar-match right my-2" %>
+    <% else %>
+    <img src="https://www.cashforkidsgive.co.uk/static/images/peer-2-peer/no-profile-pic.png" alt="" class="avatar-match right my-2" id="avatar">
+    <% end %>
+</div>
 
 <div class="home-container justify-content-center">
   <div class="wrapper-add-recommendation my-3">
