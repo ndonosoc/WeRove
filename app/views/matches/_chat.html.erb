@@ -1,5 +1,5 @@
 <!-- Chat Box-->
-<div class="d-flex flex-column min-vh-100">
+<div class="d-flex flex-column min-vh-100 fixed-top">
   <div class="match-photo2 chat-top" style="">
     <%= link_to :back do %>
       <i class="fas fa-chevron-left fa-2x" style="color: #6c757d66; padding: 13px 6px 0px 6px;"></i>
@@ -21,7 +21,7 @@
     <%= render "message", message: message %>
     <% end %>
   </div>
-  <div class="chat-input">
+  <div class="chat-input fixed-bottom">
     <%= simple_form_for [ @match, Message.new ], html: { class: "form-row d-flex", id: "chatter"}, remote: true do |f| %>
     <%= f.input :content, label: false, input_html: { class: "flex-grow-1", style: "height: 45px"}, wrapper_html: { class: "flex-grow-1", style: "height: 45px"} %>
     <%= button_tag(type: 'submit', class: "btn bg-primary my-0 px-2 flex-grow-0", style: "width: 45px", id: "sender") do %>
