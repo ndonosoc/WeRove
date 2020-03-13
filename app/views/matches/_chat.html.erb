@@ -2,12 +2,14 @@
 <div class="d-flex flex-column min-vh-100">
   <div class="match-photo2 chat-top" style="">
     <%= link_to :back do %>
-    <i class="fas fa-chevron-left fa-2x" style="color: #6c757d66; padding: 13px 6px 0px 6px;"></i>
+      <i class="fas fa-chevron-left fa-2x" style="color: #6c757d66; padding: 13px 6px 0px 6px;"></i>
     <% end %>
-    <% if @matched_user.photo.attached? %>
-    <%= cl_image_tag @matched_user.photo.key, alt: "avatar", class: "avatar-1" %>
-    <% else %>
-    <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg" alt="" class="avatar-1">
+    <%= link_to match_path(@match) do %>
+      <% if @matched_user.photo.attached? %>
+        <%= cl_image_tag @matched_user.photo.key, alt: "avatar", class: "avatar-1" %>
+      <% else %>
+        <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg" alt="" class="avatar-1">
+      <% end %>
     <% end %>
    <h5 class="p-3 m-0 flex-grow-0" style="font-size: 18px; color: grey;">
      <%= @matched_user.first_name %>
