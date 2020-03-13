@@ -5,6 +5,8 @@ class Match < ApplicationRecord
   has_many :messages
   validates :local_id, presence: true
   validates :tourist_id, presence: true
+  validates :tourist_id, uniqueness: { scope: :local_id }
+  validates :local_id, uniqueness: { scope: :tourist_id }
 
 
     # create a storage hash
