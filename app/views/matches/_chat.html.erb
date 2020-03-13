@@ -1,6 +1,6 @@
 <!-- Chat Box-->
-<div class="d-flex flex-column min-vh-100 sticky-top">
-  <div class="match-photo2 chat-top" style="">
+<div class="d-flex flex-column min-vh-100">
+  <div class="match-photo2 chat-top sticky-top" style="">
     <%= link_to :back do %>
       <i class="fas fa-chevron-left fa-2x" style="color: #6c757d66; padding: 13px 6px 0px 6px;"></i>
     <% end %>
@@ -16,7 +16,7 @@
   </h5>
   </div>
 
-  <div id="chat-messages d-flex flex-column justify-content-end" class="messages flex-grow-1 messages-chat-wrapper container-fluid">
+  <div id="chat-messages d-flex flex-column justify-content-end" class="messages flex-grow-1 messages-chat-wrapper container-fluid mb-3">
     <% @match.messages.each do |message| %>
     <%= render "message", message: message %>
     <% end %>
