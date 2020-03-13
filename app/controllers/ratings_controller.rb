@@ -33,7 +33,6 @@ class RatingsController < ApplicationController
       @rated.update_rating
       redirect_to match_path(match), notice: "Thank you for your rating!"
     else
-      raise
       redirect_to match_path(match), alert: "The rating was not saved!"
       return
     end
