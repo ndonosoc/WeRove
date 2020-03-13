@@ -84,6 +84,16 @@
   border-radius: 5px;
   box-shadow: 0px 3px 3px 0px rgba(50, 50, 50, 0.4);
 
+    .languages-tag {
+      background-color: white;
+      border: 1px solid #48BF84;
+      border-radius: 35px;
+      padding: 0px 10px;
+      color: #48BF84;
+      display: inline-block;
+      margin: 4px 0 4px 4px;
+      cursor: pointer;
+    }
     .interests {
       display: flex;
       background-color: white;
