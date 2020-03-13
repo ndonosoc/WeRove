@@ -25,7 +25,7 @@
 
   <%= f.input :title, label_html: { class: 'label-font' } %>
   <%= f.input :description, as: :text, label_html: { class: 'label-font' } %>
-  <%= f.input :location, id: 'location', label_html: { class: 'label-font' } %>
+  <%= f.input :location, label_html: { class: 'label-font algolia-location' } %>
   <div class="d-flex flex-column mb-3">
   <label class="range required label-font mb-3" for="recommendation_price_range">Price Range ($)<abbr title="required">*</abbr></label>
   <input id="price_range" type="range" data-slider-min="0" data-slider-max="100" data-slider-step="10" data-slider-value="50" name="recommendation[price_range]" id="recommendation_price_range"/>
