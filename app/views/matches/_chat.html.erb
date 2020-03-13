@@ -1,6 +1,6 @@
 <!-- Chat Box-->
 <div class="d-flex flex-column min-vh-100">
-  <div class="match-photo2 chat-top sticky-top" style="">
+  <div class="match-photo2 chat-top sticky-top" style="top: 0px">
     <%= link_to :back do %>
       <i class="fas fa-chevron-left fa-2x" style="color: #6c757d66; padding: 13px 6px 0px 6px;"></i>
     <% end %>
@@ -16,12 +16,12 @@
   </h5>
   </div>
 
-  <div id="chat-messages d-flex flex-column justify-content-end" class="messages flex-grow-1 messages-chat-wrapper container-fluid mb-3">
+  <div style="margin-bottom: 32px;" id="chat-messages d-flex flex-column justify-content-end" class="messages flex-grow-1 messages-chat-wrapper container-fluid mb-3">
     <% @match.messages.each do |message| %>
     <%= render "message", message: message %>
     <% end %>
   </div>
-  <div class="chat-input fixed-bottom mt-2">
+  <div class="chat-input fixed-bottom mt-2" style="bottom: 0px;">
     <%= simple_form_for [ @match, Message.new ], html: { class: "form-row d-flex", id: "chatter"}, remote: true do |f| %>
     <%= f.input :content, label: false, input_html: { class: "flex-grow-1", style: "height: 45px"}, wrapper_html: { class: "flex-grow-1", style: "height: 45px"} %>
     <%= button_tag(type: 'submit', class: "btn bg-primary my-0 px-2 flex-grow-0", style: "width: 45px", id: "sender") do %>
