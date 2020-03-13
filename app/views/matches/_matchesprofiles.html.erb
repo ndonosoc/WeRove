@@ -7,7 +7,7 @@
     <% end %>
   <% else %>
     <% if match.tourist.photo.attached? %>
-      <%= cl_image_tag match.tourist.photo.key, class: 'avatar-3', style:"#{match.local_seen == true && current_user.messages.where(read: nil, match_id: match.id).empty? ? "" : "border-color: #5D6CF3 5px solid"}" %>
+      <%= cl_image_tag match.tourist.photo.key, class: 'avatar-3', style:"#{match.local_seen == true && current_user.messages.where(read: nil, match_id: match.id).empty? ? "" : "border: #5D6CF3 5px solid"}" %>
     <% else %>
       <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg" alt="" class="avatar-3" style="<%= match.tourist_seen == true && current_user.messages.where(read: nil, match_id: match.id).empty? ? "" : "border: #5D6CF3 5px solid" %>">
     <% end %>
