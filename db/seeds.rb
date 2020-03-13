@@ -10,109 +10,85 @@ require 'faker'
 require "open-uri"
 require 'json'
 
-Bookmark.delete_all
-Rating.delete_all
-Message.delete_all
-Match.delete_all
-Review.delete_all
-Recommendation.delete_all
-UserInterest.delete_all
-Interest.delete_all
-User.delete_all
+# Bookmark.delete_all
+# Rating.delete_all
+# Message.delete_all
+# Match.delete_all
+# Review.delete_all
+# Recommendation.delete_all
+# UserInterest.delete_all
+# Interest.delete_all
+# User.delete_all
 
-50.times do
-  user = User.new(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
-    city: ["Buenos Aires", "Paris", "London", "New York"].sample,
-    languages: ["french", "spanish", "english", "japanese"].sample(2),
-    gender: ["male", "female", "non-binary"].sample,
-    birthday: Faker::Date.between(from: 10000.days.ago, to: 8000.days.ago),
-    biography: Faker::Quote.matz,
-    available: true,
-    occupation: Faker::Job.title,
-    score: rand(1..5),
-    password: '123456'
-  )
-    file = URI.open("https://source.unsplash.com/640x480/?people")
-    user.photo.attach(io: file, filename: "#{user.first_name}-#{user.last_name}.jpg", content_type: "image/jpeg")
-    if user.save!
-    puts "saved"
-    else
-      puts "not saved"
-    end
-end
+# 50.times do
+#   user = User.new(
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     email: Faker::Internet.email,
+#     city: ["Buenos Aires", "Paris", "London", "New York"].sample,
+#     languages: ["french", "spanish", "english", "japanese"].sample(2),
+#     gender: ["male", "female", "non-binary"].sample,
+#     birthday: Faker::Date.between(from: 10000.days.ago, to: 8000.days.ago),
+#     biography: Faker::Quote.matz,
+#     available: true,
+#     occupation: Faker::Job.title,
+#     score: rand(1..5),
+#     password: '123456'
+#   )
+#     file = URI.open("https://source.unsplash.com/640x480/?people")
+#     user.photo.attach(io: file, filename: "#{user.first_name}-#{user.last_name}.jpg", content_type: "image/jpeg")
+#     if user.save!
+#     puts "saved"
+#     else
+#       puts "not saved"
+#     end
+# end
 
-# INTEREST = %w( Sports Vegan Food Party Gaming )
+# # INTEREST = %w( Sports Vegan Food Party Gaming )
 
-# INTEREST.each do |interest|
-#   Interest.create!(
-#     title: interest
+# # INTEREST.each do |interest|
+# #   Interest.create!(
+# #     title: interest
+# #   )
+# # end
+
+
+# 20.times do
+#   users = User.all.sample(2)
+#   Match.create!(
+#     local_id: users[0].id,
+#     tourist_id: users[1].id,
+#     accepted: true
 #   )
 # end
 
+# 30.times do
+#   recommendation = Recommendation.new(
+#     user_id: User.all.sample.id,
+#     category: ["Nightlife", "Restaurant", "Sports event", "Sightseeing"].sample,
+#     description: Faker::ChuckNorris.fact,
+#     price_range: "From $#{rand(200..300)} to $#{rand(400..600)}",
+#     duration: "#{["30", "60", "90", "120"].sample} minutes",
+#     reservation: "#{["Not needed", "Should plan with anticipation"].sample}",
+#     location: "#{["Recoleta", "Palermo", "Berazategui", "Belgrano"].sample}",
+#     title: Faker::Games::Pokemon.location
+#   )
 
-20.times do
-  users = User.all.sample(2)
-  Match.create!(
-    local_id: users[0].id,
-    tourist_id: users[1].id,
-    accepted: true
-  )
-end
+#     file = URI.open("https://placeimg.com/640/480/arch")
+#     recommendation.photo.attach(io: file, filename: "#{recommendation.title}-#{recommendation.user_id}.jpg", content_type: "image/jpeg")
+#     recommendation.save
 
-30.times do
-  recommendation = Recommendation.new(
-    user_id: User.all.sample.id,
-    category: ["Nightlife", "Restaurant", "Sports event", "Sightseeing"].sample,
-    description: Faker::ChuckNorris.fact,
-    price_range: "From $#{rand(200..300)} to $#{rand(400..600)}",
-    duration: "#{["30", "60", "90", "120"].sample} minutes",
-    reservation: "#{["Not needed", "Should plan with anticipation"].sample}",
-    location: "#{["Recoleta", "Palermo", "Berazategui", "Belgrano"].sample}",
-    title: Faker::Games::Pokemon.location
-  )
-
-    file = URI.open("https://placeimg.com/640/480/arch")
-    recommendation.photo.attach(io: file, filename: "#{recommendation.title}-#{recommendation.user_id}.jpg", content_type: "image/jpeg")
-    recommendation.save
-
-end
-
-50.times do
-  recommendation = Recommendation.all.sample
-  Review.create(recommendation_id: recommendation.id,
-                user_id: User.all.sample.id,
-                content: Faker::Quote.famous_last_words,
-                rating: rand(1..5))
-  recommendation.update_rating
-end
-
-# Match.all.each do |match|
-#   5.times do
-#     Message.new(messager_id: [match.local_id, match.tourist_id].sample,
-#                 match_id: match.id,
-#                 content: Faker::Quote.matz)
-#   end
 # end
 
-# 40.times do
-#   Bookmark.create(user_id: rand(1..50),
-#                   recommendation_id: rand(1..30))
+# 50.times do
+#   recommendation = Recommendation.all.sample
+#   Review.create(recommendation_id: recommendation.id,
+#                 user_id: User.all.sample.id,
+#                 content: Faker::Quote.famous_last_words,
+#                 rating: rand(1..5))
+#   recommendation.update_rating
 # end
 
-# Match.all.sample(5).each do |match|
-#   Rating.create(match_id: match.id,
-#                 rating: rand(1..5),
-#                 rated_id: match.local_id,
-#                 rater_id: match.tourist_id)
-
-#   Rating.create(match_id: match.id,
-#                 rating: rand(1..5),
-#                 rated_id: match.tourist_id,
-#                 rater_id: match.local_id)
-# end
 
 #INTERESTS
 
@@ -183,15 +159,15 @@ Interest.create(title: "Punk", parent_id: parent.id)
 Interest.create(title: "Country", parent_id: parent.id)
 Interest.create(title: "Pop", parent_id: parent.id)
 
-list = Interest.where.not(parent_id: nil).group_by { |x| x.parent_id }
+# list = Interest.where.not(parent_id: nil).group_by { |x| x.parent_id }
 
-User.all.each do |user|
-  list.keys.each do |parent|
-    list[parent].sample(4).each do |interest|
-      UserInterest.create(
-        user_id: user.id,
-        interest_id: interest.id
-        )
-    end
-  end
-end
+# User.all.each do |user|
+#   list.keys.each do |parent|
+#     list[parent].sample(4).each do |interest|
+#       UserInterest.create(
+#         user_id: user.id,
+#         interest_id: interest.id
+#         )
+#     end
+#   end
+# end
