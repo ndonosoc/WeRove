@@ -2,6 +2,7 @@ import "bootstrap";
 import $ from 'jquery';
 import "../components/home_search";
 import { initAutocomplete } from "../plugins/init_autocomplete";
+import { initAutocomplete2 } from "../plugins/init_autocomplete";
 import flatpickr from 'flatpickr';
 import { tagger, reverseTagger } from '../plugins/slidebar';
 import { myRater } from "../plugins/rater";
@@ -20,6 +21,7 @@ import 'select2/dist/css/select2.css';
 import 'flatpickr/dist/flatpickr.min.css';
 
 initAutocomplete();
+initAutocomplete2();
 myRater();
 myRater2();
 myRater3();
