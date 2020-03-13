@@ -19,7 +19,7 @@
           <%= f.input :email, required: true, autofocus: true %>
           <%= f.input :first_name, required: true, autofocus: true %>
           <%= f.input :last_name, required: true, autofocus: true %>
-          <%= f.input :city, required: true, autofocus: true, label: "Where are you a local?" %>
+          <%= f.input :city, required: true, autofocus: true, input_html: { id: "location"}, label: "Where are you a local?" %>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
