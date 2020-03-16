@@ -1,4 +1,4 @@
-<div class="container">
+<div class="matches-container">
   <% if @matches.empty? %>
 
     <%= link_to root_path do %>
@@ -10,7 +10,7 @@
  <div class="title-matches-index2 mt-3">
     My Rovers
   </div>
-  <div class="avatar-profiles">
+  <div class="avatar-profiles" id="style-2">
     <span class="d-flex">
       <% @matches.each do |match| %>
       <div class="align-items-center d-flex flex-column match-avatar">
