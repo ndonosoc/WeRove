@@ -1,0 +1,8 @@
+function refreshForm2() {
+  var els = document.querySelector("a[href='/bookmarks/<%=@bookmark.id%>']");
+  els.setAttribute("data-method", "post");
+  els.setAttribute("href", "/recommendations/<%= recommendation.id %>/bookmarks");
+  els.querySelector("i").setAttribute("class", "far fa-bookmark fa-xs")
+}
+
+refreshForm2();

@@ -19,8 +19,10 @@ class BookmarksController < ApplicationController
 
 
     if @bookmark.save
-      flash[:notice] = "Saved to bookmarks"
-      redirect_back(fallback_location: root_path)
+      respond_to do |format|
+        format.html { redirect_to recommendation_path(@recommendation) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
       flash[:notice] = "Couldn't save bookmark"
       redirect_back(fallback_location: root_path)
@@ -30,10 +32,12 @@ class BookmarksController < ApplicationController
 
   def destroy
     @bookmark = Bookmark.find(params[:id])
-    authorize @bookmark
+    @recommendation = Recommendation.find(@bookmark.recommendation_id)
     if @bookmark.destroy
-      flash[:notice] = "Deleted from bookmarks"
-      redirect_back(fallback_location: root_path)
+      respond_to do |format|
+        format.html { redirect_to recommendation_path(@recommendation) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
       flash[:notice] = "Couldn't delete bookmark"
       redirect_back(fallback_location: root_path)

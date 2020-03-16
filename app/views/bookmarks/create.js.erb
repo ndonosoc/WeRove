@@ -1,0 +1,11 @@
+function refreshForm() {
+  var els = document.querySelector("a[href='/recommendations/<%= @bookmark.recommendation_id %>/bookmarks']");
+  els.setAttribute("data-method", "delete");
+  els.setAttribute("href", "bookmarks/<%=@bookmark.id%>");
+  els.querySelector("i").setAttribute("class", "fas fa-bookmark fa-xs")
+}
+
+<% if @bookmark.errors.any? %>
+<% else %>
+setTimeout(5000, refreshForm());
+<% end %>
