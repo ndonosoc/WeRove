@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "/recommendations", to: "recommendations#index"
   resources :recommendations, not: [:index] do
     resources :reviews, only: [:new, :create, :destroy]
-    resources :bookmarks, only: [:create]
+    resources :bookmarks, only: [:create, :destroy]
   end
   resources :profile, :controller => "users", only: [:index, :show, :edit, :update]
 

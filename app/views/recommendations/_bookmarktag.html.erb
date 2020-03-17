@@ -5,13 +5,13 @@
 <% end -%>
 <% if recommendation.user != current_user %>
   <% if !current_user.bookmarkedrecommendation_ids.include?(recommendation.id) %>
-      <%= link_to (recommendation_bookmarks_path(recommendation)), method: :post do %>
+      <%= link_to (recommendation_bookmarks_path(recommendation)), method: :post, remote: true do %>
         <i class="far fa-bookmark fa-xs" style="margin-right: 8px; color: #5D6CF3"></i>
       <% end %>
 
   <% else %>
 
-      <%= link_to bookmark_path(recommendation.bookmarks.find_by_user_id(current_user.id)), method: :delete do %>
+      <%= link_to (bookmark_path(recommendation.bookmarks.find_by_user_id(current_user.id))), method: :delete, remote: true do %>
         <i class="fas fa-bookmark fa-xs" style="margin-right: 8px; color: #5D6CF3"></i>
       <% end %>
 
