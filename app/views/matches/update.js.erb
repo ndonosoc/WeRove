@@ -1,0 +1,23 @@
+function matchRemover() {
+  var wrapper = document.querySelector(".wrapper-match");
+  wrapper.remove();
+};
+
+function matchDisplayer() {
+  var wrapper2 = document.querySelector(".wrapper-match");
+  var parent = document.querySelector(".matchme-container");
+  if(wrapper2){
+    parent.prepend(wrapper2);
+    wrapper2.hidden = false;
+    let fullText = document.getElementById("matches-left");
+    let minusOne = parseInt(fullText.innerText[0], 10) - 1;
+    fullText.innerText = fullText.innerText.replace(fullText.innerText[0], minusOne);
+  } else {
+    window.location.replace("<%= matches_path %>");
+  }
+};
+
+<% if @match.save %>
+  matchRemover();
+  matchDisplayer();
+<% end %>

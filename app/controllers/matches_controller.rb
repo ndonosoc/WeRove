@@ -73,17 +73,20 @@
 
   def update
     @match = Match.find(update_params["id"].to_i)
-    authorize @match
 
     if update_params["accepted"] == "true"
       @match.accepted = true
-      @match.save
     elsif update_params["accepted"] == "false"
       @match.accepted = false
-      @match.save
     end
 
-    redirect_to matchme_path
+    if @match.save
+        respond_to do |format|
+        format.html { redirect_to match_path(@match) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
+    end
+    # redirect_to matchme_path
 
   end
 
