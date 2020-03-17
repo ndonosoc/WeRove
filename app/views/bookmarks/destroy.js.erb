@@ -1,8 +1,14 @@
 function refreshForm2() {
-  var els = document.querySelector("a[href='/bookmarks/<%=@bookmark.id%>']");
-  els.setAttribute("data-method", "post");
-  els.setAttribute("href", "/recommendations/<%= recommendation.id %>/bookmarks");
-  els.querySelector("i").setAttribute("class", "far fa-bookmark fa-xs")
+  var els = document.querySelector("a[href='bookmarks/<%=@bookmark.id%>']");
+  if (els) {
+    els.setAttribute("data-method", "post");
+    els.setAttribute("href", "/recommendations/<%= @recommendation.id %>/bookmarks");
+    els.querySelector("i").setAttribute("class", "far fa-bookmark fa-xs")
+  } else {
+      var els2 = document.querySelector("a[href='/bookmarks/<%=@bookmark.id%>']");
+     els2.setAttribute("data-method", "post");
+    els2.setAttribute("href", "/recommendations/<%= @recommendation.id %>/bookmarks");
+    els2.querySelector("i").setAttribute("class", "far fa-bookmark fa-xs")}
 }
 
 refreshForm2();
