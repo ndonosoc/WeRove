@@ -10,15 +10,11 @@ const matchMeSlider = () => {
 
       wrapper.style.transition = "transform 0.5s"
       wrapper.style.transform = "translateX(500px)"
-      accepter.submit()
-
     })
 
       rejecterButton.addEventListener("click", event =>{
       wrapper.style.transition = "transform 0.5s"
       wrapper.style.transform = "translateX(-500px)"
-      rejecter.submit()
-
     })
 
   }
