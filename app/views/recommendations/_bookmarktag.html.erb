@@ -11,7 +11,7 @@
 
   <% else %>
 
-      <%= link_to bookmark_path(recommendation.bookmarks.find_by_user_id(current_user.id)), method: :delete, remote: true do %>
+      <%= link_to (bookmark_path(recommendation.bookmarks.find_by_user_id(current_user.id))), method: :delete, remote: true do %>
         <i class="fas fa-bookmark fa-xs" style="margin-right: 8px; color: #5D6CF3"></i>
       <% end %>
 
