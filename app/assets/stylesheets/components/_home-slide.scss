@@ -19,6 +19,10 @@
       font-weight: 900;
     }
 
+    h3::before {
+      content: "wR"
+    }
+
     .links {
       margin-top: 32px;
     }
