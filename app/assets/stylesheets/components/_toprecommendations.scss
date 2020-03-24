@@ -53,3 +53,15 @@
   }
 }
 
+@media (min-width: 700px){
+  .rcard {
+    width: 350px;
+    margin: 0 0 16px 16px;
+  }
+
+  #user-recommendations {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+  }
+}
