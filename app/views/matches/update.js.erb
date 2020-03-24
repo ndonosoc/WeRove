@@ -1,25 +1,33 @@
 function matchRemover() {
   var wrapper = document.querySelector(".wrapper-match");
-  wrapper.remove();
+  wrapper.style.transition = "opacity 0.5s"
+  wrapper.style.opacity = "0"
+  setTimeout(wrapper.remove(), 1000);
 };
 
 function matchDisplayer() {
   var wrapper2 = document.querySelector(".wrapper-match");
   var parent = document.querySelector(".matchme-container");
   if(wrapper2){
-    parent.prepend(wrapper2);
+    let fullText = document.querySelector("#matches-left");
+    fullText.after(wrapper2);
     wrapper2.hidden = false;
-    changeText(wrapper2);
+    changeText(fullText);
   } else {
     window.location.replace("<%= matches_path %>");
   }
 };
 
-function changeText(wrapper) {
-    let fullText = wrapper.querySelector("#matches-left");
+function changeText(fullText) {
+  if(fullText.innerText === "1 more locals to review"){
+    fullText.innerText = "Last local to review!" }
+    else if(fullText.innerText === "Last local to review!" ) {
+      fullText.remove();
+    } else {
     fullText.innerText = `${fullText.innerText.replace(fullText.innerText[0], parseInt(fullText.innerText[0], 10) - 1)}`;
+    }
+  }
 
-}
 
 <% if @match.save %>
   matchRemover();

@@ -16,7 +16,7 @@ import { senderDisabler } from "../plugins/sender_disabler";
 import { chatFocus } from "../plugins/chat_focus";
 import { loader } from "../plugins/loader";
 import { matchmeDisplayer } from "../plugins/matchme_displayer";
-import { matchMeSlider } from "../plugins/matchmeSlider";
+// import { matchMeSlider } from "../plugins/matchmeSlider";
 
 import 'select2/dist/css/select2.css';
 import 'flatpickr/dist/flatpickr.min.css';
@@ -36,7 +36,7 @@ loader();
 matchmeDisplayer();
 senderDisabler();
 chatFocus();
-matchMeSlider();
+// matchMeSlider();
 
 // $(document).ready(function(){
 //   $(".interest-choices").click(function(){

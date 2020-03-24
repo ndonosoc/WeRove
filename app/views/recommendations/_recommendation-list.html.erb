@@ -4,8 +4,8 @@
     <div class="scroller">
 
       <h2 class="subtitle-small-bold mt-4 mb-2 mx-4"><%= category %></h2>
-      <div class="scrolling-wrapper mb-3  ">
-        <div class="recomcard">
+      <div class="scrolling-wrapper mb-3 pb-3" id="style-2">
+        <div class="recomcard" id="style-2">
           <% list[category].each do |recommendation| %>
             <%= render 'recommendations/recomcard', recommendation: recommendation %>
           <% end %>
