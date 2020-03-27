@@ -29,12 +29,12 @@
       input_html: { autocomplete: "new-password" } %>
     </div>
     <div class="form-actions" style="padding-top: 0px;">
-      <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+      <%= f.button :submit, "Sign up", class: "btn btn-primary mb-3" %>
     </div>
     <% end %>
-    <%= link_to user_facebook_omniauth_authorize_path, class:"btn btn-outline-primary sign-up-fb mb-3" do %>
+<!--     <%#= link_to user_facebook_omniauth_authorize_path, class:"btn btn-outline-primary sign-up-fb mb-3" do %>
     <i class="fab fa-facebook-square" style="color: #4267b2; padding-right: 8px;"></i>Log in with Facebook
-    <% end %>
-    <%= link_to "I already have an account", new_user_session_path, class: "underlined-link", style: "margin-top: 20px; font-family: 'Poppins'" %>
+    <%# end %> -->
+    <%= link_to "I already have an account", new_user_session_path, class: "underlined-link mt-3", style: "margin-top: 20px; font-family: 'Poppins'" %>
   </div>
 </div>
