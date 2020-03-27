@@ -27,6 +27,7 @@
   text-align: left;
   font-size: 14px;
   color: dark-grey;
+  height: auto;
 }
 
 .setuplater {
@@ -118,5 +119,23 @@
     width: 500px;
     margin: auto;
   }
+}
+
+.wrapper-interests {
+  width: 550px;
+}
+}
+
+@media (min-width: 900px) {
+
+.sign-up-container {
+  .wrapper {
+    width: 700px;
+    margin: auto;
+  }
+}
+
+.wrapper-interests {
+  width: 700px;
 }
 }
